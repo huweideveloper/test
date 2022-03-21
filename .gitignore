@@ -1,1 +1,27 @@
+.DS_Store
+# module#
 node_modules
+.cache
+
+# IDE#
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# module#
+dev
+res
+css
+test
+json
+temp
+.htaccess
+httpd.conf
+set.js
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
