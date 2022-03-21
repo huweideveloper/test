@@ -1,0 +1,184 @@
+.createaudittask1 {
+  min-height: 837px;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+  & > .scroll {
+    overflow: hidden;
+    padding: 20px 0;
+    .save {
+      position: absolute;
+      right: 40px;
+      padding: 0 20px;
+      height: 40px;
+      line-height: 40px;
+      background: #4c9fa9;
+      color: #fff;
+    }
+  }
+  .bigtitle {
+    padding: 20px;
+    font-size: 17px;
+  }
+  .title {
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 66px;
+    margin-bottom: 20px;
+  }
+
+  .inputLine {
+    width: 80%;
+    position: relative;
+    margin: 10px 0;
+    display: inline-block;
+    & > span {
+      width: 100px;
+      text-align: right;
+    }
+    & > input {
+      padding-left: 10px;
+      border-radius: 4px;
+      border: 1px solid #e8e8e8;
+      height: 40px;
+      line-height: 40px;
+    }
+    textarea {
+      padding-left: 10px;
+      border-radius: 4px;
+      border: 1px solid #e8e8e8;
+      width: 80%;
+      height: 120px;
+      resize: none;
+    }
+    .project {
+      display: inline-block;
+      width: 80%;
+      .xlk {
+        height: 40px;
+        line-height: 40px;
+        width: 100%;
+      }
+    }
+  }
+  .w100 {
+    width: 100%;
+    input {
+      width: 80%;
+    }
+    span {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+  .w50 {
+    width: 40%;
+    display: inline-block;
+    input {
+      width: 50%;
+    }
+    span {
+      display: inline-block;
+      vertical-align: top;
+    }
+    .project {
+      width: 50%;
+      .nowname {
+        width: 92%;
+      }
+    }
+  }
+  .w135 {
+    width: 155px !important;
+    text-align: right;
+  }
+  .hangnei {
+    display: inline-block;
+  }
+
+  .uploadarea {
+    padding-left: 10px;
+    text-align: center;
+    height: 200px;
+    width: 80%;
+    border: 1px dashed #448e97;
+    margin: 20px 20px 20px 162px;
+    cursor: pointer;
+    border-radius: 5px;
+    img {
+      width: 95px;
+      height: 105px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+    p:first-child {
+      margin-top: 105px;
+    }
+    .dianjiupload {
+      position: absolute;
+      top: 2000px;
+      left: 2000px;
+    }
+  }
+  .filelist {
+    width: 80%;
+    margin: 20px 0 50px 162px;
+    li {
+      width: 100%;
+      position: relative;
+      margin-bottom: 20px;
+      i {
+        font-size: 24px;
+        color: #448e97;
+      }
+      .filename {
+        vertical-align: top;
+      }
+      .progress {
+        position: absolute;
+        top: 20px;
+        left: 27px;
+        height: 7px;
+        display: inline-block;
+        background: #448e97;
+        width: 90%;
+        border-radius: 8px;
+        -webkit-transition: width 0.8s ease;
+        -moz-transition: width 0.8s ease;
+        transition: width 0.8s ease;
+        -webkit-animation: progressbar 7s 1;
+        animation: progressbar 7s 1;
+      }
+      .icon-guanbi {
+        position: absolute;
+        right: 10px;
+        font-size: 18px;
+        top: 7px;
+        cursor: pointer;
+      }
+      @-webkit-keyframes progressbar {
+        from {
+          width: 0;
+        }
+        to {
+          width: 90%;
+        }
+      }
+      /* Standard syntax */
+      @keyframes progress {
+        from {
+          width: 0;
+        }
+        to {
+          width: 90%;
+        }
+      }
+    }
+  }
+  .required1 {
+    width: unset !important;
+    color: red;
+    position: absolute;
+  }
+}

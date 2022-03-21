@@ -1,0 +1,74 @@
+.inputarea{
+  position: relative;
+  width: 100%;
+  .contentarea{
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    width: 400px;
+    height: 100%;
+    z-index: 11;
+    position: relative;
+    .contentinput{
+      margin-left: 18px;
+      border: none;
+      width: 100px;
+      height: 30px;
+    }
+    .chooseditem{
+      position: relative;
+      margin-left: 15px;
+      margin-top: 5px;
+      .icon-guanbi{
+        position: absolute;
+        right: -14px;
+        top:-3px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+    }
+
+  }
+  .ularea{
+    width: 100%;
+    position: absolute;
+  }
+  .scroll{
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+  }
+  .contentul{
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    background: #fff;
+    border-left: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+    border-radius: 4px;
+    .contentli{
+      height: 30px;
+      line-height: 30px;
+      cursor: pointer;
+      border-bottom: 1px solid #e8e8e8;
+      &:hover{
+        background: #FAFAFA;
+      }
+    }
+  }
+  .loading_xlk{
+    background: url(/images/loading1.gif) no-repeat 35px -28px;
+    height: 50px;
+    width: 100%;
+    top: 0px;
+    z-index: 2000;
+    position: absolute;
+  }
+  .mask{
+    position: absolute;
+    width: 5000px;
+    height: 5000px;
+    z-index: 10;
+    top: -1000px;
+    left: -1000px;
+  }
+}

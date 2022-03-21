@@ -1,0 +1,28 @@
+<div>
+    <div class="param_cont">
+        <div>
+            方法名称： refreshData()
+        </div>
+        <ul class="param_ul">
+            <li>引用方法：timesCont.refreshData(data,type)</li>
+            <li>功能：重置开始时间、结束时间、最大值、最小值</li>
+            <li>data格式说明：data为object，st：开始时间。et：结束时间。max：最大值，min：最小（格式都为xxxx-xx-xx）</li>
+            <li>type格式说明：'stet'：重置开始时间、结束时间，'maxmin'：最大值、最小值，'all'：重置开始时间、结束时间、最大值、最小值</li>
+            <li>使用代码样例：
+                <div class="code_cont">
+                    timesCont.refreshData({ st: '2017-10-01', et: '2017-12-01', max: '2017-12-02', min: '2017-09-20' },'all')
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="param_cont">
+        <div>
+            事件名称： 'times.startend'
+        </div>
+        <ul class="param_ul">
+            <li>引用方法：timesCont.event._addEvent('times.startend', function(data))</li>
+            <li>功能：获取选中的日期</li>
+            <li>data引用：当type为's'时，data.st得到选中的时间，当type不为's'时，data.st得到选中的开始时间，data.et得到选中的结束时间</li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<div id="personalaccount">
+  <sys-notice></sys-notice>
+  <div class="personalaccount-container">
+    <div class="version-content">
+      <el-button type="primary" @click="gotoUserStatPage" v-show="show">查看统计项</el-button>
+      <div class="download-version" v-show="downloadData.download_path">
+        <div>请升级到客户端最新版本{{downloadData.version}}</div>
+        <a class="download-url" href="javascript:void(0)" @click="handleDownload">下载地址</a>
+      </div>
+    </div>
+    <div class="head-content">
+      <div class="title">{{useinfo.name}}医生，欢迎登录{{systemName}}标注系统！</div>
+      <div class="sub-title">感谢您对人工智能医疗研究的付出。</div>
+    </div>
+    <div class="current-task-container">
+      <div class="text-info">
+        进行中的任务：
+        <el-button v-show="!currentList || currentList.length < 5" type="primary" icon="el-icon-circle-plus-outline" size="small" @click="handleAddTask">领取新任务</el-button>
+      </div>
+      <div class="current-task-list">
+        <div v-for="item in currentList" :key="item.id" @click="handleClickTask(item.id)" class="task-block">
+          <div class="task-title" :title="`${item.id}-${item.name}`">{{item.id}}-{{item.name}}</div>
+          <div class="task-infos">
+            <div class="info">剩余可分配数量： {{item.seriesAvailableNum}}</div>
+            <div class="info">到期： {{item.endTime | formatDate}}</div>
+            <div class="info">审核状态： {{item.auditStatus | filterAuditStatus}}</div>
+            <div class="info">标注是否更新：{{typeof item.annoUpdateStatus === 'boolean' ? (item.annoUpdateStatus ? '是' : '否') : ''}}</div>
+            <div class="info anno-last-update-time" :title="item.annoLastUpdateTime | formatDateTime">标注最后更新时间：{{item.annoLastUpdateTime | formatDateTime}}</div>
+            <div class="info-small">{{item.seriesAnnotationResultId ? '(名下存在未提交序列)' : ''}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="history-task-container">
+      <div class="text-info">历史任务：</div>
+      <el-table
+        :data="completedList"
+        style="width: 100%"
+        @row-click="(row) => {
+          this.handleClickTask(row.id, true)
+        }"
+      >
+        <el-table-column prop="name" label="任务名称">
+          <template slot-scope="scope">
+            <span>{{scope.row.id}} - {{scope.row.name}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="date" label="开始时间~到期时间" width="280">
+          <template slot-scope="scope">
+            <span>{{ scope.row.startTime | formatDate }} ~ {{ scope.row.endTime | formatDate }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="审核状态">
+          <template slot-scope="scope">
+            <span>{{scope.row.auditStatus | filterAuditStatus}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="标注是否更新">
+          <template slot-scope="scope">
+            <span>{{typeof scope.row.annoUpdateStatus === 'boolean' ? (scope.row.annoUpdateStatus ? '是' : '否') : ''}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="标注最后更新时间">
+          <template slot-scope="scope">
+            <span>{{scope.row.annoLastUpdateTime | formatDateTime}}</span>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
+  </div>
+</div>

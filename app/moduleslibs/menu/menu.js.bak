@@ -1,0 +1,189 @@
+require("./menu.less")
+var html = require("./tpl.html")
+
+function menu() {
+    this.html = html
+    var that = this;
+
+    this.complete = function() {
+        //console.log(contH);
+        //写自己的代码
+        //console.log('menu',this.app.header,this.dom)
+        this.dom.find('a').on('click', function() {
+            //console.log($(this).attr('link'))
+            if ($(this).attr('link')) {
+                that.app.changePage($(this).attr('link'))
+            }
+        })
+
+        // return        
+        /*this.dom.find('.home').on('click', function() {
+            //console.log('ds;lajksad')
+            that.app.changePage('overView');
+            // $('.titleName').text("整体概览");
+        })
+        this.dom.find('.flowAnalysis').on('click', function() {
+            //console.log('ds;lajksad')
+            that.app.changePage('flowAnalysis');
+            // $('.titleName').html("客流监测<em>&nbsp;>&nbsp;客流分析</em>");
+        })
+        this.dom.find('.shopAnalysis').on('click', function() {
+            //console.log('ds;lajksad')
+            that.app.changePage('shopAnalysis');
+            // $('.titleName').html("客流监测<em>&nbsp;>&nbsp;到店分析</em>");
+        })
+        this.dom.find('.activeView').on('click', function() {
+            //console.log('ds;lajksad')
+            that.app.changePage('activeView');
+            //  $('.titleName').text("活动概览");
+        })
+        this.dom.find('.actives').on('click', function() {
+            //console.log('ds;lajksad')
+            that.app.changePage('actives');
+            // $('.titleName').html("活动分析<em>&nbsp;>&nbsp;活动客流</em>");
+        })
+        this.dom.find('.activePortrait').on('click', function() {
+            //console.log('ds;lajksad')
+            that.app.changePage('activePortrait');
+            //  $('.titleName').html("活动分析<em>&nbsp;>&nbsp;活动画像</em>");
+        })
+        this.dom.find('.customerPortrait').on('click', function() {
+            //console.log('ds;lajksad')
+            that.app.changePage('customerPortrait');
+            // $('.titleName').text("顾客画像");
+        })
+        this.dom.find('.shopManager').on('click', function() {
+            //console.log('ds;lajksad')
+            that.app.changePage('shopManager');
+            //   $('.titleName').html("自定义管理<em>&nbsp;>&nbsp;店铺管理</em>");
+        })
+        this.dom.find('.activesManager').on('click', function() {
+            //console.log('ds;lajksad')
+            that.app.changePage('activesManager');
+            // $('.titleName').html("自定义管理<em>&nbsp;>&nbsp;活动管理</em>");
+        });
+        this.dom.find('.doorManager').on('click', function() {
+            //console.log('ds;lajksad')
+            that.app.changePage('departmentManage');
+            //$('.titleName').html("权限管理<em>&nbsp;>&nbsp;部门管理</em>");
+        });
+        this.dom.find('.userManager').on('click', function() {
+            //console.log('ds;lajksad')
+            that.app.changePage('userList');
+            // $('.titleName').html("权限管理<em>&nbsp;>&nbsp;用户管理</em>");
+        });
+        this.dom.find('.roleManager').on('click', function() {
+            //console.log('ds;lajksad')
+            that.app.changePage('roleManager');
+            // $('.titleName').html("权限管理<em>&nbsp;>&nbsp;角色管理</em>");
+        });*/
+        $('.navOne a').click(function() {
+            $('.navOne li').removeClass('seleted');
+            $(this).parent('li').addClass('seleted');
+            $(this).parent().parent().parent().addClass('seleted');
+            if ($(this).siblings().length > 1) {
+                if ($(this).parent('li').hasClass('openUl')) {
+                    $(this).parent('li').removeClass('openUl');
+                    $(this).next().next().addClass('hide');
+
+                } else {
+                    $(this).parent('li').addClass('openUl');
+                    $(this).next().next().removeClass('hide');
+                    $(this).next().next().find('li').eq(0).addClass('seleted');
+
+                }
+            }
+        })
+
+    }
+    this.pageMenu = function() {
+        var name = window.location.hash.replace('#!/', '')
+        this.dom.find('.navOne li').removeClass('seleted')
+        var className = ''
+        switch (name) {
+            case "activePortrait":
+                this.app.header.changeTitle("活动分析<em>&nbsp;>&nbsp;活动画像</em>")
+                this.dom.find('.active').addClass('seleted')
+                this.dom.find('.active .activePortrait').parent().addClass('seleted')
+                className = 'active'
+                    //this.dom.find('.active')
+                break
+            case "actives":
+                this.app.header.changeTitle("活动分析<em>&nbsp;>&nbsp;活动概览</em>")
+                this.dom.find('.active').addClass('seleted')
+                this.dom.find('.active .actives').parent().addClass('seleted')
+                className = 'active'
+                break
+            case "activesManager":
+                this.app.header.changeTitle("自定义管理<em>&nbsp;>&nbsp;活动管理</em>")
+                this.dom.find('.selfManager').addClass('seleted')
+                this.dom.find('.selfManager .activesManager').parent().addClass('seleted')
+                className = 'selfManager'
+                break
+            case "activeView":
+                this.app.header.changeTitle("活动分析<em>&nbsp;>&nbsp;活动客流</em>")
+                this.dom.find('.active').addClass('seleted')
+                this.dom.find('.active .activeView').parent().addClass('seleted')
+                className = 'active'
+                break
+            case "customerPortrait":
+                this.app.header.changeTitle("顾客画像")
+                this.dom.find('.portrait ').addClass('seleted')
+                className = 'portrait'
+                break
+            case "flowAnalysis":
+                this.app.header.changeTitle("客流监测<em>&nbsp;>&nbsp;客流分析</em>")
+                this.dom.find('.custom').addClass('seleted')
+                this.dom.find('.custom .flowAnalysis').parent().addClass('seleted')
+                className = 'custom'
+                break
+            case "overView":
+                this.app.header.changeTitle("整体概览")
+                this.dom.find('.home').addClass('seleted')
+                className = 'home'
+                break
+            case "shopAnalysis":
+                this.app.header.changeTitle("客流监测<em>&nbsp;>&nbsp;到店分析</em>")
+                this.dom.find('.custom').addClass('seleted')
+                this.dom.find('.custom .shopAnalysis').parent().addClass('seleted')
+                className = 'custom'
+                break
+            case "shopManager":
+                this.app.header.changeTitle("自定义管理<em>&nbsp;>&nbsp;店铺管理</em>")
+                this.dom.find('.selfManager').addClass('seleted')
+                this.dom.find('.selfManager .shopManager').parent().addClass('seleted')
+                className = 'selfManager'
+                break
+            case "userList":
+                this.app.header.changeTitle("权限管理<em>&nbsp;>&nbsp;用户管理</em>")
+                this.dom.find('.jurisdiction').addClass('seleted')
+                this.dom.find('.jurisdiction .userManager').parent().addClass('seleted')
+                className = 'jurisdiction'
+                break
+            case "departmentManage":
+                this.app.header.changeTitle([{ html: '权限管理', cid: null }, { html: '部门管理', cid: null }], "crumbs")
+                this.dom.find('.jurisdiction').addClass('seleted')
+                this.dom.find('.jurisdiction .doorManager').parent().addClass('seleted')
+                className = 'jurisdiction'
+                break
+            case "roleManager":
+                this.app.header.changeTitle("权限管理<em>&nbsp;>&nbsp;角色管理</em>")
+                this.dom.find('.jurisdiction').addClass('seleted')
+                this.dom.find('.jurisdiction .roleManager').parent().addClass('seleted')
+                className = 'jurisdiction'
+                break
+            case "newDepartment":
+                this.app.header.changeTitle([{ html: '权限管理', cid: null }, { html: '部门管理', cid: null }], "crumbs")
+                className = 'jurisdiction'
+                break
+        }
+        if (!this.dom.find('.' + className).hasClass('openUl')) {
+            this.dom.find('.' + className).addClass('openUl')
+            this.dom.find('.' + className).find('.navSecond').removeClass('hide')
+        }
+    }
+
+
+}
+//原型链一定要有的
+module.exports = menu;

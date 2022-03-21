@@ -1,0 +1,60 @@
+<div class="createaudittask2">
+    <div>
+        <p class="title">第二步：审核内容设置</p>
+        <div class="matchset">
+            <span>数据匹配项：</span>
+            <div class="component" data-id="3">
+                <i class="radio-box"></i>
+                <span>阴阳性</span>
+            </div>
+            <div class="component" data-id="1">
+                <i class="radio-box special"></i>
+                <span>序列征象</span>
+                <a class="composet hide">序列征象设置</a>
+            </div>
+            <div class="component" data-id="2">
+                <i class="radio-box"></i>
+                <span>影像标注</span>
+            </div>
+        </div>
+        <div class="auditcomset">
+            <span>审核组件设置：</span>
+            <a class="bigset">序列征象设置</a>
+            <a class="smallset">影像征象设置</a>
+            <span class="hasYay"><i class="check-box"></i>是否需要审核阴阳性</span>
+        </div>
+        <div class="auditsource">
+            <span class="yxtitle">审核源</span>
+            <i class="iconfont icon-tianjia" title="添加审核源"></i>
+            <ul class="tasklist">
+
+            </ul>
+        </div>
+        <div class="seriesarea">
+            <a class="biaozhubtn addseries">添加任务序列</a>
+            <a class="viewseries">查看已添加序列</a>
+            <div class="choosePart">
+                <i class="check-box"></i><span>是否选取部分结果进入审核</span>
+                <div class="partConfig hide">
+                    <p>
+                        审核比例：<input type="text" class="pickPercent"/>%
+                        <span class="required hide">请输入1-100的整数</span>
+                    </p>
+                    <div class="partType">
+                        <p data-id="1"><i class="radio-box"></i><label>按照审核总量进行随机挑选</label> </p>
+                        <p data-id="2"><i class="radio-box"></i><label>按照标注个人进行随机挑选</label> </p>
+                    </div>
+                </div>
+            </div>
+            <div class="choosetype">
+                <span>审核集：</span>
+                <p data-id="1"><i class="radio-box"></i><label>一致部分</label> </p>
+                <p data-id="2"><i class="radio-box"></i><label>不一致部分</label> </p>
+                <p data-id="3"><i class="radio-box"></i><label>全集</label> </p>
+                <a class="biaozhubtn calculation">计算序列</a>
+                <span class="seriescount"></span>
+            </div>
+        </div>
+        <div class="distrubutionarea"></div>
+    </div>
+</div>

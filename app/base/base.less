@@ -1,0 +1,490 @@
+/**
+ *@Description: 整站css reset
+ */
+
+body,
+p,
+form,
+input,
+button,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'Microsoft YaHei', 'microsoft yahei', STHeiti, 'WenQuanYi Micro Hei', SimSun, sans-serif;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-size: 12px;
+  font-family: 'Microsoft YaHei', 'microsoft yahei', STHeiti, 'WenQuanYi Micro Hei', SimSun, sans-serif;
+  color: #333;
+}
+
+img,
+h3,
+h2,
+p,
+span,
+div,
+svg,
+text,
+tspan {
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+
+select {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  outline: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #448e97;
+  outline: none;
+}
+
+a.blue_link {
+  color: #06c;
+  &:hover {
+    color: #f60;
+  }
+}
+
+.clearfix {
+  *zoom: 1;
+  &:after {
+    display: block;
+    content: '.';
+    height: 0;
+    visibility: hidden;
+    clear: both;
+    font-size: 0;
+    line-height: 0;
+  }
+}
+
+img {
+  border: 0 none;
+  vertical-align: top;
+}
+
+em {
+  font-style: normal;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: none;
+}
+
+.rp {
+  position: relative;
+}
+
+.ap {
+  position: absolute;
+}
+
+.wrap {
+  width: 980px;
+  margin: 0 auto;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.ml {
+  margin-left: 10px;
+}
+
+.mt5 {
+  margin-top: 5px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mb25 {
+  margin-bottom: 25px;
+}
+
+.m17 {
+  margin: 0 17px;
+}
+
+.borderTop {
+  border-top: solid 1px #e7ebed;
+}
+
+.none,
+.hide {
+  display: none !important;
+}
+
+.noBorder {
+  border: none !important;
+}
+
+.hide {
+  display: none;
+}
+
+.pt10 {
+  padding-top: 10px;
+}
+
+.m0 {
+  margin: 0;
+}
+
+.p0 {
+  padding: 0;
+}
+
+.loading {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  .cont {
+    color: #fff;
+    width: 100px;
+    height: 12px;
+    display: inline-block;
+    position: absolute;
+    top: 49%;
+    left: 50%;
+    margin-left: -50px;
+    i {
+      background: url('/images/bi/load.gif') no-repeat center;
+      display: inline-block;
+      width: 25px;
+      height: 17px;
+      margin-right: 8px;
+      float: left;
+    }
+  }
+  .loadMask {
+    background: #000;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: inline-block;
+  }
+}
+
+#modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.modal {
+  background: #fff;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  box-shadow: 0 0 4px 4px rgba(180, 180, 180, 0.5);
+  border-radius: 6px;
+  &.modal-lg {
+    width: 960px;
+    margin-left: -480px;
+  }
+  &.modal-md {
+    width: 640px;
+    margin-left: -320px;
+  }
+  &.modal-xs {
+    width: 320px;
+    margin-left: -160px;
+  }
+  &.modal-sm {
+    width: 480px;
+    margin-left: -240px;
+  }
+  .modal-header {
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 4px 4px 0px 0px;
+    .modal-title {
+      font-family: MicrosoftYaHei;
+      font-weight: bold;
+      font-size: 18px;
+      color: #333333;
+      letter-spacing: 0;
+      line-height: 16px;
+      display: inline-block;
+    }
+    .modal-close {
+      float: right;
+      cursor: pointer;
+      top: 3px;
+      font-size: 12px;
+      font-style: normal;
+      &:hover {
+      }
+    }
+  }
+  .modal-body {
+    padding: 15px 15px;
+    position: relative;
+  }
+  .modal-footer {
+    text-align: center;
+    margin: 0 auto 20px;
+    .btnSetBgc(@color) {
+      background-color: @color;
+      &:hover {
+        background-color: lighten(@color, 5%);
+      }
+    }
+    .btn {
+      width: 120px;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 4px;
+      display: inline-block;
+      text-align: center;
+      color: #fff;
+      font-size: 14px;
+    }
+    .btn-confirm {
+      .btnSetBgc(#448e97);
+      border: 1px solid #448e97;
+      margin-right: 20px;
+      &:hover {
+        background: #1f474c;
+        border: 1px solid #1f474c;
+      }
+    }
+    .btn-cancel {
+      .btnSetBgc(#fff);
+      color: #333333;
+      border: 1px solid #448e97;
+      &:hover {
+        background: #1f474c;
+        border-color: #1f474c;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.input-group {
+  position: relative;
+  .errormessage {
+    position: absolute;
+    width: 100%;
+    top: 25px;
+    text-align: right;
+    .mess {
+      color: #f00;
+    }
+  }
+}
+
+.check-box {
+  width: 12px;
+  font-size: 12px;
+  height: 12px;
+  position: relative;
+  background: #fff;
+  color: #fff;
+  border: 1px solid #e8e8e8;
+  display: inline-block;
+  border-radius: 2px;
+  cursor: pointer;
+  // vertical-align: 4px;
+}
+
+.check-box.choose:before {
+  content: '\2714';
+  font-size: 12px;
+  line-height: 10px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  color: #fff;
+}
+
+.check-box.choose {
+  border: 1px solid #448e97;
+  background: #448e97;
+}
+
+.check-box.disabled {
+  background-color: #c0c4cc;
+}
+
+.radio-box {
+  width: 12px;
+  height: 12px;
+  border: 1px solid #e8e8e8;
+  border-radius: 25px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  // vertical-align: 4px;
+}
+
+.radio-box.choose:before {
+  content: '\20\20\20\2022\20\20\20';
+  font-size: 0;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: 1px;
+  left: 1px;
+  border-radius: 25px;
+  color: #448e97;
+  background: #448e97;
+}
+
+.redstar {
+  color: red;
+}
+
+.redborder {
+  border: 1px solid red !important;
+}
+
+.inputLine {
+  position: relative;
+}
+
+.required {
+  width: unset !important;
+  color: red;
+  position: absolute;
+  white-space: nowrap;
+}
+
+.editicon {
+  background-image: url(/images/bi/iconDmp.png);
+  width: 23px;
+  height: 23px;
+  display: inline-block;
+  cursor: pointer;
+  background-position: -95px -20px;
+}
+
+.delicon {
+  background-image: url(/images/bi/iconDmp.png);
+  width: 23px;
+  height: 23px;
+  display: inline-block;
+  cursor: pointer;
+  background-position: -70px -20px;
+  margin-right: 15px;
+}
+
+.hand-pointer {
+  cursor: pointer;
+}
+.waito {
+  .wait {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -150px;
+  }
+}
+.biaozhubtn {
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+}
+.fillBtn {
+  height: 32px;
+  line-height: 32px;
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  padding: 0 20px;
+  background: #4c9fa9;
+  color: #fff;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.strokeBtn {
+  height: 30px;
+  line-height: 30px;
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  padding: 0 20px;
+  border: 1px solid #4c9fa9;
+  background: #ffffff;
+  color: #4c9fa9;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+// vue页面相关样式
+.main-content-container {
+  .header-wrapper {
+    display: flex;
+    font-size: 16px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-left: 10px;
+  }
+}
+
+.icon-shanchu {
+  color: red;
+  cursor: pointer;
+}

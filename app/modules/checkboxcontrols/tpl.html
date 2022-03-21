@@ -1,0 +1,39 @@
+<div class="checkboxarea checkboxcontrols hide">
+    <div class="inputLine" redlabel="inputBox">
+        <label class="redstar">*</label>
+        <span class="wspan">复选组标题：</span>
+        <input type="text" class="checkboxname inputBox winput" check="empty"/>
+    </div>
+    <div class="checkboxmain">
+        <ul class="itemarea">
+            <i class="iconfont icon-tianjia"></i>
+            <li class="item">
+                <p class="inputLine" redlabel="inputBox">
+                    <label class="redstar">*</label>
+                    <span>选项1</span>
+                    <input type="text" class="item1value inputBox" check="empty" api="value"/>
+                </p>
+                <p class="inputLine" redlabel="inputBox">
+                    <label class="redstar">*</label>
+                    <span>默认值</span>
+                    <input type="text" class="item1code inputBox" check="empty|num" api="code" reg ="/^[0-9]*$/" error="请输入大于等于0的整数"/>
+                    <i class="iconfont icon-shanchu hide"></i>
+                </p>
+            </li>
+        </ul>
+        <div class="nullarea">
+            <i class="check-box mutex"></i>
+            <span>是否设置“无”选项&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此选项为互斥效果</span>
+        </div>
+        <div class="inputLine remarkline">
+            <span>标签：</span>
+            <div class="labelsarea">
+                <input  type="text" class="labelsinput"/>
+                <ul class="labelul">
+
+                </ul>
+            </div>
+            <span class="tips">最多可添加10个标签</span>
+        </div>
+    </div>
+</div>

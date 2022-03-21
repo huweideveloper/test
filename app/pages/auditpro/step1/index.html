@@ -1,0 +1,79 @@
+<div id="createauditProStepOne" class="createaudit-pro-step-one">
+  <div class="header-title">
+    <div class="title">第一步：C端审核项目信息</div>
+    <el-button v-if="!isView" type="primary" @click="save">保存</el-button>
+  </div>
+  <el-form ref="auditProform" :model="projectForm" :rules="rules" label-width="150px" label-suffix="：">
+    <el-form-item label="C端审核项目名称" prop="name">
+      <el-input v-model="projectForm.name" placeholder="请输入C端审核项目名称" :disabled="isView"></el-input>
+    </el-form-item>
+    <el-form-item label="C端审核项目描述" prop="remark">
+      <el-input type="textarea" :rows="4" placeholder="请输入C端审核项目描述" v-model="projectForm.remark"
+        :disabled="isView || isStart"></el-input>
+    </el-form-item>
+    <el-row>
+      <el-col :span="5" style="min-width: 345px;">
+        <el-form-item label="项目标签" prop="sicknessType" :rules="[{required: !id || projectForm.sicknessType || projectForm.projectFunction || projectForm.projectTarget, message: '请选择项目标签', trigger: ['blur', 'change']}]">
+          <el-select v-model="projectForm.sicknessType" placeholder="请选择项目标签" :disabled="isView || isStart">
+            <el-option v-for="item in sicknessTypeList" :key="item.idx" :label="item.val" :value="item.idx"></el-option>
+          </el-select>
+        </el-form-item>
+      </el-col>
+      <el-col :span="5">
+        <el-form-item label="项目目标" prop="projectFunction" :rules="[{required: !id || projectForm.sicknessType || projectForm.projectFunction || projectForm.projectTarget, message: '请选择项目目标', trigger: ['blur', 'change']}]">
+          <el-select v-model="projectForm.projectFunction" placeholder="请选择项目目标" :disabled="isView || isStart">
+            <el-option v-for="item in projectFunctionList" :key="item.idx" :label="item.val" :value="item.idx"></el-option>
+          </el-select>
+        </el-form-item>
+      </el-col>
+      <el-col :span="5">
+        <el-form-item label="项目用途" prop="projectTarget" :rules="[{required: !id || projectForm.sicknessType || projectForm.projectFunction || projectForm.projectTarget, message: '请选择项目用途', trigger: ['blur', 'change']}]">
+          <el-select v-model="projectForm.projectTarget" placeholder="请选择项目用途" :disabled="isView || isStart" @change="projectForm.projectTargetDesc = ''">
+            <el-option v-for="item in projectTargetList" :key="item.idx" :label="item.val" :value="item.idx"></el-option>
+          </el-select>
+        </el-form-item>
+      </el-col>
+      <el-col v-show="projectForm.projectTarget === 'AUDIT_OTHER_SET'" :span="5">
+        <el-form-item label="其他用途" prop="projectTargetDesc" :rules="[{required: projectForm.projectTarget === 'AUDIT_OTHER_SET', message: '请输入其他项目用途', trigger: ['blur', 'change']}]">
+          <el-input v-model="projectForm.projectTargetDesc" placeholder="请输入其他项目用途" :disabled="isView || isStart"></el-input>
+        </el-form-item>
+      </el-col>
+    </el-row>
+    <el-form-item label="项目群组">
+      <el-select v-model="projectForm.groupId" placeholder="请选择项目群组" :disabled="isView || isStart">
+        <el-option v-for="item in groupList" :key="item.id" :label="item.name" :value="item.id"></el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item label="数据类型" prop="seriesImgFileType">
+      <el-select v-model="projectForm.seriesImgFileType" placeholder="请选择数据类型" :disabled="!!id"
+        @change="handleSeriesImgFileTypeChange">
+        <el-option v-for="(name, value) in seriesImgFileTypeList" :key="value" :label="name" :value="value"></el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item label="审核类型" prop="auditType">
+      <el-select v-model="projectForm.auditType" placeholder="请选择审核类型" :disabled="!!id">
+        <el-option v-for="(name, value) in auditTypeSelList" :key="value" :label="name" :value="value"></el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item v-if="projectForm.seriesImgFileType === '6'" label="分割层数" prop="segmentLayer">
+      <el-checkbox-group v-model="projectForm.segmentLayer" :disabled="!!id">
+        <el-checkbox v-for="(item, index) in segmentLayerList" :key="index" :label="item">{{`${item}层`}}</el-checkbox>
+      </el-checkbox-group>
+    </el-form-item>
+    <el-form-item label="默认窗宽窗位">
+      <el-select v-model="projectForm.windowCode" placeholder="请选择默认窗宽窗位" clearable :disabled="isView || isStart">
+        <el-option v-for="{ idx, val } in windowCodeList" :key="idx" :label="val" :value="idx"></el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item label="说明文档">
+      <el-select v-model="projectForm.bizFileId" placeholder="请选择说明文档" filterable :filter-method="queryDocFileList"
+        :disabled="isView" clearable>
+        <el-option v-for="item in docFileList" :key="item.id" :label="item.bizName" :value="item.id"></el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item label="C端审核项目备注">
+      <el-input type="textarea" :rows="4" placeholder="请输入C端审核项目备注" v-model="projectForm.description"
+        :disabled="isView || isStart"></el-input>
+    </el-form-item>
+  </el-form>
+</div>

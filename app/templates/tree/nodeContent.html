@@ -1,0 +1,17 @@
+
+<p nowId="<%==p.id=%>" floder="<%==p.floder=%>" parentId="<%==p.p_id=%>" class="name-show" title="<%==p.alias||p.name=%>" style="width: 100px; overflow: hidden;padding-left: 20px;white-space:nowrap;text-overflow:ellipsis;">
+<%=if(p.icon){=%>
+    <%=if(p.floder=="folder"){=%>
+    	<%=if(p.p_id=="0folder"){=%>
+        <span class="icon4"></span>
+        <%=}else{=%>
+         <span class="icon6"></span>
+        <%=}=%>
+        <%=}else{=%>
+            <span class="icon5"></span>
+            <%=}}=%>
+            <%=var nameS=p.alias||p.name;
+            
+            =%>
+             <span style="margin-left: 10px;"> <%==nameS=%></span>
+</p>

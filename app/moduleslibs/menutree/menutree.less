@@ -1,0 +1,82 @@
+.menutree {
+  position: relative;
+  .srocll {
+    position: relative;
+    max-height: 390px;
+    overflow: auto;
+  }
+  .treeArea {
+    background: white;
+    color: #333333;
+    font-size: 14px;
+    text-align: center;
+    padding-bottom: 80px;
+    .navFirst {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      text-align: left;
+      height: 40px;
+      line-height: 40px;
+      cursor: pointer;
+      padding-left: 20px;
+      .icon-keshi {
+        margin-left: 24px;
+        font-size: 14px;
+      }
+      .icon-caozuo {
+        position: absolute;
+        right: 25px;
+        top: 3px;
+        font-size: 12px;
+      }
+      .actionUl {
+        position: absolute;
+        background: #ffffff;
+        left: 90px;
+        top: 30px;
+        z-index: 100;
+        border: 1px solid #e8e8e8;
+        box-shadow: 0 2px 4px 0 rgba(180, 180, 180, 0.5);
+        .itemAction {
+          padding: 0 27px;
+          white-space: nowrap;
+          height: 36px;
+          line-height: 36px;
+        }
+        .itemAction:hover {
+          background: #ecf3f4;
+        }
+      }
+      .xiala {
+        background: url(/images/page/login_down.png);
+        height: 7px;
+        width: 12px;
+        display: inline-block;
+        margin: 0 6px;
+        margin-bottom: 2px;
+        cursor: pointer;
+      }
+      & > span {
+        color: #333;
+        width: 74px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+        white-space: nowrap;
+      }
+    }
+    .choosedks {
+      background: #ecf3f4;
+    }
+  }
+  .bottom {
+    height: 40px;
+    line-height: 40px;
+    border-top: 1px solid #e8e8e8;
+    color: #448e97;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+  }
+}

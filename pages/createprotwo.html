@@ -1,0 +1,168 @@
+<div id="createproTwo" class="createprotwo">
+  <div class="scroll">
+    <div class="bigtitle">标注需求</div>
+    <p class="title">第二步：标注信息</p>
+    <a class="save biaozhubtn">保存</a>
+
+    <el-form ref="ruleForm" :model="ruleForm" :rules="rules" class="basic-info-content" style="margin-left: 66px;" label-width="84px" label-suffix="：">
+      <el-row>
+        <el-col :span="5" style="width: 264px; margin-right: 10px;">
+          <el-form-item label="项目标签" prop="sicknessType" :rules="[{required: true, message: '请选择项目标签', trigger: ['blur', 'change']}]">
+            <el-select v-model="ruleForm.sicknessType" placeholder="请选择项目标签" :disabled="isView || isStart">
+              <el-option v-for="item in sicknessTypeList" :key="item.idx" :label="item.val" :value="item.idx"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
+        <el-col :span="5" style="width: 264px; margin-right: 10px;">
+          <el-form-item label="项目目标" prop="projectFunction" :rules="[{required: true, message: '请选择项目目标', trigger: ['blur', 'change']}]">
+            <el-select v-model="ruleForm.projectFunction" placeholder="请选择项目目标" :disabled="isView || isStart">
+              <el-option v-for="item in projectFunctionList" :key="item.idx" :label="item.val" :value="item.idx"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
+        <el-col :span="5" style="width: 264px; margin-right: 10px;">
+          <el-form-item label="项目用途" prop="projectTarget" :rules="[{required: !id, message: '请选择项目用途', trigger: ['blur', 'change']}]">
+            <el-select v-model="ruleForm.projectTarget" placeholder="请选择项目用途" :disabled="isView || isStart" @change="ruleForm.projectTargetDesc = ''">
+              <el-option v-for="item in projectTargetList" :key="item.idx" :label="item.val" :value="item.idx"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
+        <el-col v-if="ruleForm.projectTarget === 'ANNO_OTHER_SET'" :span="5" style="width: 264px;">
+          <el-form-item label="其他用途" prop="projectTargetDesc" :rules="[{required: ruleForm.projectTarget === 'ANNO_OTHER_SET', message: '请输入其他项目用途', trigger: ['blur', 'change']}]">
+            <el-input v-model="ruleForm.projectTargetDesc" placeholder="请输入其他项目用途" :disabled="isView || isStart"></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="10" style="width: 264px; margin-right: 10px;">
+          <el-form-item label="是否审核项目" prop="type2" label-width="110px" :rules="[{required: true, message: '请选择是否审核项目', trigger: ['blur', 'change']}]" style="margin-bottom: 12px;">
+            <el-radio-group v-model="ruleForm.type2" :disabled="isView || isStart">
+              <el-radio :label="1">否</el-radio>
+              <el-radio :label="2">是</el-radio>
+            </el-radio-group>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <div class="inputLine half1" redlabel="xlk">
+        <span><label class="redstar">*</label>样本类型：</span>
+        <div class="yblx" check="empty"></div>
+      </div>
+      <div class="inputLine half ml150" redlabel="xlk">
+        <span><label class="redstar">*</label>范围条件：</span>
+        <div class="rangeConditions" check="empty"></div>
+      </div>
+      <br />
+      <div class="inputLine half1" redlabel="xlk">
+        <span><label class="redstar">*</label>数据类型：</span>
+        <div class="seriesImgFileType" check="empty"></div>
+      </div>
+      <div class="groupSet half ml150"></div>
+      <div class="widthlevelset inputLine" redlabel="xlk">
+        <p>
+          <i class="check-box"></i>
+          <span>是否设置默认窗宽窗位</span>
+        </p>
+        <div class="windowId hide" check="empty"></div>
+      </div>
+      <div class="widthlevelset1 inputLine hide" redlabel="xlk">
+        <p>
+          <i class="check-box"></i>
+          <span>是否设置vr默认窗宽窗位</span>
+        </p>
+        <div class="windowId1 hide" check="empty"></div>
+      </div>
+      <div class="showReport" type="inspectSee">
+        <i class="check-box"></i>
+        <span>是否需要展示检查所见</span>
+      </div>
+      <div class="showReport" type="diagnosisIncome">
+        <i class="check-box"></i>
+        <span>是否需要展示诊断所得</span>
+      </div>
+      <!-- <div class="marktypeset">
+        <i class="check-box"></i>
+        <span>是否需要以检查号级别进行标注</span>
+      </div> -->
+      <div class="largeFigure">
+        <i class="check-box"></i>
+        <span>是否使用超大图</span>
+      </div>
+      <div class="isYayAttributes">
+        <i class="check-box"></i>
+        <span>是否需要阴阳性</span>
+        <div class="hide choosearea">
+          <span>阳性无需填写征象</span>
+          <div class="yang"></div>
+          <br />
+          <span>阴性无需填写征象</span>
+          <div class="yin"></div>
+        </div>
+      </div>
+      <div class="isLungPdf">
+        <i class="check-box"></i>
+        <span>是否需要图文报告</span>
+      </div>
+      <div class="form-item">
+        <!-- 6: 冠脉分割 -->
+        <el-form-item v-if="Number(ruleForm.seriesImgFileType) === 6" label="分割层数" prop="segmentLayer" >
+          <el-checkbox-group v-model="ruleForm.segmentLayer" :disabled="type == 'view' || status == 2">
+            <el-checkbox v-for="(item, index) in segmentLayerList" :key="item.label" :label="item.label" >{{item.name}}</el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+      </div>
+      <div
+        class="category inputLine half1"
+        check="empty"
+        title="科室类别"
+        redlabel="last"
+      >
+        <label class="redstar">*</label>
+        <span class="last">科室类别：</span>
+        <div class="department" data-id="1">
+          <i class="radio-box"></i>
+          <span>放射科</span>
+        </div>
+        <div class="department" data-id="2">
+          <i class="radio-box"></i>
+          <span>病理科</span>
+        </div>
+        <div class="department" data-id="0">
+          <i class="radio-box"></i>
+          <span>其它</span>
+        </div>
+        <div class="department" data-id="3">
+          <i class="radio-box"></i>
+          <span>测试</span>
+        </div>
+        <div class="department" data-id="4">
+          <i class="radio-box"></i>
+          <span>数据库</span>
+        </div>
+      </div>
+      <div class="inputLine half ml150 justToJudge" redlabel="xlk">
+        <span>项目群组：</span>
+        <div class="groupId" check="empty"></div>
+      </div>
+    </el-form>
+
+    <div class="discurdarea">
+      <a class="biaozhubtn discardreason">添加废片原因</a>
+      <a class="viewreason hide">查看废片原因</a>
+    </div>
+    <span class="yxtitle">影像标注设置</span>
+    <!-- <i class="iconfont icon-tianjia bigadd" title=""></i> -->
+    <div class="multi">
+      <ul class="multiitem"></ul>
+      <!-- 影像标注列表 -->
+      <div>
+        <anno-item-list ref="annoListForm" :data="imageAnnotationListInitData" @add-anno="handleShowAddAnnoModal" @show-anno="handleShowDetailAnnoModal" :anno-disabled="annoDisabled"></anno-item-list>
+      </div>
+
+      <div class="biaozhubtns-ops">
+        <a class="biaozhubtn alldata">添加整体病症标注组件</a>
+        <a class="biaozhubtn showalldata hide">查看已添加整体病症标注组件</a>
+        <a class="biaozhubtn export">导出标注组件</a>
+      </div>
+    </div>
+  </div>
+</div>

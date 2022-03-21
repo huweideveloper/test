@@ -1,0 +1,42 @@
+<div class="modal projectdata">
+    <div class="projectmain">
+        <div class="title sequence-item">项目序列池</div>
+        <i class="iconfont icon-guanbi"></i>
+        <div class="filterarea">
+            <div class="yymc"></div>
+            <div class="timefilter"></div>
+            <div class="isselected">是否曾被任务选取：<div class="rwxq"></div></div>
+            <br>
+            <div class="submittimes">
+                <span class="w145 sequence-item">项目下序列被提交次数</span>
+                <div class="times"></div>
+                <input type="text" class="seriSubmitCount inputBox" api="seriSubmitCount"/>
+            </div>
+            <br>
+            <div class="usecondition">
+                <span class="w145 sequence-item">序列使用情况</span>
+                <div class="exist"></div>
+                <div class="usedtask"></div>
+            </div>
+            <a class="searchbtn biaozhubtn">查询</a>
+        </div>
+        <div class="viewdelete hide">
+            <a class="biaozhubtn deleteresult hide sequence-item">一键删除查询结果中序列</a>
+            <a class="biaozhubtn exportresult sequence-item">导出结果序列名</a>
+        </div>
+        <div class="projecttable">
+
+        </div>
+        <div class="btnarea">
+            <a class="biaozhubtn addall">一键添加查询结果</a>
+            <a class="biaozhubtn addpartbtn">从查询结果中选取部分</a>
+            <a class="biaozhubtn addcustom sequence-item">序列号导入</a>
+            <a class="biaozhubtn addImageID">imageID导入</a>
+            <input class="file" type="file" id="file" name="file"/>
+        </div>
+        <div class="modelArea">
+            <a class="downmodel seriesDown sequence-item" url="/images/page/任务添加项目序列模板.xlsx">序列号导入模板</a>
+            <a class="downmodel imageidDown" url="/images/page/imageID.xlsx">imageID导入模板</a>
+        </div>
+    </div>
+</div>

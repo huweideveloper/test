@@ -1,0 +1,31 @@
+<div class="createaudittask1">
+    <div class="scroll">
+        <a class="biaozhubtn save">保存</a>
+        <p class="title">第一步：审核任务信息</p>
+        <div class="inputLine w50" redlabel="inputBox">
+            <span class="w135"><label class="redstar">*</label>审核任务名称：</span>
+            <input type="text" class="inputBox apidata name"  check="empty" api="name"/>
+        </div>
+        <div class="inputLine w50" redlabel="xlk">
+            <span class="w135"><label class="redstar">*</label>所属审核项目：</span>
+            <div class="project" check="empty"></div>
+        </div>
+        <div class="inputLine w100" redlabel="inputBox">
+            <span class="w135">审核任务描述：</span>
+            <textarea type="text" class="inputBox apidata" check="" api="description"></textarea>
+        </div>
+        <div class="uploadarea" id="uploadarea">
+            <img src="/images/page/shangchuan.png">
+            <p>可以上传图片、视频文件等规范外部医生标注</p>
+            <input type="file" class="dianjiupload" id="uploader"/>
+        </div>
+        <ul class="filelist">
+
+        </ul>
+        <div class="inputLine w100" redlabel="inputBox">
+            <span class="w135">审核任务备注：</span>
+            <textarea type="text" class="inputBox apidata" check="" api="remark"></textarea>
+        </div>
+    </div>
+
+</div>

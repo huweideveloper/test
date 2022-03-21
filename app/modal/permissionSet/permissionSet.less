@@ -1,0 +1,177 @@
+.permissonSet {
+  margin-left: -425px;
+  margin-top: -220px;
+  width: 850px;
+  height: 440px;
+  font-size: 14px;
+  .modal-header {
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    padding-left: 20px;
+    background: #F4F4F4;
+    .modal-title {
+      font-family: MicrosoftYaHei;
+      font-weight: bold;
+      font-size: 18px;
+      color: #333333;
+      letter-spacing: 0;
+    }
+    i {
+      font-size: 15px;
+      float: right;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+  }
+  .modal-body {
+    padding: 0px !important;
+    margin: 0 20px;
+    span {
+      margin-left: 0px;
+    }
+    .top{
+      margin: 20px 0;
+    }
+    .inputLine {
+      display: inline-block;
+      position: relative;
+      & > div {
+        display: inline-block;
+      }
+      .confirm {
+        margin-right: 0;
+      }
+      .inputBox {
+        width: 178px;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid #E8E8E8;
+        border-radius: 4px;
+        outline: none;
+        padding-left: 10px;
+      }
+      .xlk {
+        width: 310px;
+        height: 38px;
+        line-height: 38px;
+        i {
+          color: #CCCCCC;
+        }
+      }
+      .names {
+        font-family: "MicrosoftYaHei";
+        font-size: 14px;
+        color: #333333;
+        letter-spacing: 0;
+        margin-right: 10px;
+      }
+      .w61 {
+        width: 61px;
+        margin-left: 45px;
+      }
+      .ml45 {
+        margin-left: 45px;
+      }
+      .type {
+        line-height: 18px;
+      }
+      .userType {
+        display: inline-block;
+        width: 240px;
+        text-align: left;
+        span {
+          margin-left: 0px;
+          line-height: 18px;
+        }
+      }
+      .forget {
+        color: #448E97;
+      }
+      .errorMessage {
+        color: red;
+      }
+    }
+    .inputLine:first-child {
+      margin-right: 35px;
+    }
+    .userconfig{
+      padding: 20px 0;
+      height: 210px;
+      border-top: 1px dashed #E8E8E8;
+      border-bottom: 1px dashed #E8E8E8;
+      display: flex;
+      &>p{
+        display: inline-block;
+      }
+    }
+    .roleList{
+      flex: 1;
+      overflow: hidden;
+      align-content: end;
+      position: relative;
+      height: 210px;
+      .roleScroll{
+        flex-wrap: wrap;
+        &>li{
+          line-height: 25px;
+          position: relative;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          display: flex;
+          .check-box{
+            margin-right: 5px;
+            vertical-align: middle;
+          }
+          span {
+            overflow: hidden;
+            vertical-align: bottom;
+            width: 73%;
+          }
+          .pageItem{
+            margin-right: 20px;
+            width: 96px;
+            overflow: hidden;
+          }
+          .actionArea{
+            display: flex;
+            flex-wrap: wrap;
+            flex: 1;
+          }
+          .actionItem{
+            width: 25%;
+          }
+        }
+      }
+      .actionUl{
+        position: absolute;
+        background: rgba(0,0,0,0.60);
+        border-radius: 2px;
+        color: #FFFFFF;
+        padding: 8px;
+        z-index: 1000;
+        &>li{
+          white-space: nowrap;
+          .perName{
+            width: 70%;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+  .modal-footer {
+    margin: 26px 0 20px 0;
+    text-align: end;
+    .btn{
+      width: 70px;
+      height: 30px;
+      line-height: 30px;
+      margin-left: 20px;
+    }
+  }
+  .required {
+    position: relative;
+    margin-left: 100px !important;
+  }
+}

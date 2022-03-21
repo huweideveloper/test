@@ -1,0 +1,23 @@
+<div class="modal modal-<%==p.class?p.class:''=%>">
+    <div class="modal-header">
+        <p class="modal-title">
+          <%==p.title?p.title:''=%>
+        </p>
+        <%=
+        p.close=p.close!=undefined?p.close:true;
+        if(p.close){=%>
+            <i class="iconfont icon-guanbi modal-close" enable="enable"></i>
+            <%=}=%>
+    </div>
+    <div class="modal-body">
+      ${body-content}
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-confirm"><%==p.confirmname?p.confirmname:"提交"=%></a>
+        <%=
+        p.cancel=p.cancel!=undefined?p.cancel:true;
+        if(p.cancel){=%>
+            <a class="btn btn-cancel"><%==p.cancelname?p.cancelname:"取消"=%></a>
+            <%=}=%>
+    </div>
+</div>

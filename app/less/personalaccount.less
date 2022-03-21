@@ -1,0 +1,85 @@
+.personalaccount {
+  min-height: 837px;
+  background: #fff;
+  border-top: 1px #f9f9f9 solid;
+  border-bottom: 1px #f9f9f9 solid;
+  padding: 20px;
+  .scroll {
+    overflow: hidden;
+  }
+  .top {
+    font-size: 14px;
+    margin-bottom: 50px;
+    .firstline {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+    .errorline {
+      margin-top: 30px;
+      a {
+        font-family: MicrosoftYaHei;
+        font-size: 14px;
+        color: #448e97;
+        text-decoration: underline;
+      }
+    }
+  }
+  .main {
+    display: flex;
+    .tasktitle {
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+    .doingtask {
+      width: 500px;
+      .jxztask {
+        background: #fff;
+        width: 280px;
+        height: 180px;
+        cursor: pointer;
+        border-radius: 2px;
+        margin-bottom: 10px;
+        padding: 0 20px;
+        .tasktitle {
+          height: 50px;
+          line-height: 50px;
+          font-size: 16px;
+          margin-bottom: 50px;
+          .percent {
+            font-size: 24px;
+            font-weight: bold;
+            float: right;
+          }
+        }
+        .starttime,
+        .endtime {
+          margin: 20px 0;
+        }
+      }
+      .getnewtask {
+        cursor: pointer;
+        width: 320px;
+        height: 140px;
+        background: #fff;
+        color: #cccccc;
+        border-radius: 2px;
+        text-align: center;
+        padding-top: 40px;
+        i {
+          font-size: 60px;
+        }
+        p {
+          font-size: 14px;
+          margin-top: 10px;
+        }
+        &:hover {
+          color: #4c9fa9;
+        }
+      }
+    }
+    .donetask {
+      flex: 1;
+    }
+  }
+}

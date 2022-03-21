@@ -1,0 +1,133 @@
+<div id="auditproject" class="auditpro-container">
+  <!-- 条件筛选区域 -->
+  <filter-container>
+    <el-form ref="listQuery">
+      <div class="filter-conditions-wrapper">
+        <el-row>
+          <el-col :span="5">
+            <select-search v-model="listQuery.auditProjecId" placeholder="请选择审核项目" :filter-method="queryLikeProjectList"
+              :loading="likeProjectListLoading" filterable clearable default-first-option>
+              <el-option v-for="item in likeProjectList" :key="item.auditProjectId" :label="item.auditProjectName"
+                :value="`${item.auditProjectId}`"> </el-option>
+            </select-search>
+          </el-col>
+          <el-col :span="5">
+            <select-search v-model="listQuery.importProjectId" placeholder="请输入所属项目名称"
+              :filter-method="queryLikeImportProjectList" :loading="likeImportProjectListLoading" filterable clearable
+              default-first-option>
+              <el-option v-for="item in likeImportProjectList" :key="item.projectId" :label="item.projectName"
+                :value="item.projectId"> </el-option>
+            </select-search>
+          </el-col>
+          <el-col :span="5">
+            <el-select v-model="listQuery.status" placeholder="请选择状态类型" clearable>
+              <el-option v-for="(name, value) in statusMap" :key="value" :label="name" :value="value"> </el-option>
+            </el-select>
+          </el-col>
+          <el-col :span="5">
+            <select-search v-model="listQuery.groupId" placeholder="请选择项目群组" :filter-method="queryLikeGroupList"
+              :loading="groupIdListLoading" filterable clearable reserve-keyword default-first-option>
+              <el-option v-for="item in groupIdList" :key="item.id" :label="item.name" :value="item.id"> </el-option>
+            </select-search>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="5">
+            <el-select v-model="listQuery.clientType" placeholder="请选择项目类型" clearable>
+              <el-option v-for="(name, value) in clientTypeMap" :key="value" :label="name" :value="value"> </el-option>
+            </el-select>
+          </el-col>
+          <el-col :span="5">
+            <el-select v-model="listQuery.sicknessType" placeholder="项目标签" clearable>
+              <el-option v-for="item in sicknessTypeList" :key="item.idx" :label="item.val" :value="item.idx">
+              </el-option>
+            </el-select>
+          </el-col>
+          <el-col :span="5">
+            <el-select v-model="listQuery.projectFunction" placeholder="项目目标" clearable>
+              <el-option v-for="item in projectFunctionList" :key="item.idx" :label="item.val" :value="item.idx">
+              </el-option>
+            </el-select>
+          </el-col>
+          <el-col :span="5">
+            <el-select v-model="listQuery.projectTarget" placeholder="项目用途" @change="projectForm.projectTargetDesc = ''"
+              clearable>
+              <el-option v-for="item in projectTargetList" :key="item.idx" :label="item.val" :value="item.idx">
+              </el-option>
+            </el-select>
+          </el-col>
+          <el-col :span="4" style="min-width: 200px;">
+            <el-button type="primary" size="medium" @click="queryAuditProList(true)">查询</el-button>
+            <el-dropdown placement="bottom" trigger="click" @command="handleCreate" v-if="hasCreatePermission">
+              <el-button type="primary" size="medium" plain>创建项目<i class="el-icon-arrow-down el-icon--right"></i>
+              </el-button>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item command="B">B端审核项目</el-dropdown-item>
+                <el-dropdown-item command="C">C端审核项目</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
+          </el-col>
+        </el-row>
+      </div>
+    </el-form>
+  </filter-container>
+  <!-- 列表数据区域 -->
+  <table-pagination :data="auditProjectList" row-key="id" @onchange="onChange">
+    <el-table-column prop="id" label="项目ID"></el-table-column>
+    <el-table-column prop="auditProjectName" label="审核项目名称" min-width="100"></el-table-column>
+    <el-table-column label="项目类型">
+      <template slot-scope="scope">{{clientTypeMap[scope.row.clientType]}}</template>
+    </el-table-column>
+    <el-table-column prop="groupName" label="项目群组"></el-table-column>
+    <el-table-column prop="sicknessType" label="项目标签">
+      <template slot-scope="scope">{{ getSelectDataByKey(scope.row.sicknessType, sicknessTypeList) }}</template>
+    </el-table-column>
+    <el-table-column prop="projectFunction" label="项目目标">
+      <template slot-scope="scope">{{ getSelectDataByKey(scope.row.projectFunction, projectFunctionList) }}</template>
+    </el-table-column>
+    <el-table-column prop="projectTarget" label="项目用途">
+      <template slot-scope="scope">
+        <span>{{ getSelectDataByKey(scope.row.projectTarget, projectTargetList) }}</span>
+        <!-- <span v-if="scope.row.projectTarget === 'AUDIT_OTHER_SET' && scope.row.projectTargetDesc">：{{ scope.row.projectTargetDesc }}</span> -->
+      </template>
+    </el-table-column>
+    <el-table-column prop="importProjectList" label="包含标注项目名称"></el-table-column>
+    <el-table-column prop="taskCount" label="审核源任务数量"></el-table-column>
+    <el-table-column label="状态">
+      <template slot-scope="scope">{{ statusMap[scope.row.status] }}</template>
+    </el-table-column>
+    <el-table-column prop="createUserName" label="创建人"></el-table-column>
+    <el-table-column prop="createTime" label="创建日期">
+      <template slot-scope="scope">
+        {{ scope.row.createTime | formatDate }}
+      </template>
+    </el-table-column>
+    <el-table-column label="操作">
+      <template slot-scope="scope">
+        <el-dropdown placement="bottom" trigger="click" @command="handleAction">
+          <span class="el-dropdown-link">
+            <a class="iconfont icon-caozuo"></a>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item v-if="hasReadPermission" :command="{ type: 'READ', data: scope.row }"> 查看详情
+            </el-dropdown-item>
+            <el-dropdown-item v-if="hasEditPermission" :command="{ type: 'EDIT', data: scope.row }">编辑
+            </el-dropdown-item>
+            <el-dropdown-item v-if="scope.row.clientType !== 2 && hasCopyPermission"
+              :command="{ type: 'COPY', data: scope.row }">复制</el-dropdown-item>
+            <el-dropdown-item v-if="hasStartPermission && [1].includes(scope.row.status)"
+              :command="{ type: 'START', data: scope.row }">启用</el-dropdown-item>
+            <template v-if="scope.row.auditProjectJoinHisCount > 0 && [2].includes(scope.row.status)">
+              <el-dropdown-item v-if="hasStopPermission" :command="{ type: 'STOP', data: scope.row }">暂停启用
+              </el-dropdown-item>
+              <el-dropdown-item v-if="hasViewSeriesPermission" :command="{ type: 'VIEW_SERIES', data: scope.row }">
+                查看审核结果</el-dropdown-item>
+              <el-dropdown-item v-if="hasExportPermission" :command="{ type: 'EXPORT', data: scope.row }">导出所有审核最终结果
+              </el-dropdown-item>
+            </template>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </template>
+    </el-table-column>
+  </table-pagination>
+</div>

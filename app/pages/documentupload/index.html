@@ -1,0 +1,48 @@
+<div id="documentupload" class="documentupload-container">
+  <!-- 条件筛选区域 -->
+  <filter-container>
+    <el-form ref="listQuery">
+      <div class="filter-conditions-wrapper">
+        <el-row>
+          <el-col :span="8">
+            <el-form-item label="文档名称">
+              <el-input placeholder="请输入文档名称" v-model.trim="listQuery.bizName" clearable></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="6" :offset="10" style="min-width: 200px;">
+            <el-button type="primary" size="medium" @click="queryDocumentList(true)">查询</el-button>
+            <!-- v-if="hasCreatePermission" -->
+            <el-button type="danger" @click="handleAdd()">新增文档</el-button>
+          </el-col>
+        </el-row>
+      </div>
+    </el-form>
+  </filter-container>
+  <!-- 列表数据区域 -->
+  <table-pagination :data="documentList" row-key="id" @onchange="onChange">
+    <el-table-column label="文档名称">
+      <template slot-scope="scope">
+        <el-link @click="handlePreviewDoc(scope.row.fileName, scope.row.urlWan)">{{scope.row.bizName}}</el-link>
+      </template>
+    </el-table-column>
+    <el-table-column prop="updateTime" label="上传时间">
+      <template slot-scope="scope">
+        {{ scope.row.updateTime | formatDate }}
+      </template>
+    </el-table-column>
+    <el-table-column prop="projectName" label="关联项目" min-width="160"></el-table-column>
+    <el-table-column label="操作">
+      <template slot-scope="scope">
+        <el-link @click="handleAdd(scope.row)">编辑</el-link>
+        <pop-confirm title="确认删除数据吗？" placement="top" @onconfirm="handleDelete(scope.row.id)">
+          <el-link slot="reference">删除</el-link>
+        </pop-confirm>
+      </template>
+    </el-table-column>
+  </table-pagination>
+  <!-- 新增修改文档弹窗 -->
+  <add-doc :visible="visibleAddModal" :data="editDoc" @save-success="handleSaveDocSuccess" @hide-modal="hideAddDoc">
+  </add-doc>
+  <!-- 预览文档弹框 -->
+  <doc-preview :visible="visibleDocPreview" :url="docPreviewUrl" @hide="visibleDocPreview = false"></doc-preview>
+</div>

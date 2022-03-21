@@ -1,0 +1,29 @@
+<div class="modal changePwd">
+    <div class="modal-header">
+        <p class="modal-title"  data-i18n='xgmm' data-name="修改密码">修改密码</p>
+        <i class="iconfont icon-guanbi"></i>
+    </div>
+    <div class="modal-body">
+        <div class="inputLine" redlabel="inputBox">
+            <i class="iconfont icon-mima"></i>
+            <input type='password' class="oldPwd inputBox" check="empty" autocomplete="new-password"/>
+            <i class="iconfont icon-biyan" data-id="1"></i>
+            <!--<span class="forget"  data-i18n='wjmm' data-name="忘记密码">忘记密码</span>-->
+        </div>
+        <div class="inputLine" redlabel="inputBox">
+            <i class="iconfont icon-mima"></i>
+            <input type='password' class="newPwd inputBox" check="empty|num" reg="/^[^ ]{6,16}$/"  error="密码格式错误" autocomplete="new-password"/>
+            <i class="iconfont icon-biyan" data-id="1"></i>
+            <span class="tipSpan"  data-i18n='mmgz' data-name="密码为6-16位">密码为6-16位</span>
+        </div>
+        <div class="inputLine" redlabel="inputBox">
+            <i class="iconfont icon-mima"></i>
+            <input type='password' class="verPwd inputBox" check="empty|num"  reg="/^[^ ]{6,16}$/"  error="密码格式错误" autocomplete="new-password"/>
+            <i class="iconfont icon-biyan" data-id="1"></i>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-confirm"  data-i18n='bc' data-name="保存">保存</a>
+    </div>
+</div>

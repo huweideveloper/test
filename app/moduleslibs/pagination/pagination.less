@@ -1,0 +1,67 @@
+@base_color: #448e97;
+
+.pagination_new {
+  text-align: right;
+  margin-right: 35px;
+  .pagelist {
+    span {
+      font-size: 12px;
+      font-weight: normal;
+    }
+    .jump {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 5px;
+      text-align: center;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      display: inline-block;
+    }
+    .ellipsis {
+      border-radius: 4px;
+      width: 28px;
+      height: 28px;
+      margin-left: 5px;
+      text-align: center;
+      background-color: #ffffff;
+      border: 1px solid #d9d9d9;
+      line-height: 28px;
+    }
+    .jumpselect {
+      cursor: default;
+      color: #fff;
+      background-color: @base_color !important;
+      border-color: @base_color !important;
+    }
+    .jumppoint {
+      margin-left: 30px;
+    }
+    .jumpinput {
+      input {
+        width: 55px;
+        height: 26px;
+        border: 1px solid #ccc;
+        text-align: center;
+        border-radius: 4px;
+      }
+    }
+    .jumpdisabled {
+      cursor: not-allowed;
+      opacity: 0.3;
+      background: #ddd;
+    }
+    .firstpage,
+    .lastpage {
+      display: none;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+    }
+    .jumplast,
+    .jumpfirst {
+      display: inline-block !important;
+    }
+  }
+}

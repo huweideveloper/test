@@ -1,0 +1,81 @@
+@base_color: #448e97;
+
+.pagination_new {
+  text-align: right;
+  margin-right: 35px;
+  .pagelist {
+    span {
+      font-size: 12px;
+      font-weight: normal;
+    }
+    .jump {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 5px;
+      text-align: center;
+      width: 26px;
+      height: 26px;
+      line-height: 25px;
+      display: inline-block;
+      overflow: hidden;
+      &:hover {
+        background: #1f474c;
+        color: #fff;
+        border-color: #1f474c;
+      }
+    }
+    .ellipsis {
+      border-radius: 4px;
+      width: 26px;
+      height: 26px;
+      margin-left: 5px;
+      text-align: center;
+      background-color: #ffffff;
+      border: 1px solid #d9d9d9;
+      line-height: 26px;
+      overflow: hidden;
+    }
+    .jumpselect {
+      color: #fff;
+      background-color: @base_color !important;
+      border-color: @base_color !important;
+      cursor: pointer;
+      &:hover {
+        background: #1f474c !important;
+        color: #fff;
+        border-color: #1f474c !important;
+      }
+    }
+    .jumppoint {
+      margin-left: 30px;
+    }
+    .jumpinput {
+      input {
+        width: 55px;
+        height: 26px;
+        border: 1px solid #ccc;
+        text-align: center;
+        border-radius: 4px;
+      }
+    }
+    .jumpdisabled {
+      cursor: not-allowed;
+      opacity: 0.3;
+      background: #ddd;
+    }
+    .firstpage,
+    .lastpage,
+    .tofirst,
+    .tolast {
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+      line-height: 25px;
+    }
+    .jumplast,
+    .jumpfirst {
+      display: inline-block !important;
+    }
+  }
+}

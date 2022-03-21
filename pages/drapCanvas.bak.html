@@ -1,0 +1,78 @@
+<div class="drapCanvas">
+  <ul class="mark-header">
+    <div>
+      <li class="back-icon fl">
+        <span><span class="lefta"><i class="iconfont icon-icon-test3" style="font-size: 12px;"></i></span><span
+            class="infojian">医生主页</span></span>
+      </li>
+      <li class="task-name fl">
+        <span>|</span>
+        <span>Cassiel0705标注4</span>
+        <!--i class="iconfont icon-tishixinxi"></i-->
+      </li>
+    </div>
+    <div class="right_user">
+      <li class="cotrol-btn fr">
+        <!-- <div class="btn btn-submit">提交</div> -->
+      </li>
+      <li class="cotrol-btn fr">
+        <div class="headerCont clearfix">
+          <div class="loginName">
+            <div class="login_box">
+              <i class="iconfont icon-touxiang"></i>
+              <span class="login_name"></span>
+              <i class="iconfont icon-icon-test3 xiala"></i>
+            </div>
+            <p class="nameCont hide gly">
+              <!--<a link="personalaccount" class="qhys" data-i18n='qhzbzys' data-name="切换至标注医生"></a>-->
+              <a class="changepwd">修改密码</a>
+              <a class="exit" data-i18n='tcdl' data-name="退出登录">退出登录</a>
+            </p>
+            <p class="nameCont hide bzys">
+              <a link="personalaccount" data-i18n='wdzy' data-name="我的主页"></a>
+              <!--<a link="taskmanage" class="qhgly" data-i18n='qhzgly' data-name="切换至管理员"></a>-->
+              <a class="changepwd">修改密码</a>
+              <a class="exit" data-i18n='tcdl' data-name="退出登录">退出登录</a>
+              <!--<a link="exit" class="lastline exit" data-i18n='yqxyh' data-name="邀请新用户"></a>-->
+            </p>
+          </div>
+        </div>
+      </li>
+    </div>
+  </ul>
+  <div class="util_box">
+    <div class="util_item " name="scale">
+      <i class="icon-fangdasuoxiao iconfont scaleIcon" val="true" alt=""></i>
+      <div class="hove_scale">缩放</div>
+    </div>
+  </div>
+  <div class="drapCanvas_conter">
+    <div class="left_menu">
+      <div class="left_menu_info">
+
+      </div>
+    </div>
+    <div id="canvas_box">
+      <canvas id="canvas"></canvas>
+      <div id="breviary" class="breviary">
+        <div class="breviary_conter">
+          <img src="" id="bre_img" alt="" draggable="false" onmousedown="return false;" onmousemove="return false;">
+          <div id="drag_div" class="drag_div"></div>
+        </div>
+      </div>
+      <div class="progress">
+        <div class="reduce bor">-</div>
+        <div id="myProgress" value="10">
+          <!-- <div class="select_size"></div> -->
+          <div class="progress_val"></div>
+        </div>
+        <div class="add bor">+</div>
+      </div>
+    </div>
+    <div class="right_menu">
+      <div class="right_menu_tit">征象信息</div>
+      <div class="right_menu_info">
+      </div>
+    </div>
+  </div>
+</div>

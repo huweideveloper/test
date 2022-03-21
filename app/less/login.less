@@ -1,0 +1,367 @@
+.login {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(/images/page/beijing.jpg) no-repeat;
+  background-size: cover;
+  .clearfix:before,
+  .clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .clearfix {
+    zoom: 1;
+  }
+  .logo {
+    // padding-left: 40px;
+    // padding-top: 40px;
+    font-size: 24px;
+    line-height: 31px;
+    color: #cbd5e6;
+    letter-spacing: 0;
+    p {
+      font-family: MicrosoftYaHei;
+      font-size: 34px;
+      color: #e8e8e8;
+      letter-spacing: 0;
+    }
+    .chinese {
+      font-size: 25px;
+      margin-top: 5px;
+    }
+    img {
+      width: 216px;
+    }
+  }
+  .contains {
+    height: 440px;
+    width: 1204px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .wordArea {
+    float: right;
+    width: 638px;
+    margin-right: 100px;
+    .registerbtn {
+      border: 1px solid #448e97;
+      border-radius: 4px;
+      background: transparent;
+      width: 240px;
+      height: 60px;
+      line-height: 60px;
+      font-size: 24px;
+      text-align: center;
+      color: #448e97;
+      cursor: pointer;
+    }
+    p {
+      font-family: 'Microsoft YaHei';
+      font-size: 2.4rem;
+      color: #acb6c4;
+      letter-spacing: 4px;
+    }
+    .line1 {
+      margin-bottom: 50px;
+      margin-top: 120px;
+    }
+    .title1-img img {
+      height: 71px;
+    }
+    .title2-img img {
+      height: 33px;
+    }
+  }
+  .loginForm {
+    float: right;
+    background: rgba(229, 229, 229, 0.2);
+    border-radius: 4px;
+    text-align: center;
+    position: relative;
+    width: 464px;
+    .formheader {
+      height: 60px;
+      line-height: 60px;
+      background: rgba(229, 229, 229, 0.45);
+      border-radius: 5px;
+      margin-bottom: 100px;
+      span {
+        width: 230px;
+        text-align: center;
+        color: #fff;
+        font-size: 25px;
+      }
+      label {
+        cursor: pointer;
+      }
+      .headerline {
+        width: 112px;
+        border-bottom: 2px solid #000;
+        height: 48px;
+        line-height: 48px;
+        display: inline-block;
+      }
+    }
+    .formcontains {
+      position: relative;
+      .dl {
+        font-family: 'Microsoft YaHei';
+        font-size: 24px;
+        color: #ffffff;
+        margin-top: 27px;
+        margin-bottom: 58px;
+        line-height: 30px;
+      }
+      .errorSpan {
+        position: absolute;
+        color: #ff3636;
+        top: 68px;
+        font-size: 15px;
+        left: 140px;
+        transform: translateX(-50%);
+        line-height: 16px;
+        text-align: left;
+      }
+      .name {
+        margin-bottom: 50px;
+        width: 100%;
+      }
+      input {
+        height: 50px;
+        font-size: 16px;
+        color: #fff;
+        font-family: 'Microsoft YaHei';
+        background: unset;
+        border: 1px solid #fff;
+        border-radius: 5px;
+        padding-left: 55px;
+      }
+      //  去除ie 浏览器文本输入框和密码输入框的默认样式
+      /*ie文本框背景色*/
+      input::-ms-clear {
+        display: none;
+      }
+      /*ie文本输入框眼睛*/
+      input::-ms-reveal {
+        display: none;
+      }
+      ::-webkit-input-placeholder {
+        /* WebKit browsers */
+        color: #fff;
+      }
+      :-moz-placeholder {
+        /* Mozilla Firefox 4 to 18 */
+        color: #fff;
+      }
+      ::-moz-placeholder {
+        /* Mozilla Firefox 19+ */
+        color: #fff;
+      }
+      :-ms-input-placeholder {
+        /* Internet Explorer 10+ */
+        color: #fff;
+      }
+      .inputLine {
+        width: 400px;
+        border-radius: 4px;
+        margin: 0 auto;
+        text-align: left;
+        position: relative;
+        .icon-xingzhuang1,
+        .icon-mima {
+          position: absolute;
+          font-size: 18px;
+          top: 16px;
+          left: 19px;
+          color: #fff;
+        }
+        .password {
+          width: 100%;
+        }
+        .jia {
+          position: absolute;
+          left: 10px;
+          top: 16px;
+          color: #fff;
+          font-size: 16px;
+          font-style: normal;
+        }
+      }
+      .mimaxg {
+        line-height: 35px;
+        height: 35px;
+        a {
+          font-size: 14px;
+          color: #fff;
+        }
+        .remeber {
+          float: left;
+          margin-left: 35px;
+          i {
+            vertical-align: middle;
+            margin-right: 4px;
+          }
+        }
+        .forget {
+          float: right;
+          margin-right: 35px;
+          text-decoration: underline;
+        }
+      }
+      .loginBtn {
+        display: inline-block;
+        height: 50px;
+        line-height: 50px;
+        background: rgb(68, 142, 151);
+        border-radius: 4px;
+        font-family: 'MicrosoftYaHei';
+        font-size: 18px;
+        color: #ffffff;
+        width: 400px;
+        margin-top: 50px;
+        margin-bottom: 40px;
+      }
+    }
+  }
+  .mb60 {
+    margin-bottom: 60px;
+  }
+  .mb80 {
+    margin-bottom: 80px;
+  }
+  // .reset {
+  //   width: 465px;
+  //   height: 440px;
+  //   margin: 0 auto;
+  //   padding-top: 50px;
+  //   font-size: 14px;
+  //   background: rgba(229, 229, 229, 0.2);
+  //   border-radius: 4px;
+  //   text-align: center;
+  //   & > div {
+  //     margin-bottom: 30px;
+  //     position: relative;
+  //   }
+  //   input {
+  //     border: 1px solid #e8e8e8;
+  //     border-radius: 4px;
+  //     height: 50px;
+  //     outline: none;
+  //     color: #333;
+  //     width: 320px;
+  //     font-size: 14px;
+  //     background: transparent;
+  //     position: relative;
+  //   }
+  //   ._tel {
+  //     padding-left: 30px;
+  //     // width: 290px;
+  //   }
+  //   ::-webkit-input-placeholder {
+  //     /* WebKit browsers */
+  //     color: #fff;
+  //   }
+  //   :-moz-placeholder {
+  //     /* Mozilla Firefox 4 to 18 */
+  //     color: #fff;
+  //   }
+  //   ::-moz-placeholder {
+  //     /* Mozilla Firefox 19+ */
+  //     color: #fff;
+  //   }
+  //   :-ms-input-placeholder {
+  //     /* Internet Explorer 10+ */
+  //     color: #fff;
+  //   }
+  //   ._title {
+  //     height: 30px;
+  //     line-height: 30px;
+  //     font-size: 24px;
+  //     margin-bottom: 35px;
+  //     color: #fff;
+  //     text-align: center;
+  //   }
+  //   ._code {
+  //     ._verification {
+  //       width: 210px;
+  //       display: inline-block;
+  //     }
+  //     input {
+  //       width: 170px;
+  //       margin-left: 33px;
+  //     }
+  //     ._getcode {
+  //       width: 125px;
+  //       font-size: 14px;
+  //       display: inline-block;
+  //       float: right;
+  //       height: 50px;
+  //       line-height: 50px;
+  //       text-align: center;
+  //       opacity: 0.73;
+  //       background: #448e97;
+  //       border-radius: 4px;
+  //       color: #ffffff;
+  //       cursor: pointer;
+  //       margin-right: 74px;
+  //       margin-left: -10px;
+  //       &:hover {
+  //         background: #1f474c;
+  //       }
+  //       &._getting {
+  //         background: #9b9b9b;
+  //         cursor: default;
+  //         pointer-events: none;
+  //       }
+  //     }
+  //     .icon-jianpan {
+  //       left: 10px;
+  //     }
+  //   }
+  //   ._num {
+  //     position: absolute;
+  //     top: 18px;
+  //     left: 73px;
+  //     font-style: normal;
+  //     color: #fff;
+  //   }
+  //   ._newpwd {
+  //     input {
+  //       margin-left: 10px;
+  //     }
+  //     .icon-chakan {
+  //       right: 20px;
+  //     }
+  //   }
+  //   ._footer {
+  //     height: 50px;
+  //   }
+  //   ._btn {
+  //     width: 320px;
+  //     height: 40px;
+  //     line-height: 40px;
+  //     margin: 0 auto;
+  //     border-radius: 4px;
+  //   }
+  //   ._confirm {
+  //     color: #fff;
+  //     background: #448e97;
+  //     border: 1px solid #448e97;
+  //     &:hover {
+  //       background: #1f474c;
+  //       border: 1px solid #1f474c;
+  //     }
+  //   }
+  //   ._cancel {
+  //     background: transparent;
+  //     color: #fff;
+  //     letter-spacing: 2px;
+  //     cursor: pointer;
+  //   }
+  // }
+}

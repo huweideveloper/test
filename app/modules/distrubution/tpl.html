@@ -1,0 +1,22 @@
+<div class="distrubution">
+    <div class="inputLine"  redlabel="kxlk">
+        <span class="w180"><label class="redstar">*</label>任务方式：</span>
+        <div class="method" check="empty"></div>
+    </div>
+    <div class="inputLine"  redlabel="xlk">
+        <span class="w135"><label class="redstar">*</label>任务分配方式：</span>
+        <div class="assignMethod" check="empty"></div>
+    </div>
+    <br>
+    <ul class="cbsarea rwfsarea hide">
+        <!-- <i class="iconfont icon-tianjia"></i> -->
+    </ul>
+    <div class="kfsarea rwfsarea hide">
+        <p>共<label class="people"></label>人可参与审核</p>
+        <div class="inputLine" redlabel="inputBox">
+            <span><label class="redstar">*</label>审核单价：</span>
+            <input type="text" class="inputBox cost apidata" check="empty|num" reg="/^(?!(0[0-9]{0,}$))[0-9]{1,}[.]{0,}[0-9]{0,}$/" api="cost"/>
+        </div>
+        <p><i class="check-box"></i>价格是否可见</p>
+    </div>
+</div>

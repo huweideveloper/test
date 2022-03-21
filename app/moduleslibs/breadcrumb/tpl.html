@@ -1,0 +1,11 @@
+<ul class="breadcrumb">
+  <i class="icon" style="background-position: <%==p.iconPos.x=%>px <%==p.iconPos.y=%>px;"></i>
+    <%=
+	if(p.list.length!=0){
+	for(var i = 0; i < p.list.length; i++){
+    	var stu = p.list[i];
+    	var nowC =(i==p.list.length-1?'active':'');
+    =%>
+      	<li class="<%==nowC=%>"><a otherId="<%==i=%>"><%==stu.text=%></a></li>
+     <%=}}=%>
+</ul>

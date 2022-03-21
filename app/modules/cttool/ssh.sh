@@ -1,0 +1,1 @@
+ ssh -i sshlogin.pem root@47.104.180.119

@@ -1,0 +1,166 @@
+<div id="auditTaskStepTwo" class="step-two-container">
+  <div class="header-wrapper">
+    <span>{{isMASKAudit ? '序列选择' : '审核内容设置'}}</span>
+    <el-button v-if="canEdit" type="primary" @click="save">保存</el-button>
+  </div>
+  <el-form ref="auditTaskForm" :model="auditTaskForm" :rules="rules" label-suffix="：" label-position="left"
+    label-width="110px">
+    <!-- 7:冠脉狭窄 11: 冠脉斑块分割 15:C端病理大图 -->
+    <div v-if="isMASKAudit || [7, 11, 15].includes(seriesImgFileType)" style="padding-left: 20px">
+      <el-button v-if="canEdit" type="primary" size="medium" @click="toSelectSeries">添加/追加标注影像</el-button>
+      <el-button v-if="canEdit" size="medium" @click="toUploadSeries">上传影像序列</el-button>
+      <el-button type="text" @click="toCheckSeries">点击查看已添加影像数据</el-button>
+    </div>
+
+    <template v-if="isMASKAudit || [7].includes(seriesImgFileType)">
+      <!-- auditType：4命名双审不显示 -->
+      <div v-if="auditType !== 4" class="header-wrapper" style="margin-top: 30px">
+        <span>征象选择</span>
+      </div>
+      <div style="padding-left: 20px">
+        <template v-if="auditType !== 4">
+          <!--  seriesImgFileType: 3: 'MPR', 6: '冠脉分割', 7: '冠脉狭窄', 8: '冠脉命名', 11: '冠脉斑块分割', 15: 'C端病理大图'  -->
+          <p style="margin-bottom: 10px">
+            {{ [ 7, 15].includes(seriesImgFileType) || [3, 7, 8].includes(auditType) ? '并集征象' : '交集征象'}}
+          </p>
+          <el-checkbox-group v-model="selectedIntersectComponentList" v-if="allIntersectComponentList.length">
+            <div class="component-item-wrapper" v-for="item in allIntersectComponentList" :key="item.componentId">
+              <el-checkbox :label="item.componentId" :disabled="!canEdit">{{item.name}}</el-checkbox>
+              <i class="iconfont icon-biyan1" @click="viewComponentDetail(item.componentId)"></i>
+            </div>
+          </el-checkbox-group>
+          <div v-else>暂无</div>
+          <p style="margin: 20px 0 10px">额外征象</p>
+          <div>
+            <template v-if="extraComponentList.length">
+              <el-tag :key="componentId || id" v-for="({ componentId, id, name }, index) in extraComponentList"
+                :closable="canEdit" :disable-transitions="false" @close="deleteExtraComponent(index)"
+                @click="viewComponentDetail(componentId, id)" style="margin-right: 20px">
+                {{name}}
+              </el-tag>
+            </template>
+            <template v-else>暂无</template>
+          </div>
+        </template>
+        <el-row style="margin-top: 20px">
+          <el-col v-if="toolType" :span="2">
+            <!-- <el-select v-model="toolType" placeholder="请选择工具">
+              <el-option v-for="(name, value) in toolTypeList" :key="value" :label="name" :value="value"></el-option>
+            </el-select> -->
+            <el-button type="text" size="medium">{{toolType}}</el-button>
+          </el-col>
+          <el-col v-if="auditType !== 4" :span="22">
+            <el-button v-if="canEdit" type="primary" size="medium" @click="toAddComp">添加小征象标注组件</el-button>
+          </el-col>
+        </el-row>
+      </div>
+    </template>
+    <template v-if="!isMASKAudit">
+      <!-- 11: 冠脉斑块分割 15:C端病理大图 点位  多个病灶显示-->
+      <template v-if="[11, 15].includes(seriesImgFileType)">
+        <el-card v-if="lesionComponentList && lesionComponentList.length" class="box-card" style="margin-top: 20px;">
+          <el-tabs v-model="activeLesion" type="card">
+            <el-tab-pane v-for="(item, index) in lesionComponentList" :key="item.lesion" :label="item.lesionName"
+              :name="`${index}`">
+              <p style="margin-bottom: 10px">并集征象</p>
+              <el-checkbox-group v-model="item.selectedAndSetComponentList"
+                v-if="item.selectAndSetCheckList && item.selectAndSetCheckList.length">
+                <div class="component-item-wrapper" v-for="item in item.selectAndSetCheckList" :key="item.id">
+                  <el-checkbox :label="item.id" :disabled="!canEdit">{{item.name}}</el-checkbox>
+                  <i class="iconfont icon-biyan1" @click="viewComponentDetail(item.id)"></i>
+                </div>
+              </el-checkbox-group>
+              <div v-else>暂无</div>
+              <p style="margin: 20px 0 10px">额外征象</p>
+              <div>
+                <template v-if="item.selectedExtraComponentList.length">
+                  <el-tag :key="id" v-for="({ id, name }, index) in item.selectedExtraComponentList" :closable="canEdit"
+                    :disable-transitions="false" @close="deleteExtraComponentByTab(index)"
+                    @click="viewComponentDetail(id)" style="margin-right: 20px">
+                    {{name}}
+                  </el-tag>
+                </template>
+                <template v-else>暂无</template>
+              </div>
+              <el-row style="margin-top: 20px">
+                <el-col v-if="auditType !== 4" :span="22">
+                  <el-button v-if="canEdit" type="primary" size="medium" @click="toAddCompByTab">添加小征象标注组件</el-button>
+                </el-col>
+              </el-row>
+            </el-tab-pane>
+          </el-tabs>
+        </el-card>
+        <div class="item-wrapper">
+          <el-form-item :label="{11: 'Dice匹配系数', 15: '矩形匹配系数'}[seriesImgFileType]" prop="matchCoefficient"
+            label-width="120px">
+            <input-number v-model.trim="auditTaskForm.matchCoefficient" placeholder="可精确到小数点后两位" :precision="2"
+              :disabled="!canEdit" clearable></input-number>%
+          </el-form-item>
+        </div>
+        <div v-if="auditType !== 4 && [15].includes(seriesImgFileType)" :span="22">
+          <el-button v-if="canEdit" type="primary" size="medium" @click="toAddCompBySeries">添加大征象标注组件</el-button>
+          <el-button v-if="selectedSeriesExtraComponentList.length" type="default" size="medium"
+            @click="toViewSelectedSeriesComp">查看已添加大征象标注组件</el-button>
+        </div>
+      </template>
+      <!-- 7:冠脉狭窄 点位-->
+      <template v-else-if="seriesImgFileType === 7">
+        <div class="item-wrapper">
+          <el-form-item label="中心距离与平均长度阈值" label-width="180px" prop="matchCoefficient">
+            <input-number v-model.trim="auditTaskForm.matchCoefficient" placeholder="可精确到小数点后两位" :precision="2"
+              :disabled="!canEdit" clearable></input-number>%
+          </el-form-item>
+          <el-form-item label="较短与较长病灶阈值" label-width="180px" prop="consistencyRatePercent">
+            <input-number v-model.trim="auditTaskForm.consistencyRatePercent" placeholder="可精确到小数点后两位" :precision="2"
+              :disabled="!canEdit" clearable></input-number>%
+          </el-form-item>
+        </div>
+      </template>
+      <!-- 3:MPR 点位 -->
+      <template v-else>
+        <el-checkbox-group v-model="selectedIntersectComponentList">
+          <div class="component-item-wrapper" v-for="item in allIntersectComponentList" :key="item.componentId">
+            <el-checkbox :label="item.componentId" :disabled="!canEdit">{{item.name}}</el-checkbox>
+            <i class="iconfont icon-biyan1" @click="viewComponentDetail(item.componentId)"></i>
+          </div>
+        </el-checkbox-group>
+        <div class="item-wrapper" v-if="!isJysEnv">
+          <el-checkbox v-model="isAuditConsistency" :disabled="!canEdit">需要审核满足一致性病灶</el-checkbox>
+        </div>
+        <div class="item-wrapper">
+          <el-form-item label="方体匹配系数" prop="matchCoefficient" label-width="110px">
+            <input-number v-model.trim="auditTaskForm.matchCoefficient" placeholder="可精确到小数点后两位" :precision="2"
+              :disabled="!canEdit" clearable></input-number>%
+          </el-form-item>
+          <el-form-item v-if="isJysEnv" label="一致性阈值" prop="consistencyRatePercent" label-width="110px">
+            <input-number v-model.trim="auditTaskForm.consistencyRatePercent" placeholder="可精确到小数点后两位" :precision="2"
+              :disabled="!canEdit" clearable></input-number>%
+          </el-form-item>
+        </div>
+      </template>
+    </template>
+  </el-form>
+  <select-series-modal :visible.sync="selectSeriesModalVisible" :project-id="currentProjectId" :task-id="currentTaskid"
+    :project-info="projectInfo" @addsuccess="handleAddSeriesSuccess"></select-series-modal>
+  <check-series-modal :visible.sync="checkSeriesModalVisible" :task-id="currentTaskid" :project-info="projectInfo"
+    :can-edit="canEdit" @deletesucess="handleDeleteSeriesSuccess"></check-series-modal>
+  <upload-series-modal :visible.sync="uploadSeriesModalVisible" :task-id="currentTaskid"
+    @success="handleUploadSeriesSuccess"></upload-series-modal>
+  <component-detail-modal :visible.sync="componentDetailModalVisible" :component-id="currentComponentId">
+  </component-detail-modal>
+  <select-component-modal :visible.sync="selectComponentModalVisible" :task-id="currentTaskid"
+    :intersect-comp-list="allIntersectComponentList" :extra-comp-list="extraComponentList"
+    @receive-comps="receiveCompsData"></select-component-modal>
+  <!-- C端病理大图病灶Tab里的添加额外征象 -->
+  <select-component-modal :visible.sync="selectTabComponentModalVisible" :task-id="currentTaskid"
+    :intersect-comp-list="allTabIntersectComponentList" :extra-comp-list="selectedTabExtraComponentList"
+    @receive-comps="receiveCompsDataByTab"></select-component-modal>
+  <!-- 添加大征象 -->
+  <select-component-modal :visible.sync="selectSeriesComponentModalVisible" :task-id="currentTaskid"
+    :intersect-comp-list="allSeriesIntersectComponentList" :extra-comp-list="selectedSeriesExtraComponentList"
+    :is-need-check-selectable="false" @receive-comps="receiveCompsDataBySeries"></select-component-modal>
+  <!-- 已选择的大征象 -->
+  <selected-component-modal :visible.sync="viewSeriesComponentModalVisible" :task-id="currentTaskid"
+    :list-data="selectedSeriesExtraComponentList" @receive-comps="receiveCompsDataBySeries" :can-edit="canEdit">
+  </selected-component-modal>
+</div>

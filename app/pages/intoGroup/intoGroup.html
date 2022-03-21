@@ -1,0 +1,34 @@
+<div id="storePage">
+    <div class="selectContainer">
+          <select-table-page
+            placeholder="全部医院"
+            v-model="hospitalCode"
+            :data="hospitalList"
+            :remote-method="setHospitalList"
+            key-name="id"
+            value-name="name"
+            :multiple="true"
+        ></select-table-page>
+        <el-date-picker
+            class="datePicker startTime"
+            v-model="startTime"
+            type="date"
+            placeholder="开始日期">
+        </el-date-picker>
+        <span class="underscore">-</span>
+        <el-date-picker
+            class="datePicker endTime"
+            v-model="endTime"
+            type="date"
+            placeholder="结束日期">
+        </el-date-picker>
+        <el-button type="primary" @click="handleSearch">搜索</el-button>
+    </div>
+    <div class="intoGroup-content">
+        <div id="echarts-map" class="echarts-map"></div>
+        <div class="select">
+            <el-radio v-model="dimension" label="SERIES">序列数</el-radio>
+            <el-radio v-model="dimension" label="TASK">任务数</el-radio>
+        </div>
+    </div>
+</div>

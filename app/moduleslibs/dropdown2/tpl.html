@@ -1,0 +1,20 @@
+<div class="selected2">
+    <span class="showname" data-idx="<%==p.firstSelect.idx=%>">
+            <%==p.firstSelect.val=%>
+        </span>
+    <span class="icon">
+        </span>
+</div>
+<div class="_dropdown2">
+    <ul class="selectbox">
+        <li class="option select" data-idx="<%==p.firstSelect.idx=%>" data-val="<%==p.firstSelect.val=%>">
+            <%==p.firstSelect.optionname||p.firstSelect.val=%>
+        </li>
+        <%= for(var w = 0;w < p.data.length; w++) {=%>
+            <li class="option" data-idx="<%==p.data[w].idx=%>" data-val="<%==p.data[w].val=%>">
+                <%==p.data[w].optionname||p.data[w].val=%>
+            </li>
+            <%=}=%>
+    </ul>
+    <div class="mask"></div>
+</div>

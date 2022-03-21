@@ -1,0 +1,67 @@
+<%=
+for(var i = 0; i < p.list.length; i++){
+    var stu = p.list[i];
+    var linh=35;
+    if(p.type!=undefined){
+		linh=35;
+    }
+=%>
+    <div style="text-align: <%==p.type=%>"><ul nowId="<%==stu.id=%>" style="height:<%==linh=%>px">
+    <%=if(p.choose!='no'){=%>
+    <li style="width:30px;line-height:<%==linh=%>px;text-overflow: ellipsis;overflow: hidden;" nowId="<%==stu.id=%>"><p>
+            <%= if(p.choose=='all'){=%>
+                <span class="check-box"></span>
+         <%=} else{=%> 
+    <span class="radio-box"></span>
+      <%=}=%>
+      </p></li>
+      <%=}=%>
+	<%=for(var j in p.icon){
+	 	var width = '';
+	 	var elem=p.icon[j];
+	 	if (elem.style) {
+         	width =elem.style;
+        } else {
+            width = 'style="width:' + elem.w + 'px;line-height:'+linh+'px"';
+            width1 = 'style="text-overflow: ellipsis;overflow: hidden;display: block;white-space: nowrap;width:'+(elem.w - 20)+'px;line-height:'+linh+'px"';
+        }
+        switch (elem.type) {
+            case 'text':
+                if (stu[j] != '' || stu[j] == 0) {=%>    
+					<li title = "<%==stu[j]=%>" <%==width=%>><span <%==width1=%>><%==stu[j]=%></span></li>
+				<%=} else{=%> 
+					<li <%==width=%>></li>
+          	<%=}
+          	break;
+			case 'first':
+                if (stu[j]) {=%>
+                     <li title = "<%==stu[j]=%>" <%==width=%>><span style="width:<%==(elem.w - 30)=%>px;margin-left:10px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"><%==stu[j]=%></span></li>
+				<%=}
+             break;
+            case 'inputLabel':=%>
+                 <li <%==width=%>><input class="inputcommon" style="margin-left:10px" type="text"  value="<%==stu[j]=%>" disabled /></li>
+            <%=break;
+            case 'onoff':
+               var styr = stu[j] == 1 ? 'check' : '';
+                    if (p.type != undefined) {=%>
+                        <li class="click-enable choose_onoff" nowId="<%==stu.id=%>" <%==width=%>><span style="position: absolute;top: 35px;"><label class="tgl-btn <%==styr=%>" for="cb1-1-0"></label></span></li>"
+                    <%=} else {=%>
+                        <li class="click-enable choose_onoff" nowId="<%==stu.id=%>" <%==width=%>><span style="position: absolute;top: 25px;"><label class="tgl-btn <%==styr=%>" for="cb1-1-0"></label></span></li>"
+                   <%=}
+            break;
+            case 'choose':
+                var width2 = 'style="text-overflow: ellipsis;overflow: hidden;white-space:nowrap;margin-left:5px;width:' + elem.w + 'px;line-height:'+linh+'px"';=%>
+                <li class="click-enable choose_id" nowId="<%==stu.id=%>" title="<%==stu[j]=%>" <%==width2=%>><%==stu[j]=%></li>
+                        
+            <%=break;
+            case 'img':=%>
+             	<li <%==width=%>><img src="<%==stu[j]=%>" style="width: 40px;height: 40px;margin-top: 15px;"></li>
+            <%=break;
+            case 'action':=%>
+               <li class="tableList" nowId="<%==stu.id=%>" <%==width=%>><a class="edit editicon" title="编辑"></a><a class="delete delicon" title="删除"></a></li> 
+             <%=break;
+       }}=%>      
+	</ul></div>
+ <%=
+    }
+=%>

@@ -1,0 +1,77 @@
+.ctcornerstone {
+  display: flex;
+  width: 100%;
+  position: relative;
+  .drapCanvasPro {
+    margin-right: 174px;
+  }
+  #canvas_box {
+    position: relative;
+    overflow: hidden;
+    // float: left;
+  }
+
+  .cicle {
+    position: fixed;
+    border: 1px dashed #000;
+    display: none;
+    background: transparent;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .xulielist {
+    // float: left;
+    width: 180px;
+    background: #0a2634;
+  }
+
+  .info {
+    // float: left;
+    width: 290px;
+    background: #0a2634;
+  }
+
+  .nidus_content {
+    position: absolute;
+    width: 290px;
+    top: 0;
+    right: 0;
+    display: none;
+    z-index: 20;
+  }
+
+  .allcornerstone {
+    position: relative;
+  }
+
+  .slist {
+    position: absolute;
+    left: 180px;
+    bottom: 0;
+    height: 100px;
+  }
+
+  .submit_data {
+    width: 200px;
+    height: 30px;
+    position: absolute;
+    left: 50%;
+    margin-left: -100px;
+    background: #0a2634;
+    border-radius: 5px;
+    display: none;
+
+    span {
+      font-size: 14px;
+      line-height: 30px;
+      color: #d2effc;
+    }
+  }
+}

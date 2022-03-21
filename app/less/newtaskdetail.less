@@ -1,0 +1,98 @@
+.newtaskdetail {
+  margin: 20px 40px;
+  .left {
+    width: 80%;
+    float: left;
+    position: relative;
+    border-right: 1px solid #e8e8e8;
+    margin-top: 20px;
+    .infoscorll {
+      position: relative;
+      overflow: hidden;
+    }
+    .title {
+      font-size: 22px;
+      font-weight: bold;
+      border-bottom: 1px solid #6f6e6e;
+    }
+    .breadcrumb {
+      font-size: 16px;
+      margin: 15px 0;
+      .back {
+        color: #bfbbbb;
+        cursor: pointer;
+      }
+    }
+    .basicinfo {
+      width: 90%;
+      font-size: 14px;
+      .tasktitle {
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+    }
+    .infoarea {
+      background: #fff;
+      padding: 10px 30px;
+      & > p {
+        height: 40px;
+        line-height: 40px;
+        span {
+          width: 45%;
+        }
+      }
+      & > p:last-child {
+        height: unset;
+        span {
+          width: unset;
+        }
+      }
+      .fujian {
+        height: 80px;
+        line-height: 80px;
+      }
+    }
+    .project {
+      width: 90%;
+      font-size: 14px;
+      margin-bottom: 20px;
+      margin-top: 10px;
+      .protitle {
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+      .proinfo {
+        padding: 10px 20px;
+        background: #fff;
+        position: relative;
+        overflow: hidden;
+        p {
+          line-height: 40px;
+        }
+        .pmark {
+          border: none;
+          resize: none;
+          vertical-align: text-top;
+          width: 80%;
+          background: #fff;
+        }
+      }
+    }
+  }
+  .right {
+    width: 15%;
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px;
+    a {
+      width: 160px;
+      height: 40px;
+      line-height: 40px;
+      background: #4c9fa9;
+      color: #fff;
+      border-radius: 5px;
+      padding: 10px 20px;
+    }
+  }
+}

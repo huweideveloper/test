@@ -1,0 +1,102 @@
+<div class="login">
+  <div class="logo" data-i18n='logo-img' env="true" data-name='杏脉科技'>
+        <!-- <img src="/images/page/zjlogo2x.png"> -->
+      <!--<p>proxai</p>-->
+      <!--<p class="chinese">杏脉科技</p>-->
+  </div>
+  <div class="contains clearfix">
+    <div class="loginForm">
+      <div class="formheader">
+        <span><label class="yz">登录</label></span>
+      </div>
+      <div class="formcontains">
+        <span class="errorSpan hide"></span>
+        <div class="inputLine">
+          <i class="jia">+86</i>
+          <!--label>用户名</label-->
+          <input type="text" class="name" placeholder="手机号" />
+        </div>
+        <div class="inputLine pwd">
+          <i class="iconfont icon-mima"></i>
+          <input
+            type="password"
+            class="password"
+            placeholder="请输入密码"
+            autocomplete="new-password"
+          />
+        </div>
+        <div class="mimaxg">
+          <a class="remeber"><i class="check-box"></i>记住密码</a>
+          <!-- <a class="forget">忘记密码?</a> -->
+        </div>
+        <a class="loginBtn">登录</a>
+      </div>
+    </div>
+    <div class="wordArea">
+        <p class="line1 title1-img" data-i18n='title1-img' env="true">
+            <!-- <img src="/images/page/jianying.png" style="height: 71px"> -->
+        </p>
+        <p class="mb60 title2-img" data-i18n='title2-img' env="true">
+            <!-- <img src="/images/page/3.png" style="width: 388px;height: 33px"> -->
+        </p >
+        <!-- <div class="registerbtn hide">新用户注册</div> -->
+    </div>
+  </div>
+
+  <!-- <div class="reset hide">
+    <div class="_title" data-i18n="resetpwd" data-name="重置密码">重置密码</div>
+    <span class="errorPwd hide"></span>
+    <div class="_telphone ">
+      <input type="text" class="_tel" placeholder="手机号" data-code="tel" />
+      <i class="_num">+86</i>
+    </div>
+    <div class="_code">
+      <div class="_verification">
+        <i class="iconfont icon-jianpan"></i>
+        <input
+          type="text"
+          class="_identcode"
+          placeholder="验证码"
+          data-code="code"
+        />
+      </div>
+      <div class="_getcode" data-i18n="getcode" data-name="获取验证码">
+        获取验证码
+      </div>
+    </div>
+    <div class="_newpwd">
+      // <input type="password" style="width: 1px; height: 1px; position: absolute; border: 0px; padding: 0px;">
+      <input
+        type="password"
+        class="_newp"
+        placeholder="请输入新密码"
+        autocomplete="new-password"
+        data-code="newpwd"
+      />
+      <i class="iconfont icon-biyan"></i>
+    </div>
+    <div class="_footer">
+      <p
+        href="javascript:;"
+        class="_confirm _btn"
+        data-i18n="confirm"
+        data-name="确认"
+      >
+        找回密码
+      </p>
+      <p
+        href="javascript:;"
+        class="_cancel _btn"
+        data-i18n="cancel"
+        data-name="取消"
+      >
+        转到登录页面？
+      </p>
+    </div>
+  </div> -->
+  <div id="footer" data-i18n='footer' env="true"></div>
+
+  <div id="product-disclaimer-wrapper">
+    <product-disclaimer :visible.sync="isShowProductDisClainmer" :date="updateDate" @confirm="confirmDisclaimer"></product-disclaimer>
+  </div>
+</div>

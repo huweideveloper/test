@@ -1,0 +1,51 @@
+.alltasklist {
+  margin: 20px 40px;
+  .top {
+    margin-top: 20px;
+    z-index: 100;
+    .title {
+      font-size: 22px;
+      font-weight: bold;
+      border-bottom: 1px solid #6f6e6e;
+    }
+    .filterarea {
+      & > div {
+        display: inline-block;
+        position: relative;
+      }
+      .sicknessType {
+        margin: 10px 0;
+      }
+      .xlk {
+        height: 30px;
+        line-height: 30px;
+        width: 180px;
+      }
+    }
+  }
+  .tasklistarea {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    .taskcontent {
+      overflow: hidden;
+    }
+  }
+  .newtask:nth-child(4n) {
+    margin-right: 0;
+  }
+  .pageset {
+    display: inline-block;
+    margin-left: 0px;
+    margin-top: 10px;
+    ._dropdown1 {
+      ul {
+        top: -180px;
+      }
+    }
+  }
+  .pagination {
+    margin-top: 10px;
+    float: right !important;
+  }
+}

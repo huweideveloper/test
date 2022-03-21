@@ -1,0 +1,85 @@
+._symcard {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid rgba(121, 193, 200, 0.66);
+  ._symp {
+    line-height: 19px;
+    font-size: 14px;
+    color: #b89e87;
+  }
+  ._copy,
+  ._wrong {
+    float: right;
+    line-height: 16px;
+    font-size: 12px;
+    cursor: pointer;
+    &.disabled {
+      color: #c0c4cc !important; // pointer-events: none;
+      text-decoration: none;
+      cursor: not-allowed;
+    }
+  }
+  ._wrong {
+    margin-right: 10px;
+    color: #a28d7b;
+    &:hover {
+      color: #b89e87;
+    }
+  }
+  ._copy {
+    color: #448e97;
+    &:hover {
+      color: #95d4e2;
+    }
+  }
+  .card_info {
+    color: #ccc;
+    letter-spacing: 0;
+    ._noData {
+      padding-top: 12px;
+      padding-bottom: 27px;
+      text-align: center;
+      display: none;
+    }
+    .info_box {
+      display: none;
+    }
+  }
+  ._examine,
+  ._suggestion {
+    outline: none;
+  }
+  ._star {
+    margin-left: 20px;
+    position: relative;
+    .iconfont {
+      font-size: 14px;
+      margin-right: 10px;
+    }
+    .icon-kongyaopin {
+      color: rgba(149, 212, 226, 0.6);
+    }
+    .icon-yaopin {
+      color: #448e97;
+    }
+    ._shi {
+      position: absolute;
+      left: 0;
+      top: 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+  .sug_copy {
+    line-height: 26px;
+  }
+  .clearfix:before,
+  .clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .clearfix {
+    zoom: 1;
+  }
+}

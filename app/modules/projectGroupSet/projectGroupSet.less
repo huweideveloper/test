@@ -1,0 +1,61 @@
+.projectGroupSet {
+  position: relative;
+  margin-top: 10px;
+  .groupsettitle {
+    padding-left: 0;
+    font-size: 14px;
+  }
+  .icon-tianjia {
+    color: #4c9fa9;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  .icon-shanchu {
+    position: absolute;
+    margin-left: 10px;
+    color: red;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  .condition {
+    // position: absolute;
+    // z-index: 1000;
+    .item {
+      height: 50px;
+      line-height: 65px;
+      display: flex;
+      position: relative;
+      & > div {
+        display: inline-block;
+        margin-left: 20px;
+      }
+      .icon-shanchu {
+        position: absolute;
+        top: -15px;
+        right: -40px;
+      }
+      .dimensioninput {
+        margin-left: 20px;
+        height: 32px;
+        border-radius: 4px;
+        border: 1px solid #e8e8e8;
+        width: 90px;
+        padding-left: 10px;
+        vertical-align: top;
+      }
+      label {
+        position: absolute;
+        left: 98px;
+        top: -13px;
+      }
+    }
+  }
+  .required {
+    top: 0px;
+    left: 200px;
+  }
+  .inputLine .required {
+    top: 15px;
+    left: 25px;
+  }
+}

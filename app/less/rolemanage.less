@@ -1,0 +1,88 @@
+.rolemanage {
+  min-height: 837px;
+  background: #fff;
+  display: flex;
+  .leftArea {
+    position: relative;
+    width: 180px;
+    border-right: 1px solid #e8e8e8;
+    .roleName {
+      background: #ffffff;
+      border: 1px solid #e8e8e8;
+      border-radius: 4px;
+      width: 120px;
+      padding-left: 30px;
+      height: 30px;
+      margin: 10px 14px 20px 16px;
+    }
+  }
+  .rightArea {
+    flex: 1;
+    position: relative;
+  }
+  .icon-sousuo {
+    font-size: 14px;
+    color: #e8e8e8;
+    position: absolute;
+    top: 18px;
+    left: 25px;
+  }
+  .listArea {
+    flex: 1;
+    padding-top: 10px;
+    position: relative;
+  }
+  .roleList {
+    margin-top: 20px;
+  }
+  .roleList li {
+    display: flex;
+    line-height: 40px;
+    font-size: 14px;
+    color: #000000;
+    .roleName {
+      width: 30%;
+      margin-left: 20px;
+    }
+    .roleContent {
+      flex: 1;
+    }
+    .permissions {
+      vertical-align: top;
+      width: 45%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .soft {
+      color: #666666;
+    }
+  }
+  .noData {
+    height: 150px;
+    line-height: 150px;
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bolder;
+  }
+  .roleList li:nth-child(2n) {
+    background: #fafafa;
+  }
+  .roleTitle {
+    font-family: MicrosoftYaHei-Bold;
+    font-size: 14px;
+    color: #000000;
+    letter-spacing: 0;
+    font-weight: bolder;
+  }
+  .title {
+    height: 40px;
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    color: #8b8989;
+    letter-spacing: 0;
+    line-height: 40px;
+    padding-left: 20px;
+  }
+}

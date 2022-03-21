@@ -1,0 +1,86 @@
+.showcomplist{
+  width: 600px;
+  height: 400px;
+  margin-left: -300px;
+  margin-top: -200px;
+  .modal-header{
+    position: relative;
+    border-bottom: 1px solid #e8e8e8;
+    .icon-guanbi{
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
+    }
+  }
+  .scrollmenu{
+    display: inline-block;
+    width: 25%;
+    height: 340px;
+    border-right: 1px solid #e8e8e8;
+    overflow: hidden;
+    .menudata{
+      li{
+        height: 35px;
+        line-height: 35px;
+        cursor: pointer;
+        position: relative;
+        span{
+          overflow: hidden;
+          white-space: nowrap;
+          width: 100px;
+          margin-left: 25px;
+          text-overflow: ellipsis;
+        }
+        i{
+          top:11px;
+          position: absolute;
+          left: 5px;
+        }
+        &:hover{
+          background: #d9e2e9;
+        }
+      }
+      .choosed{
+        background: #ECF3F4;
+        color: #448E97;
+      }
+    }
+  }
+  .scroll{
+    display: inline-block;
+    width: 73%;
+    height: 340px;
+    overflow: hidden;
+    .componentlist{
+      li{
+        display: inline-block;
+        height: 35px;
+        line-height: 35px;
+        position: relative;
+        padding-left: 20px;
+        &>span{
+          color:#4c9fa9;
+          text-decoration: underline;
+          margin-left: 20px;
+          width: 160px;
+          font-size: 14px;
+          cursor: pointer;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        &>.check-box{
+          position: absolute;
+          top: 11px;
+        }
+      }
+    }
+  }
+  .bottomArea{
+    border-top: 1px solid #e8e8e8;
+    p{
+      padding: 15px;
+    }
+  }
+}

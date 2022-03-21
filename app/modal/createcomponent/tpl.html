@@ -1,0 +1,39 @@
+<div id="createcomponent" class="modal createcom">
+    <div class="bigtitle">创建标注字段</div>
+    <i class="iconfont icon-guanbi"></i>
+    <div class="createcomponent">
+        <div class="scroll">
+            <div class="componentmain">
+                <p class="stitle">添加选择控件</p>
+                <div class="text component" type="text">
+                    <i class="iconfont icon-wenbenkuang"></i>
+                    <span>文本框</span>
+                </div>
+                <div class="select component" type="select">
+                    <i class="iconfont icon-xialacaidan"></i>
+                    <span>下拉菜单</span>
+                </div>
+                <div class="radiobox component" type="radiobox">
+                    <i class="iconfont icon-xuanzhong"></i>
+                    <span>单选框</span>
+                </div>
+                <div class="checkbox component" type="checkbox">
+                    <i class="iconfont icon-duoxuankuang"></i>
+                    <span>复选组</span>
+                </div>
+                <div class="child_select component" type="child_select">
+                    <i class="iconfont icon-xialacaidan"></i>
+                    <span>二级下拉菜单</span>
+                </div>
+            </div>
+            <div class="mainarea">
+            </div>
+            <div class="mask hide"></div>
+        </div>
+    </div>
+    <div class="btnarea">
+        <a class="biaozhubtn save hide">保存</a>
+        <a class="biaozhubtn cancel">取消</a>
+    </div>
+    <create-select v-if="isShowChildSelect" :action-type="actionType" :data="selectData" @success="handleSaveSuccess" @cancel="handleCancel"></create-select>
+</div>

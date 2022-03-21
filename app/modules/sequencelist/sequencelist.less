@@ -1,0 +1,234 @@
+.sequencelist {
+  .wk {
+    width: 100%;
+    border-radius: 2px;
+    position: relative;
+    .head-name {
+      padding: 8px 0;
+      p {
+        width: 130px;
+        font-size: 14px;
+        line-height: 30px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-align: center;
+        margin-left: 29px;
+        color: #fff;
+      }
+      .sequence-wrapper {
+        cursor: pointer;
+        .sequenceName {
+          display: unset;
+        }
+      }
+      .showHide {
+        position: absolute;
+        top: 16px;
+        left: 10px;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+    .cc {
+      width: 110px;
+      height: 110px;
+      margin-left: 5px;
+    }
+  }
+  .wk:hover {
+    .over {
+      display: block;
+    }
+  }
+  .nodeInfo {
+    overflow: hidden;
+    position: relative;
+    .nodeInfolist {
+      & > div {
+        width: 100%;
+        color: #71f9ff;
+        font-size: 12px;
+        line-height: 30px;
+        & > div {
+          text-align: left;
+          width: 160px;
+          margin-left: 10px;
+          position: relative;
+        }
+        .nname {
+          width: 67%;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          margin-left: 15px;
+          span {
+            display: unset;
+          }
+          .chooseIcon {
+            padding-left: 23px;
+          }
+        }
+        .fillcon {
+          position: absolute;
+          right: 10px;
+          top: 0;
+        }
+        .showHide {
+          position: absolute;
+          left: -5px;
+          top: 0;
+          .iconfont {
+            font-size: 12px;
+          }
+        }
+        .del {
+          position: absolute;
+          right: 0;
+          top: 0;
+          .iconfont {
+            font-size: 12px;
+          }
+        }
+        .edit {
+          position: absolute;
+          right: 20px;
+          top: 0;
+          .iconfont {
+            font-size: 12px;
+          }
+        }
+        .edit_color {
+          position: absolute;
+          right: 50px;
+          top: 1px;
+          width: 20px;
+          height: 20px;
+          .color_c {
+            position: absolute;
+            top: 8px;
+            left: 27px;
+            width: 14px;
+            height: 14px;
+          }
+          ul {
+            position: absolute;
+            top: 30px;
+            left: -20px;
+            z-index: 40;
+            background: #0c1e21;
+            display: none;
+            .color_li {
+              width: 80px;
+              height: 20px;
+              line-height: 20px;
+              .cc {
+                width: 16px;
+                height: 16px;
+                margin-top: 2px;
+                vertical-align: text-bottom;
+              }
+              .textc {
+                margin-left: 5px;
+                font-size: 12px;
+                line-height: 20px;
+              }
+            }
+          }
+        }
+        .c3 {
+          background: #f8e71c;
+        }
+
+        .c1 {
+          background: #aa1113;
+        }
+
+        .c2 {
+          background: #f5a623;
+        }
+
+        .c4 {
+          background: #7ed321;
+        }
+
+        .c5 {
+          background: #4a90e2;
+        }
+
+        .c6 {
+          background: #50e3c2;
+        }
+
+        .c7 {
+          background: #8b572a;
+        }
+
+        .c8 {
+          background: #417505;
+        }
+
+        .c9 {
+          background: #b8e986;
+        }
+
+        .c10 {
+          background: #bd10e0;
+        }
+      }
+    }
+    .nodeInfolist {
+      & > div.choose {
+        background: #095c85;
+        color: #fff;
+      }
+      & > div.audited {
+        .icon-biyan, .icon-biyan1, .layer-number-tip {
+          color: yellow;
+        }
+      }
+    }
+  }
+  .layer-number-tip {
+    font-family: cursive;
+    color: #ade9ea;
+    position: absolute;
+    left: -10px;
+    top: 1px;
+    text-align: center;
+    width: 22px;
+  }
+}
+
+.sequence-statistics-wrapper {
+  width: 100%;
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  color: #fff;
+  padding-left: 25px;
+  &.audit-wrapper {
+    padding-left: 15px;
+    .audit-info {
+      display: inline-block;
+      font-size: 12px;
+    }
+    .sequence-sort-btn {
+      display: none;
+    }
+  }
+  .audit-info {
+    display: none;
+  }
+  .sequence-sort-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: 1px solid #999;
+    background: #999;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px;
+    cursor: pointer;
+  }
+}

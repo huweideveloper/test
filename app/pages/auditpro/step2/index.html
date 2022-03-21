@@ -1,0 +1,24 @@
+<div id="createauditProStepTwo" class="createaudit-pro-step-two">
+  <div class="header-title">
+    <div class="title">第二步：C端审核项目范围设置</div>
+  </div>
+  <div v-if="!isView && !isStart" class="content">
+    请添加需要审核的任务：
+    <pop-confirm title="确定删除已选择的审核任务，并重新选择吗？" @onconfirm="deleteAndShowAddSourceModal">
+      <el-button slot="reference" type="primary" icon="el-icon-plus" size="small" plain></el-button>
+    </pop-confirm>
+  </div>
+  <div class="content">
+    <a @click="showAddSourceDetailModal(true)">
+      已选择任务<span class="num">{{projectStatistics.taskNumber}}</span>个， 已进入审核序列<span class="num">{{projectStatistics.hitSeriesNumber}}</span>个， 未进入审核序列
+      <span class="num">{{projectStatistics.missSeriesNumber}}</span>个， 病灶数为<span class="num">{{projectStatistics.imageAnnotationResultNumber}}</span>个。
+    </a>
+  </div>
+  <add-audit-source-modal :audit-project-id="id" :project-info="auditProjectDetail" :visible="visibleAddSourceModal" @change-visible="showAddSourceModal"></add-audit-source-modal>
+  <add-audit-source-detail-modal
+    :audit-project-id="id"
+    :visible="visibleAddSourceDetailModal"
+    :project-statistics="projectStatistics"
+    @change-visible="showAddSourceDetailModal"
+  ></add-audit-source-detail-modal>
+</div>

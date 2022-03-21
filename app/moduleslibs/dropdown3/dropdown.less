@@ -1,0 +1,74 @@
+@charset "UTF-8";
+.selected3 {
+    box-sizing: border-box;
+    height: 32px;
+    line-height: 30px;
+    padding-left: 10px;
+    text-align: left;
+    border: 1px solid #E8E8E8;
+    border-radius: 4px;
+    font-family: "MicrosoftYaHei";
+    font-size: 14px;
+    position: relative;
+    cursor: pointer;
+    .icon {
+        position: relative;
+        margin: 0 10px;
+        transform: translateY(0%);
+        transition: all 0.3s;
+        &.drop {
+            transform: translateY(0%) rotate(180deg);
+        }
+        .down {
+            background: url(/images/page/login_down1.png);
+            height: 7px;
+            width: 12px;
+            display: inline-block;
+        }
+    }
+}
+
+.selecting {
+    color: #E8E8E8; // border-color: aquamarine;
+}
+
+._dropdown {
+    width: 100%;
+    position: relative;
+    display: none;
+    ul {
+        list-style: none;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 2px;
+        overflow: hidden;
+        background: #fff;
+        font-family: "MicrosoftYaHei";
+        font-size: 14px;
+        z-index: 10;
+        color: #333;
+    }
+    li {
+        width: 100%;
+        height: 24px;
+        text-align: center;
+        cursor: pointer;
+        &:hover {
+            color: #448E97;
+        }
+        &.select {
+            color: #333333;
+            background: #ECF3F4;
+        }
+    }
+    .mask {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9;
+    }
+}

@@ -1,0 +1,61 @@
+<div class="viewaudittask">
+  <div>
+    <div class="breadcrumb">
+      <span class="lastlink" link="taskmanage">返回审核任务列表</span>>
+      <span class="nowlink">审核任务</span>
+    </div>
+    <a class="joinpro biaozhubtn">合并结果</a>
+    <div class="taskdetail">
+      <p>
+        <span>审核任务名称：<label apidata="name"></label></span>
+        <span>所属审核项目：<label apidata="projectName"></label></span>
+      </p>
+      <p>
+        <span class="single"
+          >被审核源匹配项：<label apidata="joinTaskList"></label
+        ></span>
+      </p>
+      <p>
+        <span class="single"
+          >审核任务备注：<label apidata="remark"></label
+        ></span>
+      </p>
+      <p>
+        <span>可审核序列：<label apidata="seriesTotalNum"></label></span>
+        <span>已审核序列：<label apidata="seriesAuditNum"></label></span>
+      </p>
+      <p>
+        <span>审核集：<label apidata="auditChoose"></label></span>
+        <span>数据匹配项：<label apidata="clusterType"></label></span>
+      </p>
+    </div>
+    <div class="sequencearea">
+      <div class="personarea">
+        <span class="menutitle">提交人姓名</span>
+        <div class="left"></div>
+      </div>
+      <div class="listarea">
+        <div class="filterarea">
+          序号：<input type="text" api="serialNumber" />
+          <a class="strokeBtn search">查询</a>
+        </div>
+        <div class="personinfo">
+          <span class="">提交人用户名:<label api="username"></label></span>
+          <span class="" style="width: 16%"
+            >所属单位:<label api="venderName"></label
+          ></span>
+          <span class="" style="width: 15%"
+            >共已审核序列数量:<label api="seriesAuditNum"></label
+          ></span>
+          <span class="" style="width: 12%"
+            >病灶数量:<label api="imageAnnoNum"></label
+          ></span>
+          <a class="viewall biaozhubtn">查看所有审核结果</a>
+        </div>
+        <div class="scrollright">
+          <div class="serieslist"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

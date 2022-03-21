@@ -1,0 +1,26 @@
+<div id="createauditProStepThree" class="createaudit-pro-step-three">
+  <div class="header-title">
+    <div class="title">已引用任务区域</div>
+    <div>
+      <!-- <el-button type="warning" size="medium" @click="handleClone">克隆任务</el-button> -->
+      <el-button v-if="hasExportPermission" type="primary" size="medium" @click="handleBatchExport">批量导出</el-button>
+    </div>
+  </div>
+  <el-table :data="tableData" stripe style="width: 100%" @selection-change="handleSelectionChange">
+    <el-table-column type="selection" width="55"> </el-table-column>
+    <el-table-column label="任务ID" prop="id"></el-table-column>
+    <el-table-column label="审核任务名称" prop="name"></el-table-column>
+    <!-- <el-table-column label="审核集" prop="auditChoose">
+      <template slot-scope="scope">
+        {{{1: '一致部分', 2: '不一致部分', 3: '全集' }[scope.row.auditChoose] || ''}}
+      </template>
+    </el-table-column> -->
+    <el-table-column label="状态" prop="status">
+      <template slot-scope="scope">
+        {{{1: '待发布', 2: '进行中', 3: '已完成', 4: '已终结' }[scope.row.status]}}
+      </template>
+    </el-table-column>
+    <el-table-column label="序列总数" prop="seriesTotalNum"></el-table-column>
+    <el-table-column label="已审核数" prop="seriesAuditNum"></el-table-column>
+  </el-table>
+</div>

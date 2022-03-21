@@ -1,0 +1,18 @@
+<div id="taskQuery" class="taskquery-container">
+  <el-card class="box-card">
+    <div slot="header" class="clearfix">
+      <span>任务查询</span>
+    </div>
+    <div>
+      <el-input
+        type="textarea"
+        :rows="13"
+        placeholder="请输入序列号"
+        v-model="seriesStr">
+      </el-input>
+    </div>
+    <div class="footer">
+      <el-button slot="reference" type="primary" size="medium" @click="handleExportTask">一键导出</el-button>
+    </div>
+  </el-card>
+</div>

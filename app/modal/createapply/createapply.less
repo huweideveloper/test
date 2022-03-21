@@ -1,0 +1,74 @@
+.createapply{
+  margin-left: -250px;
+  margin-top: -300px;
+  width: 500px;
+  height: 600px;
+  font-size: 16px;
+  .modal-header{
+    position: relative;
+    .icon-guanbi{
+      position: absolute;
+      top:20px;
+      right: 20px;
+      cursor: pointer;
+    }
+  }
+  .modal-body{
+    padding: 15px 30px;
+    .inputLine{
+      position: relative;
+      width: 90%;
+      display: inline-block;
+      margin-bottom: 15px;
+      .names{
+        width: 155px;
+        vertical-align: top;
+      }
+      &>input{
+        height: 35px;
+        line-height: 35px;
+        border-radius: 4px;
+        border: 1px solid #e8e8e8;
+        width:200px;
+        padding-left: 10px;
+      }
+      &>div{
+        display: inline-block;
+      }
+      .xlk{
+        height: 35px;
+        line-height: 35px;
+        width:210px ;
+      }
+      textarea{
+        width: 200px;
+        padding-left: 10px;
+        border: 1px solid #e8e8e8;
+        resize: none;
+      }
+    }
+    .rangechoose{
+      &>div{
+        display: inline-block;
+      }
+    }
+  }
+  .modal-footer{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    a{
+      padding: 0 20px;
+      height: 35px;
+      line-height: 35px;
+    }
+    .btn-confirm{
+      color:#fff;
+    }
+  }
+  .required{
+    left: 160px;
+    top: 35px;
+    font-size: 10px;
+  }
+}

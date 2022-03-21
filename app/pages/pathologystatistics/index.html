@@ -1,0 +1,76 @@
+<div id="pathologystatistics" class="pathologystatistics-container">
+  <!-- 条件筛选区域 -->
+  <filter-container>
+    <div class="filter-conditions-wrapper">
+      <el-row>
+        <el-col :span="6">
+          <el-input placeholder="请输入任务ID" v-model.trim="inputTaskId" clearable></el-input>
+        </el-col>
+        <el-col :span="6">
+          <select-table-page multiple placeholder="请输入任务名称" v-model="taskIdList" :data="likeTaskList"
+            :remote-method="toQueryLikeTaskList" :loading="queryTasksLoading" key-name="taskId" value-name="taskName">
+          </select-table-page>
+        </el-col>
+        <el-col :span="6">
+          <el-input placeholder="请输入项目ID" v-model.trim="inputProjectId" clearable></el-input>
+        </el-col>
+        <el-col :span="6">
+          <select-table-page multiple placeholder="请输入项目名称" v-model="projectIdList" :data="likeProjectList"
+            :remote-method="toQueryLikeProjectList" :loading="queryProjectsLoading" key-name="projectId"
+            value-name="projectName"></select-table-page>
+        </el-col>
+      </el-row>
+      <el-row style="margin-top: 20px">
+        <el-col :span="6">
+          <select-search v-model="userIdList" filterable multiple clearable reserve-keyword placeholder="请输入用户姓名"
+            style="width: 100%;" :filter-method="toQueryLikeDoctorList" :loading="queryDoctorsLoading">
+            <el-option v-for="{ userId, name } in likeDoctorList" :key="userId" :label="name" :value="userId">
+              {{name}}（{{userId}}）</el-option>
+          </select-search>
+        </el-col>
+        <el-col :span="12" class="el-form-item-inline-noname">
+          <el-date-picker v-model="beginSubmitTime" type="date" style="width: 45%;" :picker-options="startTimeOptions"
+            value-format="yyyy-MM-dd" placeholder="开始日期" style="width: 100%;"> </el-date-picker>
+          <span style="width: 4%; text-align: center; font-size: 14px;">-</span>
+          <el-date-picker v-model="endSubmitTime" type="date" style="width: 47%;" :picker-options="endTimeOptions"
+            value-format="yyyy-MM-dd" placeholder="结束日期" style="width: 100%;"> </el-date-picker>
+        </el-col>
+        <el-col :span="6" style="min-width: 200px;">
+          <el-button type="primary" size="medium" @click="queryPathologystatistics">查询</el-button>
+          <el-button type="primary" size="medium" @click="exportPathologystatistics">导出</el-button>
+        </el-col>
+      </el-row>
+    </div>
+  </filter-container>
+  <!-- 列表数据区域 -->
+  <el-table class="table-data-wrapper" ref="pathologyTable" :data="pathologyListData" :span-method="objectSpanMethod"
+    empty-text="暂无数据，更改筛选条件试试?" border>
+    <el-table-column prop="projectId" label="项目ID">
+      <template slot-scope="scope">
+        <span class="bolder fs-16">{{scope.row.projectId}}</span>
+      </template>
+    </el-table-column>
+    <el-table-column prop="projectName" label="项目名称">
+      <template slot-scope="scope">
+        <span class="bolder fs-16">{{scope.row.projectName}}</span>
+      </template>
+    </el-table-column>
+    <el-table-column prop="taskId" label="任务号">
+      <template slot-scope="scope">
+        <span class="bolder">{{scope.row.taskId}}</span>
+      </template>
+    </el-table-column>
+    <el-table-column prop="taskName" label="任务名称">
+      <template slot-scope="scope">
+        <span class="bolder">{{scope.row.taskName}}</span>
+      </template>
+    </el-table-column>
+    <el-table-column prop="userName" label="用户姓名"></el-table-column>
+    <el-table-column prop="mobile" label="用户手机号"></el-table-column>
+    <el-table-column prop="submitSeriesNum" label="有效序列数"></el-table-column>
+    <el-table-column prop="discardSeriesNum" label="废片序列数"></el-table-column>
+    <el-table-column prop="imageName" label="细胞类型"></el-table-column>
+    <el-table-column prop="iarNum" label="标注（审核）数量"></el-table-column>
+    <el-table-column prop="goldNum" label="金标数量"></el-table-column>
+  </el-table>
+</div>

@@ -1,0 +1,63 @@
+<div id="ytjtaskstatistical" class="main-content-container ytjtask_statistical_container">
+  <div class="header-wrapper">
+    <div class="title">
+      <span>任务列表 > 查阅已提交任务 > 统计结果</span>
+    </div>
+  </div>
+  <el-table :data="tableData" row-key="iarId" :span-method="objectSpanMethod">
+    <el-table-column prop="seriesUid" label="序列号" min-width="200"></el-table-column>
+    <el-table-column prop="iarId" label="影像ID"></el-table-column>
+    <el-table-column prop="majorAxis" label="立体长径（mm）">
+      <template slot-scope="scope">{{scope.row.majorAxis | formatNumber}}</template>
+    </el-table-column>
+    <el-table-column prop="volume" label="体积（mm³）">
+      <template slot-scope="scope">{{scope.row.volume | formatNumber}}</template>
+    </el-table-column>
+    <el-table-column prop="avgHU" label="平均密度（HU）">
+      <template slot-scope="scope">{{scope.row.avgHU | formatNumber}}</template>
+    </el-table-column>
+    <el-table-column label="操作">
+      <template slot-scope="scope">
+        <el-link type="info" @click="handleShowModel(scope.row.iarId, scope.row.instanceInfo)">病灶数据统计</el-link>
+        <el-popover placement="left" popper-class="histogram-poper  all" width="700" trigger="click">
+          <div :id="`nidus-echarts-container${scope.row.iarId}`" class="nidus-echarts-container"></div>
+          <el-link type="info" slot="reference" @click="handleShowChartAll(scope.row)">直方图</el-link>
+        </el-popover>
+      </template>
+    </el-table-column>
+  </el-table>
+
+  <!-- 显示病灶数据统计 -->
+  <el-dialog custom-class="nidus-info-modal" title="病灶数据统计" :visible="visibleModel" @close="changeVisibleModel(false)" :closeOnClickModal="false">
+    <el-table :data="nidusInfoTableData" height="400px">
+      <el-table-column prop="sliceNumber" label="位置"></el-table-column>
+      <el-table-column prop="z" label="z坐标"></el-table-column>
+      <el-table-column prop="area" label="面积（mm²）">
+        <template slot-scope="scope">{{scope.row.area | formatNumber}}</template>
+      </el-table-column>
+      <el-table-column prop="histogram" label="密度分布（HU）" min-width="120">
+        <template slot-scope="scope">
+          <!-- <el-popover placement="right" popper-class="histogram-poper" title="密度分布" width="320" trigger="hover" :visible-arrow="true">
+            <div class="histogram-items">
+              <span v-for="item in scope.row.huInfo" :key="item.huVal">
+                <span style="display: inline-block; min-width: 40px;text-align: right;font-weight: bold;">{{item.huVal}}:</span>
+                <span style="display: inline-block; min-width: 40px; color: #999;">{{item.valCount}} 个</span>
+              </span>
+            </div>
+            <div slot="reference" class="histogram-item-tooltip">{{scope.row.huInfoStr}}</div>
+          </el-popover> -->
+          <el-popover placement="right" popper-class="histogram-poper" trigger="hover">
+            <div :id="`nidus-echarts-container${nidusInfoTableDataIarId}${scope.$index}`" class="nidus-echarts-container"></div>
+            <div slot="reference" class="histogram-item-tooltip" @mouseover="handleShowChart(scope.row, scope.$index)">{{scope.row.huInfoStr}}</div>
+          </el-popover>
+        </template>
+      </el-table-column>
+      <el-table-column prop="sliceMajorAxis" label="当前层长径(mm)" min-width="100">
+        <template slot-scope="scope">{{scope.row.sliceMajorAxis | formatNumber}}</template>
+      </el-table-column>
+      <el-table-column prop="sliceMinorAxis" label="当前层短径(mm)" min-width="100">
+        <template slot-scope="scope">{{scope.row.sliceMinorAxis | formatNumber}}</template>
+      </el-table-column>
+    </el-table>
+  </el-dialog>
+</div>

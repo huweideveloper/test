@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta http-equiv="Expires" content="0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <!-- <link rel="stylesheet" href="css/base.css" /> -->
+  <meta name="renderer" content="webkit" />
+  <!--link rel="shortcut icon" href="/images/bi/favicon.ico" /-->
+  <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+  <title>标注系统</title>
+  <link rel="dns-prefection" href="https://cdn.bootcss.com" />
+  <!-- <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" /> -->
+  <link rel="stylesheet" href="/biaozhu_iconfont/iconfont.css" />
+</head>
+
+<body>
+  <div id="header"></div>
+  <div id="main-body">
+    <div id="menu"></div>
+    <div name="content" id="content">
+      <div id="right-content"></div>
+    </div>
+  </div>
+  <!--div id="footer">footer</div -->
+  <!--script type="text/javascript" src="dev/main.js"></script-->
+  <script type="text/javascript" src="set.js"></script>
+  <script type="text/javascript">
+    window.libversion = 'v2.0'
+    window.lib_obj = {
+      cornerstone: {
+        url: '/libs/cornerstone_new/cornerstone.min.js',
+        name: 'cornerstone',
+        st: false
+      },
+      cornerstoneMath: {
+        url: '/libs/cornerstone_new/cornerstoneMath.min.js',
+        name: 'cornerstoneMath',
+        st: false
+      },
+      cornerstoneTools: {
+        url: '/libs/cornerstone_new/cornerstoneTools.min.js',
+        name: 'cornerstoneTools',
+        st: false
+      },
+      dicomParser: {
+        url: '/libs/cornerstone_new/dicomParser.min.js',
+        name: 'dicomParser',
+        st: false
+      },
+      cornerstoneWADOImageLoader: {
+        url: '/libs/cornerstone_new/cornerstoneWADOImageLoader.min.js',
+        name: 'cornerstoneWADOImageLoader',
+        st: false
+      }
+    }
+    // cornerstoneTools :https://unpkg.com/cornerstone-tools@2.3.8/dist/cornerstoneTools.min.js
+  </script>
+  <script type="text/javascript">
+    var wordcode = window.lan
+    var libversion = window.libversion
+    ;(function() {
+      var storage = window.localStorage
+      var languageaa = false
+      var lib_obj = window.lib_obj
+      if (getBroswer().broswer !== 'Chrome' && window.location.href.split('/')[4] !== 'errorpage') {
+        window.location.href =  window.location.origin + '/#!/errorpage'
+        window.location.reload()
+      }
+      if (getBroswer().broswer == 'IE') {
+        for (var i in lib_obj) {
+          var oScript = document.createElement('script')
+          oScript.type = 'text/javascript'
+          oScript.src = lib_obj[i].url
+          document.body.appendChild(oScript)
+          delete lib_obj[i]
+        }
+      }
+      var nowst = 0
+      if (storage.getItem('language_version') != wordcode && storage.getItem('lib_version') != libversion) {
+        nowst = 1
+      }
+      if (storage.getItem('language_version') == wordcode && storage.getItem('lib_version') != libversion) {
+        nowst = 2
+      }
+      if (storage.getItem('language_version') != wordcode && storage.getItem('lib_version') == libversion) {
+        nowst = 3
+      }
+      switch (nowst) {
+        case 0:
+          languageaa = true
+          for (var i in lib_obj) {
+            if (!storage.getItem(lib_obj[i].name)) {
+              addLib(lib_obj[i], false)
+            } else {
+              lib_obj[i].st = true
+            }
+          }
+          addMian()
+          break
+        case 1:
+          ajax({
+            url: 'language_v1.0.json?t=' + new Date().getTime(),
+            type: 'get',
+            dataType: 'json',
+            success: function(response) {
+              storage.setItem('language', JSON.stringify(response))
+              languageaa = true
+              addMian(true)
+            }
+          })
+          storage.setItem('language_version', wordcode)
+          for (var i in lib_obj) {
+            addLib(lib_obj[i], true)
+          }
+          break
+        case 2:
+          languageaa = true
+          for (var i in lib_obj) {
+            addLib(lib_obj[i], true)
+          }
+          break
+        case 3:
+          for (var i in lib_obj) {
+            if (!storage.getItem(lib_obj[i].name)) {
+              addLib(lib_obj[i], false)
+            } else {
+              lib_obj[i].st = true
+              //  eval(storage.getItem(lib_obj[i].name))
+            }
+          }
+          ajax({
+            url: 'language_v1.0.json?t=' + new Date().getTime(),
+            type: 'get',
+            dataType: 'json',
+            success: function(response) {
+              storage.setItem('language', JSON.stringify(response))
+              languageaa = true
+              addMian()
+            }
+          })
+          storage.setItem('language_version', wordcode)
+
+          break
+      }
+
+      function ajax(options) {
+        var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP')
+        var opt = {
+          type: options.type || 'get',
+          url: options.url || '',
+          async: true,
+          dataType: options.dataType || 'json',
+          questring: '',
+          contentType: options.contentType || 'application/x-www-form-urlencoded',
+          callback: options.success
+        }
+        xhr.open(opt.type, opt.url, opt.async)
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              if (xhr.responseText) {
+                if (opt.dataType === 'json') {
+                  var data = JSON.parse(xhr.responseText)
+                } else {
+                  var data = xhr.responseText
+                }
+                opt.callback(data) //resolve(data);
+              }
+            }
+          }
+        }
+        xhr.onerror = function() {}
+        xhr.setRequestHeader('Content-type', opt.contentType)
+        xhr.send(opt.questring)
+      }
+
+      function addLib(value, col) {
+        var jsname = value.name
+        ajax({
+          url: value.url,
+          type: 'get',
+          dataType: 'text',
+          success: function(response) {
+            storage.setItem(jsname, response)
+            lib_obj[jsname].st = true
+            // eval(response)
+            if (col) {
+              addMian(true)
+            }
+          }
+        })
+      }
+
+      function addMian(now) {
+        storage.setItem('lib_version', libversion)
+        if (now) {
+          for (var i in lib_obj) {
+            if (!lib_obj[i].st) {
+              return
+            }
+          }
+        }
+        if (!languageaa) {
+          return
+        }
+        for (var j in lib_obj) {
+          if (lib_obj[j].st) {
+            eval(storage.getItem(lib_obj[j].name))
+          }
+        }
+        return
+
+        var oScript = document.createElement('script')
+        oScript.type = 'text/javascript'
+        oScript.src = 'dev/main.js?r=' + new Date().getTime()
+        document.body.appendChild(oScript)
+      }
+
+      function getBroswer() {
+        var sys = {}
+        var ua = navigator.userAgent.toLowerCase()
+        var s
+        ;(s = ua.match(/edge\/([\d.]+)/))
+          ? (sys.edge = s[1])
+          : (s = ua.match(/rv:([\d.]+)\) like gecko/))
+          ? (sys.ie = s[1])
+          : (s = ua.match(/msie ([\d.]+)/))
+          ? (sys.ie = s[1])
+          : (s = ua.match(/firefox\/([\d.]+)/))
+          ? (sys.firefox = s[1])
+          : (s = ua.match(/ubrowser\/([\d.]+)/))
+          ? (sys.UC = s[1])
+          : (s = ua.match(/ucbrowser\/([\d.]+)/))
+          ? (sys.UC = s[1])
+          : (s = ua.match(/maxthon\/([\d.]+)/))
+          ? (sys.maxthon = s[1])
+          : (s = ua.match(/chrome\/([\d.]+)/))
+          ? (sys.chrome = s[1])
+          : (s = ua.match(/opera.([\d.]+)/))
+          ? (sys.opera = s[1])
+          : (s = ua.match(/version\/([\d.]+).*safari/))
+          ? (sys.safari = s[1])
+          : 0
+        if (_mime('type', 'application/vnd.chromium.remoting-viewer')) {
+          return { broswer: '360', version: sys.edge }
+        }
+        if (ua.lastIndexOf('qqbrowser') !== -1) {
+          return { broswer: 'QQBrowser', version: sys.edge }
+        }
+        if (sys.edge) return { broswer: 'Edge', version: sys.edge }
+        if (sys.ie) return { broswer: 'IE', version: sys.ie }
+        if (sys.firefox) return { broswer: 'Firefox', version: sys.firefox }
+        if (sys.opera) return { broswer: 'Opera', version: sys.opera }
+        if (sys.UC) return { broswer: 'UC', version: sys.opera }
+        if (sys.maxthon) return { broswer: 'maxthon', version: sys.opera }
+        if (sys.chrome) return { broswer: 'Chrome', version: sys.chrome }
+        if (sys.safari) return { broswer: 'Safari', version: sys.safari }
+        return { broswer: '', version: '0' }
+      }
+      function _mime(option, value) {
+        var mimeTypes = navigator.mimeTypes
+        for (var mt in mimeTypes) {
+          if (mimeTypes[mt][option] == value) {
+            return true
+          }
+        }
+        return false
+      }
+    })()
+  </script>
+</body>
+
+<!--script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script-->
+<script type="text/javascript" src="/libs/jquery223.js"></script>
+<script type="text/javascript" src="/libs/ajaxfileupload.js"></script>
+<!--script type="text/javascript" src="http://cdn.bootcss.com/iScroll/5.2.0/iscroll.min.js"></script-->
+<script type="text/javascript" src="/libs/spark-md5-3.0.0.min.js"></script>
+<script type="text/javascript" src="/libs/ufile.js"></script>
+<!--<script type="text/javascript" src="/libs/iscroll.5.2.js"></script>-->
+<script type="text/javascript" src="/libs/iscroll-probe.js"></script>
+<!--script type="text/javascript" src="dev/vendor.js"></script-->
+<script src="libs/aes.js"></script>
+
+<!-- 预加载图片库 -->
+<script src="/libs/ease.js"></script>
+<!-- <script src="/app/libs/preload.js"></script> -->
+
+<script type="text/javascript">
+  // window.onerror = function(errorMessage, scriptURI, lineNumber, columnNumber, errorObj) {
+  //     ES.ajax({
+  //         url: app.api.domain1 + 'v1/user/search',
+  //         type: "POST",
+  //         dataType: "json",
+  //         contentType: "application/json",
+  //         questring: value
+  //     }).then(function(response) {
+  //         if (!api.app.apiresult(response)) {
+  //             return
+  //         }
+  //         deferred.resolve(response);
+  //     }, function() {
+  //         deferred.reject(true);
+  //     });
+  // }
+</script>

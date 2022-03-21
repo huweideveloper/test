@@ -1,0 +1,186 @@
+#header {
+  .header {
+    height: 50px;
+    background-color: #fff;
+    .word_header {
+      float: left;
+      width: 200px;
+      padding: 13px 0;
+      font-size: 24px;
+      color: #fff;
+      letter-spacing: 0;
+      line-height: 24px;
+      background-color: #1f474c;
+      text-align: center;
+      .back {
+        font-style: normal;
+        font-size: 16px;
+        margin: 0 8px;
+      }
+      .split {
+        font-style: normal;
+        font-size: 16px;
+        margin: 0 8px;
+      }
+      .first {
+        font-size: 20px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .second {
+        font-size: 20px;
+        cursor: pointer;
+      }
+      .two {
+        font-size: 20px;
+        cursor: default;
+      }
+    }
+    .specialtask {
+      background: #448e97;
+    }
+    .headerCont {
+      display: inline-block;
+      float: right;
+      margin-right: 30px;
+      margin-top: 15px;
+      .loginName {
+        z-index: 1;
+        cursor: pointer;
+        color: #333;
+        i {
+          font-size: 17px;
+          display: inline-block;
+        }
+        .icon-icon-test3 {
+          font-size: 12px;
+          transform: rotate(180deg);
+        }
+        .icon-touxiang {
+          margin-right: 4px;
+        }
+        .names {
+          font-family: MicrosoftYaHei;
+          font-size: 16px;
+        }
+        .nameCont {
+          right: 23px;
+          top: 47px;
+          position: absolute;
+          width: 145px;
+          z-index: 51;
+          background: #ffffff;
+          box-shadow: 2px 2px 8px 0 rgba(180, 180, 180, 0.5);
+          border-radius: 5px;
+          a {
+            color: #333;
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+          }
+          a:hover {
+            background: #ecf3f4;
+            border-radius: 2px 2px 0 0;
+          }
+          .lastline {
+            margin-top: 6px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            border-top: 1px solid #e8e8e8;
+          }
+        }
+      }
+      .userinfo {
+        position: absolute;
+        top: 12px;
+        right: 50px;
+        cursor: pointer;
+        span {
+          margin-left: 10px;
+          line-height: 24px;
+        }
+        .loginout {
+          width: 100%;
+          background: #fff;
+          padding: 5px 0;
+          text-align: center;
+          display: none;
+          margin-top: 15px;
+          border-radius: 5px;
+          box-shadow: 0 0 5px rgba(56, 61, 80, 0.2);
+        }
+        .loginout:hover {
+          background: #528fcc;
+          color: #fff;
+        }
+      }
+      .userinfo:hover {
+        .loginout {
+          display: block;
+        }
+      }
+    }
+    .taskheader,
+    .projectheader,
+    .headercontrol {
+      float: left;
+      font-size: 18px;
+      color: #fff;
+      height: 50px;
+      line-height: 50px;
+      li {
+        display: inline-block;
+        cursor: pointer;
+        width: 130px;
+        text-align: center;
+        position: relative;
+        a {
+          display: inline-block;
+          color: #fff;
+          &:hover {
+            color: #fff;
+          }
+        }
+        span {
+          width: 100%;
+        }
+        .xiahuaxian {
+          .circle {
+            position: absolute;
+            display: inline-block;
+            background: #448e97;
+            border-radius: 100px;
+            top: 40px;
+            width: 8px;
+            height: 8px;
+            left: 0;
+          }
+          .line {
+            position: absolute;
+            display: inline-block;
+            background: #448e97;
+            border-radius: 100px;
+            top: 42px;
+            width: 120px;
+            height: 4px;
+            left: 11px;
+          }
+        }
+      }
+    }
+  }
+  .mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+  }
+}
+
+.yisheng {
+  background: #1f474c !important;
+  .loginName {
+    color: #fff !important;
+  }
+}

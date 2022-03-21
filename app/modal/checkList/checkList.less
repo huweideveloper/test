@@ -1,0 +1,164 @@
+.checkList{
+  width: 590px;
+  height: 364px;
+  margin-left: -175px;
+  //padding: 8px 20px;
+  .srocllcheck{
+    position: relative;
+    overflow: hidden;
+    //height: 100%;
+  }
+  //.check_con {
+  //  position: relative;
+  //  overflow: hidden;
+  //}
+  .modal-header{
+    padding: 8px 20px;
+    background: #F4F4F4;
+    .modal-title {
+      font-family: MicrosoftYaHei;
+      font-weight: bold;
+      font-size: 18px;
+      color: #333333;
+      letter-spacing: 0;
+    }
+    i {
+      font-size: 15px;
+      position: absolute;
+      right: 20px;
+      top: 9px;
+      cursor: pointer;
+    }
+  }
+  .inputLine {
+    .permissionName{
+      font-size: 14px;
+      color: #333333;
+      letter-spacing: 0;
+      text-align: center;
+
+    }
+    input{
+      width: 188px;
+      height: 30px;
+      border: 1px solid #E8E8E8;
+      border-radius: 4px;
+      padding-left: 5px;
+      margin-left: 10px;
+    }
+  }
+  .check_das {
+    margin-top: 20px;
+    border-top: 1px dashed  #E8E8E8;
+    border-bottom: 1px dashed  #E8E8E8;
+    height:200px ;
+  }
+  .modal_jur{
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  .check_content{
+    //display: inline-block;
+    float: right;
+    width: calc(~"100% - 70px");
+    //margin-left: 10px;
+    height: 100%;
+    margin-top: 10px;
+  }
+  .jur_tltie{
+    display: inline-block;
+    position: relative;
+    left: -4px;
+  }
+  .jur_con{
+    display: inline-block;
+    width:50px;
+    max-width: 50px;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
+    vertical-align: bottom;
+  }
+  .jur_word{
+    width:56px;
+    max-width: 56px;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
+    vertical-align:middle;
+    font-size: 14px;
+  }
+  .jur_contion{
+    margin: 10px 30px 0;
+    //width: 14%;
+    display: inline-block;
+    position: relative;
+  }
+  .perssion_right{
+    position: relative;
+    top: -28px;
+    left: 51px;
+  }
+  .jur_topcheck,.jur_check{
+    width: 8px;
+    height: 8px;
+    border: 1px solid #c9c9c9;
+    border-radius: 2px;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+  .jur_content{
+    display: inline-block;
+    //float: right;
+
+    .jur_contion{
+      display: inline-block;
+      //margin: 0 10px;
+      position: relative;
+      top: -19px;
+      left:86px;
+      width: 20%;
+      //font-size: 18px;
+      .jur_con{
+        display: inline-block;
+
+      }
+    }
+  }
+  .das_tilte {
+    float: left;
+  }
+  .checked:before{
+    content: '✔';
+    font-size: 10px;
+    line-height: 10px;
+    position: absolute;
+    top: 4px;
+    left:5px;
+    color: #fff;
+    background: #448E97;
+  }
+  .modal-footer{
+    //position: absolute;
+    //bottom: 0px;
+    text-align: right;
+    width: 100%;
+    a{
+      padding: 0 20px;
+      height: 35px;
+      line-height: 35px;
+    }
+    .btn-confirm{
+      color:#fff;
+      width: 28px;
+      height: 30px;
+      line-height: 30px;
+    }
+    .btn-cancel{
+      width: 28px;
+      height: 30px;
+      line-height: 30px;
+      margin-right: 20px;
+    }
+  }
+}

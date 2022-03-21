@@ -1,0 +1,16 @@
+<ul class="tab">
+    <%=for(var w = 0;w < p.data.length; w++){
+var stu=p.data[w];
+var sel="";
+if(p.default==stu.id){
+	sel='selected';
+}
+=%>
+    <li class="option <%==sel=%>" node_id="<%==stu.id=%>">
+        <p>
+            <%==stu.name=%>
+        </p>
+    </li>
+    <%=}=%>
+</ul>
+<div style="clear: both"></div>

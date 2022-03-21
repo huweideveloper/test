@@ -1,0 +1,119 @@
+<div class="modal addimage">
+    <div class="modal-header">
+        <p class="modal-title" data-i18n='xzyh' data-name="添加新成员">影像数据筛选</p>
+        <div class="topchoose">
+            <a class="fsk choosed">放射科</a>
+            <a class="blk">其他</a>
+        </div>
+        <i class="iconfont icon-guanbi"></i>
+    </div>
+    <div class="scrollarea">
+        <div class="scroll">
+            <div class="filterarea">
+                <div class="hospitalCode"></div>
+                <div class="bodyPart"></div>
+                <div class="modality"></div>
+                <div class="fileType"></div>
+                <br>
+                <div class="kernelCapital radioonly"></div>
+                <div class="kernalfilter inputfw radioonly">
+                    <span>Kernel数值范围</span>
+                    <input type="text" class="kernelLower" check="num"/>
+                    <label>-</label>
+                    <input type="text" class="kernelUpper" check="num"/>
+                </div>
+                <div class="inputfw">
+                    <span style="width: 50px">关键字</span>
+                    <input type="text" class="keyword"/>
+                </div>
+                <br>
+                <span style="margin: 0 41px 0 5px;" class="radioonly">年龄范围</span>
+                <div class="patientAgeType radioonly"></div>
+                <div class="agefilter inputfw radioonly">
+                    <input type="text" class="patientAgeLower" check="num"/>
+                    <label>-</label>
+                    <input type="text" class="patientAgeUpper" check="num"/>
+                </div>
+                <div class="patientSex radioonly"></div>
+                <br>
+                <div class="chfilter inputfw radioonly">
+                    <span>层厚区间(mm)</span>
+                    <input type="text" class="sliceThicknessLower" check="num"/>
+                    <label>-</label>
+                    <input type="text" class="sliceThicknessUpper" check="num"/>
+                </div>
+                <div class="row radioonly"></div>
+                <br>
+                <div class="csfilter inputfw radioonly">
+                    <span>层数范围</span>
+                    <input type="text" class="layerCountLower" check="num"/>
+                    <label>-</label>
+                    <input type="text" class="layerCountUpper" check="num"/>
+                </div>
+                <div class="dyfilter inputfw radioonly">
+                    <span>电压范围</span>
+                    <input type="text" class="kvpLower" check="num"/>
+                    <label>-</label>
+                    <input type="text" class="kvpUpper" check="num"/>
+                </div>
+                <span class="radioonly">序列是否有效：</span>
+                <div class="isValid radioonly"></div>
+            </div>
+            <div class="sjandjl radioonly">
+                <ul class="sj">
+                    <li class="sjli">
+                        <span>检查所见</span>
+                        <div class="bhxlk"></div>
+                        <input class="liinput" type="text"/>
+                    </li>
+                    <li class="sjli">
+                        <div class="andor"></div>
+                        <div class="bhxlk"></div>
+                        <input class="liinput" type="text"/>
+                    </li>
+                    <li class="sjli">
+                        <div class="andor"></div>
+                        <div class="bhxlk"></div>
+                        <input type="text" class="liinput"/>
+                    </li>
+                    <div class="andor middle">
+                    </div>
+                </ul>
+
+                <ul class="jl">
+                    <li class="jlli">
+                        <span>诊断</span>
+                        <div class="bhxlk"></div>
+                        <input class="liinput" type="text"/>
+                    </li>
+                    <li class="jlli">
+                        <div class="andor"></div>
+                        <div class="bhxlk"></div>
+                        <input type="text" class="liinput"/>
+                    </li>
+                    <li class="jlli">
+                        <div class="andor"></div>
+                        <div class="bhxlk"></div>
+                        <input  type="text" class="liinput"/>
+                    </li>
+                </ul>
+            </div>
+            <div class="timefilter">
+                <span class="radioonly">检查时间</span>
+                <div class="timefiltercont radioonly"></div>
+                <span>上传时间</span>
+                <div class="timefiltercont1"></div>
+                <a class="searchbtn biaozhubtn">查询</a>
+                <a class="add addall biaozhubtn">一键添加所有结果</a>
+            </div>
+            <div class="datatable">
+
+            </div>
+            <div class="viewbtn hide">
+                <a class="biaozhubtn downloadall">下载所有影像链接</a>
+                <a class="biaozhubtn downloadpart">下载未被任务选取影像名</a>
+            </div>
+        </div>
+    </div>
+
+</div>

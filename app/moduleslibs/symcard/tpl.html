@@ -1,0 +1,46 @@
+
+<div class="_symcard">
+    <div class="card_title">
+    <div class="_copy exam_copy" data-i18n="copy" data-name="复制"></div>
+        <%=if(!p.mark) {=%><div class="_wrong" data-mark="1" data-i18n="check" data-name="纠错"></div><%=} else {=%>
+            <div class="_wrong" data-mark="0" data-i18n="error" data-name="撤销纠错"></div>
+                <%=}=%>
+        <span class="_symp"><%==p.name=%></span>
+        <span class="_star">
+            <i class="iconfont icon-kongyaopin"></i><i class="iconfont icon-kongyaopin"></i><i class="iconfont icon-kongyaopin"></i><i class="iconfont icon-kongyaopin"></i><i class="iconfont icon-kongyaopin"></i>
+            <span class="_shi">
+                <i class="iconfont icon-yaopin"></i><i class="iconfont icon-yaopin"></i><i class="iconfont icon-yaopin"></i><i class="iconfont icon-yaopin"></i><i class="iconfont icon-yaopin"></i>
+            </span>
+        </span>
+        
+    </div>
+    <div class="card_info">
+        <div class="_noData" data-i18n="nolesion" data-name="暂无此类病灶"></div>
+        <div class="info_box">
+            <div class="_examine contentbox" contenteditable="true"><%=if(!p.see) {=%>
+                 <!-- <span data-i18n="findings" data-name="检查所见："></span> -->
+                 <%=if(p.exam) {=%>
+                            <%==p.exam=%>
+                        <%=} else {=%>
+                            <%==p.examLeft + p.prob + p.examRight=%>
+                        <%=}=%>
+            <%=} else {=%>
+                <%==p.see=%>
+            <%= } =%>
+            </div>
+            <div class="clearfix"><div class="_copy sug_copy" data-i18n="copy" data-name="复制"></div></div>            
+            <div class="_suggestion contentbox" contenteditable="true"><%=if(!p.conclusion) {=%>
+                <!-- <span data-i18n="sug" data-name="总结意见："></span> -->
+                <%=if(p.sug) {=%>                
+                    <%==p.sug=%>
+                <%=} else {=%>
+                    <%==p.sugLeft + p.prob + p.sugRight=%>
+                <%=}=%>
+            <%=} else {=%>
+                <%==p.conclusion=%>
+            <%= } =%>
+            </div>
+        </div>
+        <!-- <div class="textarea"><textarea name="" id="" cols="30" rows="10"></textarea></div> -->
+    </div>
+</div>

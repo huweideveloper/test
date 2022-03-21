@@ -1,0 +1,54 @@
+<%=
+var fsize=((p.type==0)?"16px":"14px");
+
+var nameS=p.name;
+            if(nameS.length>10){
+                nameS=nameS.substr(0,9)+'...';
+            }
+=%>
+    <p nowId="<%==p.id=%>" floder="<%==p.type=%>" parentId="<%==p.p_id=%>" class="name-show" title="<%==p.name=%>" style="font-size:<%==fsize=%>;">
+        <%=switch(p.type){
+        case "folder":=%>
+                <span class="icon4"></span>
+                <%=break;
+        case 1:=%>
+                <span class="icon4"></span>
+                <%=break;}=%>
+                    <%=var nameS=p.name;
+            if(nameS.length>10){
+                nameS=nameS.substr(0,9)+'...';
+            }
+            =%>
+                        <%==nameS=%>
+    </p>
+    <%=if(p.p_id!="root"&&p.action==false){=%>
+        <%= var selwi=Math.floor($(window).width()*0.16);  =%>
+            <div class="role-select" style="width: <%==selwi=%>px;">
+                <%=
+                  var rolchoose={name:"",id:""};
+                    if(p.selRoleIndex||p.selRoleIndex==0){
+                  if(p.selRoleIndex!=-1){
+                    rolchoose=p.roles[p.selRoleIndex];
+                  }}=%>
+                    <input type="text" placeholder="选择角色" chooseroleId="<%==rolchoose.id=%>" value="<%==rolchoose.name=%>">
+                    <select floder="<%==p.type=%>">
+                        <%=if(p.roles){
+                for(var w=0;w<p.roles.length;w++){=%>
+                            <%=var rolname=p.roles[w];=%>
+                                <option value="<%==rolname.id=%>">
+                                    <%==rolname.name=%>
+                                </option>
+                                <%=}}=%>
+                    </select>
+            </div>
+            <%=}=%>
+                <%=if(p.action){=%>
+                    <div class="action">
+                        <%=for(var i=0;i<p.permissionList.length;i++){=%>
+                            <div class="meun-node" orgin="<%==p.orignIndex=%>" findex="<%==p.findex=%>" aindex="<%==i=%>">
+                                <div class="checkbox <%==p.permissionList[i].isActive?'choose':''=%>" style="margin-top: 13px;"></div><span style="clear: both"><%==p.permissionList[i].displayName=%></span>
+                            </div>
+                            <%=}=%>
+                                <div style="clear:both"></div>
+                    </div>
+                    <%=}=%>

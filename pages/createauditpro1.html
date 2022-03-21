@@ -1,0 +1,29 @@
+<div class="createauditpro1">
+  <div class="scroll">
+    <a class="biaozhubtn save">保存</a>
+    <p class="title">第一步：B端审核项目信息</p>
+    <div class="inputLine w100" redlabel="inputBox">
+      <span class="w135"><label class="redstar">*</label>审核项目名称：</span>
+      <input type="text" class="inputBox apidata proname" check="empty" api="name" />
+    </div>
+    <br />
+    <div class="inputLine w100" redlabel="inputBox">
+      <span class="w135"><label class="redstar">*</label>审核项目描述：</span>
+      <textarea type="text" class="inputBox apidata" check="empty" api="remark"></textarea>
+    </div>
+    <div class="inputLine w100 justToJudge" redlabel="xlk">
+      <span class="w135">项目群组：</span>
+      <div class="groupId" check="empty"></div>
+    </div>
+    <div class="uploadarea" id="uploadarea">
+      <img src="/images/page/shangchuan.png" />
+      <p>可以上传图片、视频文件等规范外部医生标注</p>
+      <input type="file" class="dianjiupload" id="uploader" />
+    </div>
+    <ul class="filelist"></ul>
+    <div class="inputLine w100" redlabel="inputBox">
+      <span class="w135">审核项目备注：</span>
+      <textarea type="text" class="inputBox apidata" check="" api="description"></textarea>
+    </div>
+  </div>
+</div>

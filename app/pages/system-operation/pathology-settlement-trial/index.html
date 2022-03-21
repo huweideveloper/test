@@ -1,0 +1,16 @@
+<div id="pathologySettlementTrial" class="pathology-settlement-trial-container">
+  <el-card class="box-card" v-loading="loading" element-loading-text="拼命试算中" element-loading-spinner="el-icon-loading"
+    element-loading-background="rgba(0, 0, 0, 0.6)">
+    <div slot="header" class="clearfix">
+      <span>病理结算试算</span>
+    </div>
+    <div>
+      <el-upload ref="uploadRef" class="upload-demo" action="aaa" :file-list="fileList" :auto-upload="true"
+        :before-upload="handleBeforeUpload" :on-change="handleChange" drag>
+        <i class="el-icon-upload"></i>
+        <div class="el-upload__text">将CSV文件拖到此处，或<em>点击上传</em></div>
+        <!-- <div class="el-upload__tip" slot="tip">只能上传CSV文件</div> -->
+      </el-upload>
+    </div>
+  </el-card>
+</div>

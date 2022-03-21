@@ -1,0 +1,36 @@
+<div class="filterNeedDetail">
+    <div class="scroll">
+        <p class="title"><a class="back">返回列表></a>筛选需求</p>
+        <div class="toparea">
+            <div class="requirementName inputLine" redlabel="inputBox">
+                <span class="w135"><label class="redstar">*</label>需求名称：</span>
+                <input type="text" class="inputBox apidata" check="empty" api="name" />
+            </div>
+            <div class="tagarea" redlabel="xlk">
+                <span><label class="redstar">*</label>项目类型：</span>
+                <div class="inputLine" redlabel="xlk">
+                    <div class="sicknessType" check="empty"></div>
+                </div>
+                <div class="inputLine" redlabel="xlk">
+                    <div class="projectFunction" check="empty"></div>
+                </div>
+            </div>
+            <div class="inputLine half" redlabel="duoxuanxlk">
+                <span><label class="redstar">*</label>筛选模式：</span>
+                <div class="mode" check="empty"></div>
+            </div>
+            <a class="biaozhubtn save">保存</a>
+        </div>
+        <div class="tablearea">
+            <p class="title">筛选列表<i class="iconfont icon-tianjia"></i></p>
+            <div class="batchArea">
+                <a class="strokeBtn export">以序列号导入</a>
+                <a class="strokeBtn batchExport">批量导出</a>
+                <a class="strokeBtn batchStart">批量执行</a>
+                <a class="strokeBtn batchRestart">批量重跑</a>
+                <input type="file" id="file" class="file" name="file"/>
+            </div>
+            <div class="revertTable"></div>
+        </div>
+    </div>
+</div>

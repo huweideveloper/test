@@ -1,0 +1,77 @@
+/**
+ *@Description: 覆盖element-ui默认的一些样式
+ */
+// .el-dialog__wrapper .el-dialog {
+//   .el-input,
+//   .el-select {
+//     width: 300px;
+//   }
+// }
+
+.el-table {
+  thead tr th {
+    background-color: #eaf5f8;
+    text-align: center;
+    color: #333;
+  }
+  tbody tr td {
+    text-align: center;
+  }
+  .is-left {
+    text-align: left;
+  }
+}
+
+.el-popconfirm {
+  max-width: 250px;
+}
+
+.el-pagination {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.el-message-box__wrapper .el-message-box {
+  width: auto;
+  min-width: 420px;
+  max-width: 80%;
+  .el-message-box__content {
+    overflow-x: auto;
+    max-height: 400px;
+  }
+}
+
+// 弹出框
+.el-dialog__body {
+  padding: 0 20px 10px;
+}
+
+// 下拉选项
+.el-select .el-tag {
+  &:last-child {
+    padding: 0 4px;
+  }
+  &:not(:last-child),
+  &:first-child {
+    max-width: 70%;
+    padding: 0 8px;
+    .el-select__tags-text {
+      display: inline-block;
+      max-width: 85%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  .el-tag__close.el-icon-close {
+    top: -7px;
+  }
+}
+
+.el-popover.el-popper {
+  z-index: 9999!important;
+}
+
+.el-select-dropdown {
+  max-width: 800px;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  let token = location.href.split('token')[1].split('=')[1]
+  console.log(token)
+  let header={key:'Authorization',value:token}
+  query('http://service-bajie.cloudmvd.com/api/web/user/logined/getUserInfo', "get", '' ,  function (res) {
+    console.log(res.code)
+	  if(res.code == 0){
+			let json={
+              appId:res.result.appId,
+              secret:res.result.secret,
+              mobile:res.result.mobile,
+              userName:res.result.userName,
+              appUserId:res.result.appUserId,
+              groupName:res.result.groupName,
+              callbackUrl:res.result.callbackUrl,
+			}
+			console.log(json)
+			// query('http://bzapi.dev.proxima-ai.com/v1/tUser/registLogin', 'post',  json, function (res1) {
+			query('http://172.16.200.76:18051/v1/user/registLogin', 'post',  json, function (res1) {
+				if(res1.code == 0){
+				// 创建成功后把用户相关信息，放到鉴影对应的locaStage里面
+                  let json={
+                    name:res1.data.user.name,
+                    userId:res1.data.user.id,
+                    roles:res1.data.roleList,
+                    group:res1.data.group,
+                    productList:res1.data.user.productList,
+                    status:res1.data.user.status,
+                  }
+				  localStorage.setItem("all",JSON.stringify(json))
+				  localStorage.setItem("accessToken",JSON.stringify(res1.data.accessToken))
+				  // 存储完后 跳转到鉴影
+				  location.href = 'http://bzsite.dev.proxima-ai.com/#!/personalaccount'
+				}
+			})
+		}
+  },header)
+  function query( url, type ,data, cb,header) {
+    console.log(data,type)
+    let xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+    xhr.open(type, url, true)
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        if (xhr.responseText) {
+          cb(JSON.parse(xhr.response))
+        } else {
+          alert('失败')
+          window.history.go(-1);
+        }
+      }
+    }
+    xhr.onerror = function () {
+      alert('失败')
+      window.history.go(-1);
+    }
+	if(header){
+		xhr.setRequestHeader(header.key, header.value);
+	}
+	if(type.toLowerCase() !== 'get'){
+		data =  JSON.stringify(data)
+	}
+	console.log(data)
+    xhr.send(data);
+  }
+
+</script>

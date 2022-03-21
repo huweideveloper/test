@@ -1,0 +1,40 @@
+<div class="jyslogin-container">
+  <div class="head-wrapper">
+    <img class="logo" src="/images/page/logo-img-jys.png">
+    <span class="title">上海市计算技术研究所</span>
+  </div>
+  <div class="body-container">
+    <div class="login-area-wrapper">
+      <div class="title">用户登录</div>
+      <div class="login-form-wrapper">
+        <div class="input-item-wrapper">
+          <i class="phone-no-prefix">+86</i>
+          <input type="text" class="name" placeholder="请输入您的手机号码"/>
+        </div>
+        <div class="input-item-wrapper">
+          <i class="iconfont icon-mima"></i>
+          <input type="password" class="password" placeholder="请输入密码"/>
+        </div>
+        <div class="remember-pwd-wrapper">
+          <a class="remeber"><i class="check-box"></i>记住密码</a>
+        </div>
+        <div class="loginBtn">登录</div>
+        <div class="errorSpan hide"></div>
+      </div>
+
+      <div class="corner left-top-corner"></div>
+      <div class="corner right-top-corner"></div>
+      <div class="corner right-bottom-corner"></div>
+      <div class="corner left-bottom-corner"></div>
+    </div>
+    <div class="slogan-wrapper">
+      <p class="slogan1" style="margin-top: 38px">上海医学人工智能研发与转化平台</p>
+      <p class="slogan1" style="margin-top: 10px">—医学影像科研子平台</p>
+      <p class="slogan2">专注医疗人工智能数据服务</p>
+    </div>
+  </div>
+
+  <div id="product-disclaimer-wrapper">
+    <product-disclaimer :visible.sync="isShowProductDisClainmer" :date="updateDate" @confirm="confirmDisclaimer"></product-disclaimer>
+  </div>
+</div>

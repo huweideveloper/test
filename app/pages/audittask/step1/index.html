@@ -1,0 +1,34 @@
+<div id="auditTaskStepOne" class="step-one-container">
+  <div class="header-wrapper">
+    <span class="title">C端审核任务信息</span>
+    <el-button v-if="!isView" type="primary" @click="save">保存</el-button>
+  </div>
+  <el-form ref="auditTaskForm" :model="auditTaskForm" :rules="rules" label-width="150px" label-suffix="：">
+    <el-row v-if="isAdd">
+      <el-col :span="24">
+        <!-- 审核/算法审核-数据来源+算法目的+标注任务id+任务开启日期 -->
+        <task-name-item ref="taskNameRef" v-model="auditTaskForm.nameData" label="C端审核任务名称" type-name="审核" data-count-label="标注任务id"
+          :label-width="150"></task-name-item>
+      </el-col>
+    </el-row>
+    <el-form-item label="C端审核任务名称" prop="name">
+      <el-input v-model.trim="auditTaskForm.name" placeholder="请输入C端审核任务名称" clearable :disabled="isAdd || isView">
+      </el-input>
+    </el-form-item>
+    <el-form-item label="所属审核项目" prop="projectId">
+      <el-select v-model="auditTaskForm.projectId" placeholder="请选择审核项目" filterable clearable reserve-keyword
+        default-first-option :disabled="isView || isEdit || (auditTaskStatus && auditTaskStatus !== 1)">
+        <el-option v-for="item in auditProjectList" :key="item.auditProjectId" :label="item.auditProjectName"
+          :value="item.auditProjectId"></el-option>
+      </el-select>
+    </el-form-item>
+    <el-form-item label="C端审核任务描述">
+      <el-input type="textarea" :rows="4" placeholder="请输入C端审核任务描述" v-model.trim="description" clearable
+        :disabled="isView"></el-input>
+    </el-form-item>
+    <el-form-item label="C端审核任务备注">
+      <el-input type="textarea" :rows="4" placeholder="请输入C端审核任务备注" v-model.trim="remark" clearable :disabled="isView">
+      </el-input>
+    </el-form-item>
+  </el-form>
+</div>

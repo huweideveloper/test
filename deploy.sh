@@ -1,0 +1,1 @@
+mv /home/gitlab-runner/builds/1c87dc38/0/annotation/website/dev /data/jy/pri_deploy/dev/mount/html

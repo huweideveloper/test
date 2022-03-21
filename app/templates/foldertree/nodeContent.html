@@ -1,0 +1,9 @@
+    <div class="radio" ></div><p nowId="<%==p.id=%>" floder="<%==p.floder=%>" parentId="<%==p.p_id=%>" class="name-show" title="<%==p.alias||p.name=%>">
+
+    <%=var nameS=p.alias||p.name;
+            if(nameS.length>7){
+                nameS=nameS.substr(0,6)+'...';
+            }
+            =%>
+        <%==nameS=%>
+</p>

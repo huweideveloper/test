@@ -1,0 +1,203 @@
+@tj: 50px;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  // width: 100%;
+  // min-width: 1000px;
+  // height: 100%;
+  // overflow: hidden;
+  font-family: "Microsoft YaHei", "microsoft yahei", STHeiti,
+    "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-size: 14px;
+  color: #666;
+  background-color: #f9f9f9;
+  a {
+    cursor: pointer;
+  }
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 10;
+}
+
+#main-body {
+  overflow: hidden;
+  #menu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    // height: 90%;
+    background-color: #0a2634;
+    margin-top: 50px;
+    font-size: 0;
+    z-index: 1001;
+    overflow-y: auto;
+  }
+  #content {
+    position: relative;
+    min-height: 100%;
+    // margin-left: 200px;
+    margin-top: 70px;
+    #right-content {
+      background-color: #f9f9f9;
+      margin: 20px;
+    }
+  }
+}
+
+#footer {
+  width: 100%;
+  clear: both;
+  height: 50px;
+  z-index: 3;
+  bottom: 0;
+  position: absolute;
+  font-size :14px;
+  color:#fff;
+  text-align: center;
+}
+
+#bottom {
+  width: 100%;
+  height: @tj;
+  display: table-row;
+}
+
+.bodyWrap {
+  min-width: 1280px;
+}
+
+.cont .selectArrow,
+.headerCont .selectArrow {
+  background-position: -210px -13px;
+  width: 15px;
+  height: 15px;
+  margin-left: 10px;
+}
+
+.selecti {
+  position: absolute;
+  right: 10px;
+  top: 3px;
+}
+
+.emblue {
+  color: #528ffc;
+}
+
+.bgcolor1 {
+  background: #85c2ff;
+}
+
+.bgcolor2 {
+  background: #528fcc;
+}
+
+.bgcolor3 {
+  background: #cdbedb;
+}
+
+.bgcolor4 {
+  background: #9980b9;
+}
+
+.bgcolor5 {
+  background: #44b6ae;
+}
+
+.borLine {
+  border: solid 1px #e7ecf3;
+  margin: 0 10px 10px;
+}
+
+.borTop {
+  border-top: solid 1px #e7ecf3;
+}
+
+span {
+  display: inline-block;
+}
+
+select {
+  width: 130px;
+  height: 22px;
+  background: none;
+  border: none;
+  -webkit-appearance: none;
+  padding-left: 10px;
+  padding-right: 19px;
+  outline: 0;
+  color: #798ba9;
+}
+
+// input {
+//   color: #798ba9;
+// }
+
+.timeView {
+  width: 178px;
+}
+
+.dataNone {
+  dl {
+    text-align: center;
+    height: 100px;
+  }
+  dt {
+    background: url(/images/bi/no_data.png) no-repeat;
+    width: 53px;
+    height: 53px;
+    margin: 0 auto;
+    margin-top: 23px;
+  }
+  dd {
+    font-size: 12px;
+    color: #aaa;
+    margin: 13px 0 23px;
+  }
+}
+
+.maxPadding {
+  padding: 23px 0;
+}
+
+.tip {
+  display: none;
+  position: absolute;
+  background-color: #60656d;
+  color: #dedfe0;
+  font-size: 12px;
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+
+.shadow {
+  box-shadow: 0px 0px 10px #ccc;
+}
+
+.iScrollVerticalScrollbar .iScrollIndicator {
+  border: 0 !important;
+  width: 4px !important;
+  border-radius: 2px !important;
+  background: rgba(154, 150, 150, 0.5) !important;
+  cursor: pointer;
+}
+.iScrollLoneScrollbar .iScrollIndicator {
+  background: rgba(154, 150, 150, 0.5) !important;
+  cursor: pointer;
+}
+.iScrollVerticalScrollbar {
+  width: 4px !important;
+}

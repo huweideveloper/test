@@ -1,0 +1,122 @@
+.rangechoose {
+    width: 100%;
+    position: relative;
+    .range-text {
+        text-align: center;
+        border-radius: 2px 2px 0 0;
+        cursor: pointer;
+        &.select {
+            background: #fff;
+            color: #333;
+        }
+    }
+    .range-mask {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        display: none;
+        top: -86px;
+        left: 0;
+    }
+    .control-content {
+        box-sizing: border-box;
+        padding: 8px 5px;
+        background: #fff;
+        border-radius: 2px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 140px;
+        height: 70px;
+        display: none;
+        .range {
+            height: 12px;
+            width: 100px;
+            position: relative;
+            margin: 17px 8px;
+            .rangeLine {
+                width: 100%;
+                height: 6px;
+                position: absolute;
+                left: 0;
+                top: 2px;
+                border-radius: 2px;
+                border: 1px solid #448E97;
+                overflow: hidden;
+                cursor: pointer;
+            }
+            .range-background {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                right: 0;
+                background: url('/images/page/background60.png');
+                transition: all .5s;
+            }
+            .rnage-line {
+                width: 100%;
+                height: 100%;
+                bottom: 0;
+                right: 0;
+                position: absolute;
+                background: url('/images/page/gradient.png');
+                transition: all .5s;
+            }
+            .range-round {
+                width: 12px;
+                height: 12px;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                border-radius: 50%;
+                overflow: hidden;
+                background: url('/images/page/button.png');
+                background-size: 12px 12px;
+                cursor: col-resize;
+                transition: all .5s;
+            }
+        }
+        .range-max,
+        .range-min,
+        .range-now {
+            position: absolute;
+            color: #333333;
+            top: 20px;
+            z-index: 1;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            user-select: none;
+        }
+        .range-max {
+            right: 2px;
+        }
+        .range-min {
+            left: 4px;
+        }
+        .range-now {
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #448E97;
+            transition: all .5s;
+        }
+        .range_sure_btn {
+            position: absolute;
+            bottom: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            text-align: center;
+            line-height: 20px;
+            background: #448E97;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            &:hover {
+                background: #1F474C;
+            }
+        }
+    }
+}

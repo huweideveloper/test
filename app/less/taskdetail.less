@@ -1,0 +1,125 @@
+.taskdetail {
+  // margin: 20px 40px;
+  .left {
+    width: 100%;
+    clear: both;
+    position: relative;
+    & > .scroll {
+      overflow: hidden;
+      .infoscorll {
+        overflow: hidden;
+        clear: both;
+      }
+    }
+    .breadcrumb {
+      font-size: 20px;
+      font-weight: bolder;
+      margin: 10px 0;
+      // width: 98%;
+      .back {
+        transform: rotate(-90deg);
+        margin-right: 10px;
+      }
+    }
+    .basicinfo {
+      // width: 98%;
+      font-size: 14px;
+      position: relative;
+      .tasktitle {
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+    }
+
+    .btnall {
+      background: #4c9fa9;
+      color: #fff;
+      top: 20px;
+    }
+    .importalg {
+      top: 20px;
+      background: #4c9fa9;
+      color: #fff;
+    }
+    .algdone {
+      top: 70px;
+      border: 1px solid #4c9fa9;
+      color: #4c9fa9;
+    }
+    .biaozhubtn {
+      padding: 0 20px;
+      position: absolute;
+      right: 20px;
+      height: 36px;
+      font-size: 16px;
+      text-align: center;
+      line-height: 36px;
+      display: inline-block;
+      border-radius: 4px;
+    }
+    .disabled {
+      color: #c0c4cc;
+      border: 1px solid #ebeef5;
+      cursor: not-allowed;
+    }
+    .infoarea {
+      background: #fff;
+      padding: 20px 30px;
+
+      p {
+        line-height: 45px;
+        span {
+          width: 48%;
+        }
+      }
+      .fujian {
+        height: 80px;
+        line-height: 80px;
+      }
+    }
+
+    .series {
+      // width: 98%;
+      font-size: 14px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      .seriestitle {
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+      .filterarea {
+        padding-left: 20px;
+        margin-bottom: 10px;
+        input {
+          height: 32px;
+          border: 1px solid #e8e8e8;
+          border-radius: 4px;
+          margin-right: 10px;
+        }
+      }
+      .seriestable {
+        background: #fff;
+      }
+    }
+  }
+
+  .right {
+    width: 20%;
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px;
+
+    a {
+      width: 160px;
+      height: 40px;
+      line-height: 40px;
+      background: #4c9fa9;
+      color: #fff;
+    }
+
+    p {
+      margin: 20px 0 40px 0;
+    }
+  }
+}

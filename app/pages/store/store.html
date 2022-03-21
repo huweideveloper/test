@@ -1,0 +1,66 @@
+<div id="storePage">
+    <div class="selectContainer">
+        <select-table-page
+            placeholder="请选择项目类型"
+            v-model="projectType"
+            :data="projectList"
+            key-name="name"
+            value-name="name"
+            :multiple="true"
+          ></select-table-page>
+
+          <select-table-page
+            placeholder="请选择数据来源"
+            v-model="hospitalCode"
+            :data="hospitalList"
+            :remote-method="setHospitalList"
+            key-name="code"
+            value-name="code"
+            :multiple="true"
+        ></select-table-page>
+
+        <el-date-picker
+            class="datePicker startTime"
+            v-model="startTime"
+            type="date"
+            placeholder="请选择日期">
+        </el-date-picker>
+        <span class="underscore">-</span>
+        <el-date-picker
+            class="datePicker endTime"
+            v-model="endTime"
+            type="date"
+            placeholder="请选择日期">
+        </el-date-picker>
+
+
+        
+        <el-button type="primary" @click="handleSearch">搜索</el-button>
+        <el-button type="primary" @click="hanlderExport">导出</el-button>
+    </div>
+    <div class="tableContainer">
+        <el-table
+            :data="tableList"
+            :span-method="objectSpanMethod"
+            border
+            style="width: 100%; margin-top: 20px">
+            <el-table-column
+                prop="typeName"
+                label="项目类型"
+                width="180">
+            </el-table-column>
+            <el-table-column
+                prop="hospitalCode"
+                label="数据来源（医院编号）">
+            </el-table-column>
+            <el-table-column
+                prop="seriesCount"
+                label="已入库序列数">
+            </el-table-column>
+            <el-table-column
+                prop="seriesCountByTime"
+                label="新增入库序列数">
+            </el-table-column>
+            </el-table>
+    </div>
+</div>

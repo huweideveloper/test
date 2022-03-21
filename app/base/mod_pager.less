@@ -1,0 +1,159 @@
+.pager {
+  text-align: right;
+}
+.pager-div {
+	display: inline-block;
+	margin: 1.2em 0;
+	color: #333333;
+    position: relative;
+	&.hide {
+		display: none;
+	}
+	.pager-btn-navigate,
+	.pager-total-page,
+	.pager-total-data,
+	.pager-btn-jump {
+		float: left;
+		margin: 0 0 0 10px;
+      .pager-first,.pager-prev,.pager-last,.pager-next{
+        width:26px;
+        text-align: center;
+        font-size: 20px;
+        i{
+          width: 15px;
+          height: 24px;
+          display: inline-block;
+         
+        }
+        &.disable{
+          background:#fff;
+          border:solid 1px #c9c9c9;
+            i{
+              background-position-y: -17px
+            }
+        }
+      }
+      .pager-prev{
+        &.disable{
+          i{
+            background-position: -304px -17px
+          }
+        }
+      }
+      .pager-next{
+        &.disable{
+          i{
+            background-position: -322px -17px
+          }
+        }
+      }
+      .pager-first{
+        &.disable{
+          i{
+            background-position: -265px -17px
+          }
+        }
+      }
+      .pager-last{
+        &.disable{
+          i{
+            background-position: -283px -17px
+          }
+        }
+      }
+      .pager-prev,.pager-next{
+        background:#3f82d5;
+        border:solid 1px #3f82d5;
+        color:#FFF;
+      }
+      .pager-first,.pager-last{
+        border:solid 1px #3f82d5;
+      }
+      .pager-first {
+        i{
+          background-position: -265px -43px
+        }
+      }
+      .pager-last {
+        i{
+          background-position: -283px -43px
+        }
+      }
+      .pager-prev {
+        i{
+          background-position: -304px -42px
+        }
+      }
+      .pager-next {
+        margin-left: 80px;
+        i{
+          background-position: -322px -42px
+        }
+      }
+		a,
+		span {
+			display: inline-block;
+			height: 26px;
+			text-align: center;
+			vertical-align: top;
+			line-height:28px;
+            border-radius: 5px;
+            margin-left:8px;
+		}
+		a {
+			cursor: pointer;
+		}
+      .pager-btn {
+        display: none;
+      }
+	}
+  .pager-btn-jump{
+    position: absolute;
+    top:0px;
+    left:75px;
+    color:#646464;
+    .pager-num {
+      width: 42px;
+      height: 26px;
+      line-height: 26px;
+      border: solid 1px #c9c9c9;
+      border-radius: 5px;
+      text-align: left;
+      padding-left: 16px;
+      color: #5a5a5a;
+    }
+  }
+  .pager-total-data {
+    .pager-num {
+      color:#02baf2;
+    }
+  }
+	.pager-btn-navigate {
+
+		.pager-ellipsis {
+			padding: 0 10px;
+            display:none;
+		}
+
+		.disable {
+			background-color: #fff;
+			cursor: default;
+		}
+      .active{
+        color:#4972a0;
+      }
+	}
+
+  .pager-total-data,
+	.pager-total-page,
+	{
+		display: none;
+	}
+}
+.total-pagers {
+  position: absolute;
+  display: inline-block;
+  width: 20px;
+  top: 0px;
+  left: 29px;
+}

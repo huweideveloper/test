@@ -1,0 +1,44 @@
+<div id="nidusStatistics" class="nidus-statistics-container">
+  <!-- 条件筛选区域 -->
+  <filter-container>
+    <el-row>
+      <el-col :span="12">
+        <el-date-picker
+          v-model="dateRange"
+          type="daterange"
+          unlink-panels
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+          :picker-options="pickerOptions"
+          :editable="false"
+          value-format="yyyy-MM-dd">
+        </el-date-picker>
+      </el-col>
+      <el-col :span="12">
+        <el-button type="primary" size="medium" @click="queryData">查询</el-button>
+      </el-col>
+    </el-row>
+  </filter-container>
+  <el-row style="margin: 20px auto">
+    <el-col :span="8">已标注mask病灶总数：{{nidusTotalCount}}</el-col>
+    <el-col :span="8">放射科标注mask病灶总数：{{nidusCount1}}</el-col>
+    <el-col :span="8">病理科标注mask病灶总数：{{nidusCount2}}</el-col>
+  </el-row>
+  <!-- 列表数据区域 -->
+  <table-pagination :data="nidusList" row-key="imageAnnotationResultId" @onchange="onChange" :default-sort="{prop: 'volume', order: 'descending'}">
+    <el-table-column prop="imageAnnotationResultId" label="序号" sortable="custom"></el-table-column>
+    <el-table-column prop="imageToolType" label="影像工具"></el-table-column>
+    <el-table-column label="所属科室">
+      <template slot-scope="scope">{{ categoryList[scope.row.projectCategory] }}</template>
+    </el-table-column>
+    <el-table-column prop="projectName" label="所属项目"></el-table-column>
+    <el-table-column prop="taskName" label="所属任务"></el-table-column>
+    <el-table-column prop="volume" label="体积(mm³)" :formatter="volumeFormatter" sortable="custom"></el-table-column>
+    <el-table-column label="操作">
+      <template slot-scope="scope">
+        <a style="text-decoration: underline" @click="viewStatistics(scope.row)">病灶数据统计</a>
+      </template>
+    </el-table-column>
+  </table-pagination>
+</div>

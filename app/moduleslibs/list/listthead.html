@@ -1,0 +1,21 @@
+<%=
+if(p.choose=='all'){=%>
+	<li style="width:30px;"><p><span class="check-box"></span></p></li>
+<%=}else if(p.choose=='no'){=%>
+
+<%=}else{=%>
+	<li style="width:30px;"><p><span class=""></span></p></li>
+<%=}
+for(var i in p.icon){
+    var stu = p.icon[i];
+    if(stu.w){
+        if(stu.first){
+=%>
+    <li style="width:<%==stu.w=%>px"><span style="margin-left:10px;text-align: <%==p.type=%>;"><%==stu.name=%></li>
+      <%=} else{=%>      
+    <li style="width:<%==stu.w=%>px;text-align: <%==p.type=%>;"><%==stu.name=%></li>
+    <%=}} else{=%>  <li style="text-align: <%==p.type=%>;"><%==stu.name=%></li><%=}=%>
+           
+ <%=
+    }
+=%>

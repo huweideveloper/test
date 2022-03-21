@@ -1,0 +1,187 @@
+<div id="settlementstatics" class="settlementstatics-container">
+  <!-- 条件筛选区域 -->
+  <filter-container>
+    <div class="filter-conditions-wrapper">
+      <el-row>
+        <el-col :span="4">
+          <el-input placeholder="请输入任务ID" v-model.trim="inputTaskId" clearable></el-input>
+        </el-col>
+        <el-col :span="6">
+          <select-table-page multiple placeholder="请输入任务名称" v-model="taskIdList" :data="likeTaskList"
+            :remote-method="toQueryLikeTaskList" :loading="queryTasksLoading" key-name="taskId" value-name="taskName">
+          </select-table-page>
+        </el-col>
+        <el-col :span="4">
+          <select-search v-model="doctorId" filterable clearable reserve-keyword default-first-option
+            placeholder="请输入医生名称" :filter-method="toQueryLikeDoctorList" :loading="queryDoctorsLoading">
+            <el-option v-for="{ userId, name } in likeDoctorList" :key="userId" :label="name" :value="userId">
+              {{name}}（{{userId}}）</el-option>
+          </select-search>
+        </el-col>
+        <el-col :span="4">
+          <el-select v-model="companyId" placeholder="请选择集团" clearable>
+            <el-option v-for="item in vendorList" :key="item.id" :label="item.name" :value="item.id"></el-option>
+          </el-select>
+        </el-col>
+        <el-col :span="3">
+          <el-select v-model="settlementStatus" placeholder="结算状态" clearable>
+            <el-option v-for="(name, value) in settlementStatusList" :key="value" :label="name" :value="value">
+            </el-option>
+          </el-select>
+        </el-col>
+        <el-col :span="3">
+          <el-select v-model="taskStatus" placeholder="任务状态" clearable>
+            <el-option v-for="(name, value) in taskStatusList" :key="value" :label="name" :value="value"></el-option>
+          </el-select>
+        </el-col>
+      </el-row>
+      <el-row style="margin-top: 20px">
+        <el-col :span="4">
+          <el-input placeholder="请输入项目ID" v-model.trim="inputProjectId" clearable></el-input>
+        </el-col>
+        <el-col :span="6">
+          <select-table-page multiple placeholder="请输入项目名称" v-model="projectIdList" :data="likeProjectList"
+            :remote-method="toQueryLikeProjectList" :loading="queryProjectsLoading" key-name="projectId"
+            value-name="projectName"></select-table-page>
+        </el-col>
+        <el-col :span="4">
+          <el-select v-model="taskExportStatus" placeholder="导出标注结果状态" clearable>
+            <el-option v-for="(name, value) in taskExportStatusList" :key="value" :label="name" :value="value">
+            </el-option>
+          </el-select>
+        </el-col>
+        <el-col :span="10" style="min-width: 400px; text-align: right;">
+          <el-button type="primary" size="medium" @click="querySettlementStatics">查询</el-button>
+          <el-button type="success" size="medium" @click="exportSettlementStatics">导出</el-button>
+          <el-button type="warning" size="medium" @click="uploadSettlementStatics">导入</el-button>
+          <pop-confirm title="确定批量结算吗?" placement="top" @onconfirm="batchSettlement">
+            <el-button slot="reference" type="primary" size="medium">批量结算</el-button>
+          </pop-confirm>
+          <!-- 政策类型提示 -->
+          <el-popover popper-class="info-popper-tip" placement="right" width="400" trigger="hover">
+            <div>
+              <div class="tip-item" v-for="item in settlementRuleList" :key="item.code">
+                <span class="code-item">{{item.code}}</span><span class="title">{{`：${item.name}`}}</span>
+                <p>说明：{{`${item.desc}`}}</p>
+              </div>
+            </div>
+            <i slot="reference" class="el-icon-info info-tip"></i>
+          </el-popover>
+        </el-col>
+      </el-row>
+    </div>
+  </filter-container>
+  <!-- 统计信息 -->
+  <div style="margin-bottom: 10px">{{statisticsDesc}}</div>
+  <!-- 列表数据区域 -->
+  <el-table class="table-data-wrapper" ref="settlementTable" :data="settlementListData" :span-method="objectSpanMethod"
+    @selection-change="handleSelectionChange" empty-text="暂无数据，更改筛选条件试试?" border>
+    <el-table-column type="selection" width="55" :selectable="checkSelectable"></el-table-column>
+    <el-table-column prop="projectId" label="项目ID"></el-table-column>
+    <el-table-column prop="projectName" label="项目名称"></el-table-column>
+    <el-table-column prop="id" label="任务ID"></el-table-column>
+    <el-table-column prop="name" label="任务名称"></el-table-column>
+    <el-table-column label="任务类型">
+      <template slot-scope="scope">
+        {{ scope.row.type | filterTaskType }}
+      </template>
+    </el-table-column>
+    <el-table-column label="任务状态">
+      <template slot-scope="scope">
+        {{ scope.row.status | filterTaskStatus }}
+      </template>
+    </el-table-column>
+    <el-table-column label="序列总数">
+      <template slot-scope="scope">
+        {{ scope.row.studyNumber }}<span v-if="scope.row.crossMarkNum">*{{ scope.row.crossMarkNum }}</span>
+      </template>
+    </el-table-column>
+    <el-table-column label="是否导出标注结果">
+      <template slot-scope="scope">
+        {{ scope.row.exportStatus ? (scope.row.exportStatus === 1 ? '未导出' : '已导出') : '—' }}
+      </template>
+    </el-table-column>
+    <el-table-column label="审核次数">
+      <template slot-scope="scope">
+        <el-popover width="400" placement="left" trigger="hover"
+          @show="queryAuditTaskList(scope.row.id, scope.row.auditProjectNumber)">
+          <el-table :data="auditTaskList" max-height="300">
+            <el-table-column prop="id" label="审核任务ID"></el-table-column>
+            <el-table-column prop="name" label="审核任务名称"></el-table-column>
+          </el-table>
+          <div slot="reference">{{scope.row.auditProjectNumber}}</div>
+        </el-popover>
+      </template>
+    </el-table-column>
+    <el-table-column prop="doctorId" label="医生ID"></el-table-column>
+    <el-table-column prop="doctorName" label="医生名称"></el-table-column>
+    <el-table-column prop="companyName" label="集团名称"></el-table-column>
+    <el-table-column label="结算状态">
+      <template slot-scope="scope">
+        {{ scope.row.settlementStatus === true ? '已结算' : '未结算' }}
+      </template>
+    </el-table-column>
+    <el-table-column label="提交序列总数">
+      <template slot-scope="scope">
+        {{ (typeof scope.row.terminateSeriesNumber === 'number' && typeof scope.row.completedSeriesNumber === 'number') ? (scope.row.terminateSeriesNumber + scope.row.completedSeriesNumber) : '—' }}
+      </template>
+    </el-table-column>
+    <el-table-column prop="terminateSeriesNumber" label="废片数"></el-table-column>
+    <el-table-column prop="completedSeriesNumber" label="有效提交序列数"></el-table-column>
+    <el-table-column prop="totalImageNumber" label="有效病灶数"></el-table-column>
+    <el-table-column prop="maskNumber" label="MASK数"></el-table-column>
+    <el-table-column prop="pointNumber" label="点位数"></el-table-column>
+    <el-table-column prop="perimeter" label="总周长"></el-table-column>
+    <el-table-column prop="perimeterIsEmptyNumber" label="无周长个数"></el-table-column>
+    <el-table-column prop="hausdorff" label="总hausdorff值" min-width="100px"></el-table-column>
+    <el-table-column prop="hausdorffIsEmptyNumber" label="无hausdorff个数" min-width="100px"></el-table-column>
+    <el-table-column prop="imageResultEqualsZeroNumber" label="病灶数为0个数"></el-table-column>
+    <el-table-column prop="perimeterEqualsZeroNumber" label="周长为0个数"></el-table-column>
+    <el-table-column label="周长为非0个数">
+      <template slot-scope="scope">
+        {{countPerimeterNotEqualsZeroNumber(scope.row)}}
+      </template>
+    </el-table-column>
+    <el-table-column prop="perimeterMultiplyDice" label="dice*周长总和"></el-table-column>
+    <el-table-column prop="diceIsEmptyNumber" label="无dice个数"></el-table-column>
+    <el-table-column prop="gtEqIarCountSeriesCount" label="病灶数>=200序列数"></el-table-column>
+    <el-table-column prop="ltIarCountSeriesCount" label="病灶数<200序列数"></el-table-column>
+    <el-table-column prop="auditFlowItemCount" label="审核流转次数"></el-table-column>
+    <el-table-column prop="totalDice" label="总dice"></el-table-column>
+    <el-table-column label="准确率">
+      <template slot-scope="scope" v-if="typeof scope.row.trueRate === 'number'">{{scope.row.trueRate}}</template>
+    </el-table-column>
+    <el-table-column label="精确度">
+      <template slot-scope="scope" v-if="typeof scope.row.accuracyRate === 'number'">{{scope.row.accuracyRate}}</template>
+    </el-table-column>
+    <el-table-column prop="settlementInfoRuleList" label="结算政策" min-width="280px">
+      <template slot-scope="scope">
+        <p v-for="item in scope.row.settlementInfoRuleList" :key="item.rule">
+          {{`${item.rule}(${item.price}，${item.accuracy || '未设置'})`}}
+        </p>
+      </template>
+    </el-table-column>
+    <el-table-column prop="settlementAmount" label="最终结算价"></el-table-column>
+    <el-table-column label="操作" fixed="right" width="60">
+      <template slot-scope="scope">
+        <template v-if="!scope.row.settlementStatus">
+          <el-link type="success" @click="edit(scope.row.id, scope.row.doctorId)">编辑</el-link>
+          <el-link type="warning" @click="trySettlment(scope.row.id, scope.row.doctorId)">试算</el-link>
+          <pop-confirm title="确定结算吗?" placement="top" @onconfirm="singleSettlement(scope.row.id, scope.row.doctorId)">
+            <el-link slot="reference" type="primary">结算</el-link>
+          </pop-confirm>
+        </template>
+      </template>
+    </el-table-column>
+  </el-table>
+
+  <!-- 编辑弹窗 -->
+  <edit :visible="editModalVisible" :task-id="editItem.taskId" :user-id="editItem.doctorId"
+    :settlement-rule-list="settlementRuleList" @success="handleAddSuccess" @close="editModalVisible = false"></edit>
+  <!-- 上传点击用 -->
+  <!-- <input ref="uploadFile" type="file" class="upload-file" /> -->
+  <el-upload ref="uploadFile" class="upload-file" :action="uploadAction" :before-upload="handleBeforeUpload"
+    :on-success="handleUploadSuccess" :on-error="handleUploadError">
+    <el-button ref="uploadFileBtn" size="small" type="primary">点击上传</el-button>
+  </el-upload>
+</div>

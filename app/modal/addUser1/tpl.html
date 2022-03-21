@@ -1,0 +1,30 @@
+<div class="modal addUser1">
+    <div class="modal-header">
+        <p class="modal-title">创建用户</p>
+        <i class="iconfont icon-guanbi"></i>
+    </div>
+    <div class="modal-body">
+        <div class="top">
+            <div class="inputLine" redlabel="inputBox">
+                <span class="names" data-i18n='yhm' data-name="就职单位">手机账号</span>
+                <input type='text' class="inputBox" check="empty|phone" api="mobile"/>
+            </div>
+            <div class="inputLine" redlabel="inputBox">
+                <span class="names" data-i18n='gh' data-name="姓名">用户名</span>
+                <input type='text' class="inputBox" check="empty" api="name"/>
+            </div>
+            <div class="isAudit">
+                <i class="check-box"></i>
+                <span>是否具有审核资质</span>
+            </div>
+        </div>
+        <div class="userconfig">
+            <p class="title">用户配置：</p>
+            <ul class="roleList"></ul>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-cancel">取消</a>
+        <a class="btn btn-confirm">确定</a>
+    </div>
+</div>

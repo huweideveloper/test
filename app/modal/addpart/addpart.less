@@ -1,0 +1,84 @@
+.addpart {
+  margin-left: -250px;
+  width: 500px;
+  height: 300px;
+  font-size: 16px;
+  .modal-header {
+    //height: 70px;
+    //line-height: 84px;
+    padding: 40px 0 40px 30px;
+    .modal-title {
+      font-family: MicrosoftYaHei;
+      font-weight: bold;
+      font-size: 18px;
+      color: #333333;
+      letter-spacing: 0;
+    }
+    i {
+      font-size: 15px;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
+    }
+  }
+  .modal-body {
+    padding: 0px !important;
+    margin: 0 30px;
+    span {
+      margin-left: 0px;
+    }
+    .inputLine {
+      position: relative;
+      height: 70px;
+      &>div{
+        display: inline-block;
+      }
+      .confirm {
+        margin-right: 0;
+      }
+      .inputBox {
+        width: 305px;
+        height: 38px;
+        line-height: 38px;
+        border: 1px solid #E8E8E8;
+        border-radius: 4px;
+        outline: none;
+        padding-left: 5px;
+      }
+      .names {
+        font-family: "MicrosoftYaHei";
+        font-size: 14px;
+        color: #333333;
+        letter-spacing: 0;
+        margin-right: 17px;
+        width: 100px;
+      }
+      .tips{
+        margin-left: 123px;
+        font-size: 14px;
+        margin-top: 8px;
+      }
+      .forget {
+        color: #448E97;
+      }
+      .errorMessage {
+        color: red;
+      }
+    }
+  }
+  .modal-footer {
+    margin: 40px 20px 0 0;
+  }
+  .btn {
+    &:hover {
+      background: #1F474C !important;
+      color: #fff;
+      border-color: #1F474C !important;
+    }
+  }
+  .required{
+    position: relative;
+    margin-left: 120px!important;
+  }
+}

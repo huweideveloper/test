@@ -1,0 +1,39 @@
+.breadcrumb {
+    padding: 8px 0;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    font-size: 0;
+    margin-bottom: 0;
+    li {
+        display: inline-block;
+        font-size: 12px;
+        margin-right: 5px;
+        vertical-align: middle;
+        a {
+            color: #798ba9;
+        }
+        & + li {
+            &:before {
+                content: '>';
+                color: #90a7b3;
+                font-size: 12px;
+                margin-right: 5px;
+            }
+        }
+        &.active {
+            a {
+              color: #9FA8AE;
+              cursor: default;
+            }
+        }
+    }
+    .icon {
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        background-image: url(/images/iconDmp.png);
+        vertical-align: middle;
+    }
+}

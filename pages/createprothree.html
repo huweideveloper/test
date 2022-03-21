@@ -1,0 +1,108 @@
+<div id="createprothree" class="createprothree">
+  <div class="scroll">
+    <div class="bigtitle">标注影像文件选取</div>
+    <a class="propreview biaozhubtn">标注预览试用</a>
+    <p class="title">第三步：添加数据</p>
+    <div class="imagedata">
+      <a class="biaozhubtn addimage1">添加/追加标注影像</a>
+      <a class="biaozhubtn upload sequence-item">上传影像序列</a>
+      <a class="downtemplete">下载上传模板</a>
+      <br>
+      <a class="viewimage hide">点击查看已添加影像数据</a>
+      <input class="file" type="file" id="file" name="file" />
+    </div>
+    <div class="suanfadata">
+      <div>
+        <a class="biaozhubtn addsfdata">导入标注结果</a>
+        <br>
+        <a class="viewsfdata view-import-result">点击查看已导入结果</a>
+      </div>
+      <div>
+        <a class="biaozhubtn import-auxiliary-sequence sequence-item">导入辅助序列</a>
+        <input class="auxiliary-sequence-file" type="file" id="auxiliarySequenceFile" name="file" />
+        <br>
+        <a class="viewsfdata download-auxiliary-sequence sequence-item">下载已导入辅助序列</a>
+      </div>
+      <div class="refer-annotated-area-wrapper hide">
+        <a class="biaozhubtn import-refer-annotated-area sequence-item">导入参考标注区域范围</a>
+        <input class="hide refer-annotated-area-file" type="file" id="referAnnotatedAreaFile" name="file" />
+        <a class="down-temp refer-annotated-area-template">下载导入参考标注区域范围模板</a>
+        <br>
+        <a class="viewsfdata download-refer-annotated-area">下载已导入参考标注区域范围数据</a>
+      </div>
+      <div>
+        <a class="biaozhubtn import-algorithm-segmentation-results sequence-item">导入算法分割结果</a>
+        <input class="algorithm-segmentation-results-file" type="file" id="algorithmSegmentationResultsFile"
+          name="file" />
+      </div>
+    </div>
+    <!--
+          <div class="algArea">
+            <div class="inputLine half" redlabel="xlk">
+                <span>算法模型：</span>
+                <div class="algType" check="empty"></div>
+            </div>
+            <div class="inputLine half" redlabel="xlk">
+                <span>模型版本：</span>
+                <div class="versionNumber" check="empty"></div>
+            </div>
+          </div>
+          <a class="start fillBtn">开始</a>
+          <a class="export-result fillBtn">导出结果</a>
+          -->
+    <div class="result-wrapper" v-show="projectType === 3">
+      <div class="result-block">
+        <div class="algArea">
+          <template v-if="heartSegmentResultALG.algType">
+            <p>算法模型：{{ heartSegmentResultALG.alg }}</p>
+            <p>模型版本：{{ projectData.versionNumber || '' }}</p>
+            <p>
+              成功数量：{{ heartSegmentResultALG.successCount }}，失败数量：{{ heartSegmentResultALG.failCount }}，处理中数量：{{ heartSegmentResultALG.processCount }}，未开始数量：{{ heartSegmentResultALG.notStartCount }}，暂停数量：{{ heartSegmentResultALG.pauseCount }}，新增数量：{{ heartSegmentResultALG.addCount }}
+            </p>
+          </template>
+          <template v-else>
+            <el-form :inline="true" :model="formData" class="alg-form-wrapper">
+              <el-form-item label="算法模型" :prop="algType">
+                <el-select v-model="formData.algType" placeholder="请选择算法模型">
+                  <el-option v-for="item in algTypeList" :key="item.idx" :label="item.val" :value="item.idx">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="模型版本" :prop="versionNumber">
+                <el-select v-model="formData.versionNumber" placeholder="请选择模型版本">
+                  <el-option v-for="item in versionNumberList" :key="item" :label="item" :value="item"> </el-option>
+                </el-select>
+              </el-form-item>
+            </el-form>
+          </template>
+        </div>
+        <div class="action-btns">
+          <template v-if="type !== 'view'">
+            <el-link class="start fillBtn" @click="handleStartALG(0)">开始</el-link>
+            <el-link class="export-result fillBtn" :disabled="!heartSegmentResultALG.notStartCount" @click="handleStartALG(4)">暂停</el-link>
+            <el-link class="export-result fillBtn" :disabled="!heartSegmentResultALG.pauseCount" @click="handleStartALG(5)">继续</el-link>
+          </template>
+          <el-link class="export-result fillBtn" @click="handleExport('ALG')">导出结果</el-link>
+        </div>
+      </div>
+      <div class="hr-line"></div>
+      <div class="result-block">
+        <div class="algArea">
+          <p>合并Mask</p>
+          <p>
+            成功数量：{{ heartSegmentResultMERGE7.successCount }}，失败数量：{{ heartSegmentResultMERGE7.failCount }}，处理中数量：{{ heartSegmentResultMERGE7.processCount }}，未开始数量：{{ heartSegmentResultMERGE7.notStartCount }}
+          </p>
+        </div>
+        <div v-if="isShowMERGE7Start" class="action-btns">
+          <a v-if="type !== 'view'" class="start fillBtn" @click="handleStartMERGE7">开始</a>
+          <a class="export-result fillBtn" @click="handleExport('MERGE7')">导出结果</a>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="yyytask hide">
+            <span class="listtitle">已引用任务区域</span>
+            <div class="fillBtn copytask">克隆任务</div>
+            <div class="yyytasklist"></div>
+        </div> -->
+  </div>
+</div>

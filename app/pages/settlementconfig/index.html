@@ -1,0 +1,94 @@
+<div id="settlementconfig" class="settlementconfig-container">
+  <!-- 条件筛选区域 -->
+  <el-form ref="listQuery" :model="listQuery">
+    <filter-container>
+      <div class="filter-conditions-wrapper">
+        <el-row>
+          <el-col :span="4">
+            <el-select v-model="listQuery.sicknessType" placeholder="项目标签" clearable>
+              <el-option v-for="item in sicknessTypeList" :key="item.idx" :label="item.val" :value="item.idx">
+              </el-option>
+            </el-select>
+          </el-col>
+          <el-col :span="3">
+            <el-select v-model="listQuery.projectFunction" placeholder="项目目标" clearable>
+              <el-option v-for="item in projectFunctionList" :key="item.idx" :label="item.val" :value="item.idx">
+              </el-option>
+            </el-select>
+          </el-col>
+          <el-col :span="4">
+            <el-select v-model="listQuery.dataType" placeholder="数据类型" clearable>
+              <el-option v-for="item in seriesImgFileTypeList" :key="item.idx" :label="item.val" :value="item.idx">
+              </el-option>
+            </el-select>
+          </el-col>
+          <el-col :span="5">
+            <el-select v-model="listQuery.companyIds" placeholder="请选择集团" multiple collapse-tags clearable>
+              <el-option v-for="item in vendorList" :key="item.id" :label="item.name" :value="item.id"></el-option>
+            </el-select>
+          </el-col>
+          <el-col :span="3">
+            <el-select v-model="listQuery.isAudit" placeholder="是否审核" clearable>
+              <el-option v-for="(value, key) in isAuditMap" :key="key" :label="value" :value="key">
+              </el-option>
+            </el-select>
+          </el-col>
+          <el-col :span="5" style="text-align: right;">
+            <el-button type="primary" size="medium" @click="queryDataList">查询</el-button>
+            <el-button type="danger" size="medium" @click="edit()">新增</el-button>
+            <!-- 政策类型提示 -->
+            <el-popover popper-class="info-popper-tip" placement="right" width="400" trigger="hover">
+              <div>
+                <div class="tip-item" v-for="item in settlementRuleList" :key="item.code">
+                  <span class="code-item">{{item.code}}</span><span class="title">{{`：${item.name}`}}</span>
+                  <p>说明：{{`${item.desc}`}}</p>
+                </div>
+              </div>
+              <i slot="reference" class="el-icon-info info-tip"></i>
+            </el-popover>
+          </el-col>
+        </el-row>
+      </div>
+    </filter-container>
+  </el-form>
+
+  <!-- 列表数据区域 -->
+  <table-pagination class="table-data-wrapper" ref="settlementTable" :data="settlementListData" @onchange="onChange"
+    empty-text="暂无数据，更改筛选条件试试?">
+    <el-table-column prop="sicknessType" label="项目标签">
+      <template slot-scope="scope">{{ getSelectDataByKey(scope.row.sicknessType, sicknessTypeList) }}</template>
+    </el-table-column>
+    <el-table-column prop="projectFunction" label="项目目标">
+      <template slot-scope="scope">{{ getSelectDataByKey(scope.row.projectFunction, projectFunctionList) }}</template>
+    </el-table-column>
+    <el-table-column prop="dataType" label="数据类型">
+      <template slot-scope="scope">{{ getSelectDataByKey(scope.row.dataType, seriesImgFileTypeList) }}</template>
+    </el-table-column>
+    <el-table-column prop="companyName" label="集团"></el-table-column>
+    <el-table-column label="是否审核">
+      <template slot-scope="scope">
+        {{ isAuditMap[scope.row.isAudit] || '' }}
+      </template>
+    </el-table-column>
+    <el-table-column prop="settlementRules" label="结算政策">
+      <template slot-scope="scope">
+        {{ scope.row.settlementRules.map((v) => `${v.name}(${v.price})`).join('+') }}
+      </template>
+    </el-table-column>
+    <el-table-column label="操作" fixed="right" width="160">
+      <template slot-scope="scope">
+        <el-link type="primary" @click="edit(scope.row.id)">编辑</el-link>
+        <el-divider direction="vertical"></el-divider>
+        <pop-confirm title="确定删除吗?" placement="top" @onconfirm="remove(scope.row.id)">
+          <el-link slot="reference" type="danger">删除</el-link>
+        </pop-confirm>
+      </template>
+    </el-table-column>
+  </table-pagination>
+
+  <!-- 新增弹窗 -->
+  <add :visible="addModalVisible" :id="editId" @success="handleAddSuccess" @close="addModalVisible = false"
+    :sickness-type-list="sicknessTypeList" :project-function-list="projectFunctionList"
+    :settlement-rule-list="settlementRuleList" :data-type-list="seriesImgFileTypeList" :vendor-list="vendorList"
+    :is-audit-map="isAuditMap"></add>
+</div>

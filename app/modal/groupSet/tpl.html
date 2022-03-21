@@ -1,0 +1,32 @@
+<div class="modal groupSet1">
+    <div class="modal-header">
+        <p class="modal-title">创建用户组</p>
+        <i class="iconfont icon-guanbi"></i>
+    </div>
+    <div class="modal-body">
+        <div class="top">
+            <div class="inputLine" redlabel="inputBox">
+                <span class="names" data-i18n='gh' data-name="姓名">用户组名称</span>
+                <input type='text' class="inputBox" check="empty" api="name"/>
+            </div>
+        </div>
+        <div class="userChoose">
+            <span class="title">用户选择：</span>
+            <input class="userSearch" type="text" placeholder="搜索联系人"/>
+            <i class="iconfont icon-sousuo"></i>
+            <div class="userList">
+                <ul class="notChoosed"><div class="notchoosedScroll"></div> </ul>
+                <i class="iconfont icon-shangshuangjiantou move"></i>
+                <ul class="choosed"><div class="choosedScroll"></div></ul>
+            </div>
+        </div>
+        <div class="userconfig">
+            <p class="title">用户配置：</p>
+            <ul class="roleList"></ul>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-cancel">取消</a>
+        <a class="btn btn-confirm">确定</a>
+    </div>
+</div>

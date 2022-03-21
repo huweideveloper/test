@@ -1,0 +1,102 @@
+@basicColor: #448E97;
+
+div#personalaccount-content-fade {
+  background: #F9F9F9;
+}
+
+.personalaccount-container {
+  position: relative;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+  color: #333;
+  .text-info {
+    display: flex;
+    font-size: 20px;
+  }
+  .version-content {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 16px;
+    text-align: right;
+    .download-url{
+      display: block;
+      color: @basicColor;
+      margin-top: 10px;
+    }
+  }
+  .head-content{
+    margin-bottom: 50px;
+    .title {
+      font-size: 30px;
+      color: @basicColor;
+      padding-bottom: 20px;
+    }
+    .sub-title {
+      font-size: 24px;
+      color: #666;
+    }
+    .number {
+      color: @basicColor;
+      font-weight: bold;
+    }
+  }
+  .current-task-container {
+    .current-task-list {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 20px 0;
+      .task-block {
+        display: flex;
+        flex-direction: column;
+        width: ~'calc(20% - 8px)';
+        height: 150px;
+        border: 1px solid #D9D9D9;
+        border-radius: 4px;
+        margin-left: 8px;
+        cursor: pointer;
+        &:hover {
+          box-shadow: 0 0 4px 2px rgba(68, 142, 151, 0.2);
+        }
+        .task-title {
+          width: 100%;
+          font-size: 16px;
+          padding: 0 16px;
+          line-height: 46px;
+          background: rgba(0, 0, 0, 0.02);
+          border-bottom: 1px solid #D9D9D9;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .info {
+          font-size: 14px;
+          color: #666;
+          padding: 10px 16px 0;
+        }
+        .info-small {
+          font-size: 12px;
+          color: #999;
+          padding: 5px 16px 0;
+        }
+      }
+    }
+  }
+  .history-task-container {
+    .el-table {
+      margin-top: 10px;
+    }
+    .el-table thead tr th,
+    .el-table tbody tr td {
+      text-align: left;
+    }
+    .el-table thead tr th {
+      background-color: #EAF5F8;
+    }
+    .el-table__body tr {
+      cursor: pointer;
+    }
+  }
+}

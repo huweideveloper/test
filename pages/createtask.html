@@ -1,0 +1,99 @@
+<div id="createtask" class="createtask">
+  <div class="scroll">
+    <div class="left1">
+      <el-form ref="ruleForm" :model="ruleForm" :rules="rules" class="basic-info-content" label-width="110px"
+        label-suffix="：">
+        <el-row v-if="isAdd">
+          <el-col :span="24">
+            <!-- 标注-数据来源+算法目的+数据量（病理需要写阴阳各多少）+任务开启日期 -->
+            <task-name-item ref="taskNameRef" v-model="ruleForm.nameData" :type-name="taskType === 1 ? '标注' : '算法'"
+              :project-detail="projectDetail"></task-name-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="20">
+            <el-form-item label="任务名称" prop="name">
+              <el-input v-model="ruleForm.name" placeholder="任务名称" style="width: 700px;" :disabled="isView || isAdd">
+              </el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form>
+      <div class="inputLine" redlabel="kxlk">
+        <span class="w135"><label class="redstar">*</label>任务类型：</span>
+        <div class="algPreAnnotation" check="empty"></div>
+      </div>
+      <br>
+      <div class="inputLine" redlabel="kxlk">
+        <span class="w135"><label class="redstar">*</label>所属项目：</span>
+        <!-- <div class="ssxm" check="empty"></div> -->
+        <div id="aaaa">
+          <select-table-page
+            ref="select"
+            :placeholder="placeholder"
+            v-model="projectId"
+            :value="projectId"
+            :data="likeListPage"
+            :remote-method="queryProject"
+            key-name="id"
+            value-name="name"
+            :disabled="isView"
+            :multiple="multiple"
+          ></select-table-page>
+        </div>
+        <a class="biaozhubtn viewproject disabled">查看项目详情</a>
+      </div>
+      <br>
+
+      <div class="inputLine" redlabel="showData">
+        <span class="w135"><label class="redstar">*</label>任务开始时间：</span>
+        <div class="startdate" check="empty" title=""></div>
+      </div>
+      <div class="inputLine" redlabel="showData">
+        <span class="w135"><label class="redstar">*</label>任务结束时间：</span>
+        <div class="enddate" check="empty" title=""></div>
+      </div>
+      <br>
+      <div class="inputLine" redlabel="kxlk">
+        <span class="w180"><label class="redstar">*</label>任务方式：</span>
+        <div class="method" check="empty"></div>
+      </div>
+      <div class="inputLine" redlabel="xlk">
+        <span class="w135"><label class="redstar">*</label>任务分配方式：</span>
+        <div class="assignMethod" check="empty"></div>
+      </div>
+      <div class="inputLine" style="margin-left: 30px"><i class="check-box stenosis-detection-copy"></i>狭窄箭头拷贝</div>
+      <div class="inputLine hide" redlabel="inputBox">
+        <span class="w135"><label class="redstar">*</label>交叉次数：</span>
+        <input class="inputBox apidata marktimes" api="crossMarkNum" type="text" check="empty|num"
+          reg="/^(([1-4]{1}[0-9]{1})|[2-9]{1})$/" error="请输入大于等于2小于50的整数" />
+      </div>
+      <br>
+      <ul class="cbsarea rwfsarea hide">
+        <!-- <i class="iconfont icon-tianjia"></i> -->
+      </ul>
+      <div class="kfsarea rwfsarea hide">
+        <p>共<label class="people"></label>人可参与标注</p>
+        <div class="inputLine" redlabel="inputBox">
+          <span><label class="redstar">*</label>标注单价：</span>
+          <input type="text" class="inputBox cost apidata" check="empty|num"
+            reg="/^(?!(0[0-9]{0,}$))[0-9]{1,}[.]{0,}[0-9]{0,}$/" api="cost" />
+        </div>
+        <p><i class="check-box cost-visible"></i>价格是否可见</p>
+      </div>
+      <div class="inputLine">
+        <span class="w135" style="vertical-align: top">任务备注：</span>
+        <textarea class="rwbz apidata" api="remark"></textarea>
+      </div>
+      <div class="saveline"><a class="biaozhubtn save">保存</a></div>
+    </div>
+    <div class="sendsuccess hide">
+      <p><i class="iconfont icon-icon-test2"></i>任务发布成功!</p>
+      <a>返回任务管理</a>
+    </div>
+    <div class="sendfail hide">
+      <p><i class="iconfont icon-guanbi"></i>任务发布失败!</p>
+      <a>返回任务管理</a>
+    </div>
+  </div>
+</div>

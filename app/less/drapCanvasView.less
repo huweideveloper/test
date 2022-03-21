@@ -1,0 +1,65 @@
+#drapCanvasView-content-fade {
+  width: 100%;
+  .drapCanvasView {
+      width: 100%;
+      background: #fff;
+      .mark-header {
+          width: 100%;
+          height: 60px;
+          background-image: linear-gradient(-180deg, #0c1e21, #041d32 98%);
+          color: #d2effc;
+          .back-icon {
+              margin-left: 10px;
+          }
+          .lefta{
+              transform: rotate(-90deg);
+          }
+          i {
+              width: 16px;
+              line-height: 60px;
+          }
+          span {
+              font-size: 16px;
+              height: 60px;
+              line-height: 60px;
+              float: left;
+              margin-right: 10px;
+              overflow: hidden;
+              white-space: nowrap;
+          }
+          .cotrol-btn {
+              display: flex;
+              margin-top: 8px;
+              .btn {
+                  width: 100px;
+                  height: 40px;
+                  color: #fff;
+                  background: #448e97;
+                  border-radius: 5px;
+                  margin-right: 35px;
+                  font-size: 16px;
+                  text-align: center;
+                  line-height: 40px;
+                  border: 1px solid #448e97;
+                  cursor: pointer;
+              }
+              .btn:hover {
+                  background: #3bcbdc;
+                  border: 1px solid #3bcbdc;
+                  transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+              }
+          }
+      }
+      .mark-menu {
+          clear: both;
+          height: 60px;
+          width: 100%;
+          background: #01111e;
+          border-bottom: 2px solid #0a2634!important;
+          border-top: 2px solid #0a2634!important;
+      }
+      .mark-content {
+          clear: both;
+      }
+  }
+}

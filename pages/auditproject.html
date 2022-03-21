@@ -1,0 +1,14 @@
+<div class="auditproject">
+  <div class="filterarea"></div>
+  <div class="btnarea" id="btnareaContainer">
+    <a class="searchbtn fillBtn">查询</a>
+    <el-dropdown class="create-audipro-btn hide" @command="handleCreateProject">
+      <el-button type="primary" size="small" plain> 创建项目<i class="el-icon-arrow-down el-icon--right"></i> </el-button>
+      <el-dropdown-menu slot="dropdown">
+        <el-dropdown-item command="B">B端审核项目</el-dropdown-item>
+        <el-dropdown-item command="C">C端审核项目</el-dropdown-item>
+      </el-dropdown-menu>
+    </el-dropdown>
+  </div>
+  <div class="tablearea"></div>
+</div>

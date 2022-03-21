@@ -1,0 +1,44 @@
+<div class="createapply modal">
+    <div class="modal-header">
+        <p class="modal-title"></p>
+        <i class="iconfont icon-guanbi"></i>
+    </div>
+    <div class="modal-body">
+        <div class="inputLine" redlabel="inputBox">
+            <span class="names"><label class="redstar">*</label>用于项目：</span>
+            <input type='text' class="inputBox" check="empty" api="projectName"/>
+        </div>
+        <div class="inputLine" redlabel="inputBox">
+            <span class="names"><label class="redstar">*</label>数据建议来源医院：</span>
+            <input type='text' class="inputBox" check="empty" api="hospitalRequirement"/>
+        </div>
+        <div class="inputLine" redlabel="xlk">
+            <span class="names"><label class="redstar">*</label>部位：</span>
+            <div class="bodyPart" check="empty"></div>
+        </div>
+        <div class="inputLine" redlabel="inputBox">
+            <span class="names"><label class="redstar">*</label>数据类型：</span>
+            <input type='text' class="inputBox" check="empty" api="modalityRequirement"/>
+        </div>
+        <div class="inputLine" redlabel="inputBox">
+            <span class="names">建议搜索关键字：</span>
+            <input type='text' class="inputBox" api="keywordsRequirement"/>
+        </div>
+        <div class="inputLine" redlabel="inputBox">
+            <span class="names"><label class="redstar">*</label>所需数量：</span>
+            <input type='text' class="inputBox" check="empty|int" api="numRequirement"/>
+        </div>
+        <div class="inputLine" redlabel="inputBox">
+            <span class="names">数据需求描述：</span>
+            <textarea class="inputBox" api="dataRequirement"></textarea>
+        </div>
+        <div class="inputLine" redlabel="inputBox">
+            <span class="names">其他机器参数需求：</span>
+            <textarea class="inputBox" api="deviceRequirement"></textarea>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="btn-confirm biaozhubtn">保存</a>
+        <a class="btn-cancel biaozhubtn">取消</a>
+    </div>
+</div>

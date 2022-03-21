@@ -1,0 +1,181 @@
+.ctcornerstone {
+    width: 100%;
+    position: relative;
+
+    .dicom_content {
+        float: left;
+        .slideContainer{
+            width: 100%;
+            height: 50px;
+            position: absolute;
+            z-index: 100;
+            padding: 5px;
+            left: 10px;
+            bottom: 15px;
+            li{
+                display: inline-block;
+                width: 50px;
+                height: 100%;
+                margin-right: 5px;
+                cursor: pointer;
+                box-sizing: content-box;
+            }
+            li.active{
+                border: 2px solid rgb(149, 212, 226);
+            }
+        }
+
+        .c_fbb03b {
+            position: absolute;
+            color: #D2EFFC;
+            border: 1px solid #fff;
+            box-sizing: border-box;
+
+            .layer {
+                color: #fff;
+                padding: 5px 5px;
+                border-radius: 2px;
+                z-index: 120;
+            }
+            .line {
+                position: absolute;
+                -webkit-touch-callout: none;
+                /* iOS Safari */
+                -webkit-user-select: none;
+                /* Chrome/Safari/Opera */
+                -khtml-user-select: none;
+                /* Konqueror */
+                -moz-user-select: none;
+                /* Firefox */
+                -ms-user-select: none;
+                /* Internet Explorer/Edge */
+                user-select: none;
+                width: 100%;
+                top: 0;
+                left: 0;
+            }
+            .wc-ww{
+                position: absolute;
+                right: 20px;
+                bottom: 80px;
+                z-index: 100;
+                text-align: right;
+            }
+            .sc {
+                color: #fff;
+                border-radius: 2px;
+                z-index: 120;
+            }
+
+            .wwc {
+                color: #fff;
+                border-radius: 2px;
+                z-index: 100;
+            }
+            .image_progress{
+                position: absolute;
+                 right: 0px;
+                 top:0;
+                 background: #000;
+                  z-index: 130;
+            }
+            .infoXYZ {
+                position: absolute;
+                bottom: 80px;
+                left: 10px;
+                color: #fff;
+                border-radius: 2px;
+                z-index: 20;
+            }
+            
+
+            .cal {
+                position: absolute;
+                // opacity: 0;
+                top: 10px;
+                left: 30px;
+                color: #fff;
+                padding: 5px 5px;
+                border-radius: 2px;
+                background: #000;
+                z-index: 20;
+            }
+        }
+    }
+
+    .mpr {
+        position: absolute;
+        border: 1px dashed #000;
+        display: none;
+        background: transparent;
+        top: 0px;
+        left: 180px;
+        z-index: 2000;
+    }
+
+    .cicle {
+        position: fixed;
+        border: 1px dashed #000;
+        display: none;
+        background: transparent;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    .xulielist {
+        position: relative;
+        float: left;
+        width: 180px;
+        background: #0a2634;
+    }
+
+    .info {
+        float: left;
+        width: 290px;
+        background: #0a2634;
+    }
+
+    .nidus_content {
+        position: absolute;
+        width: 290px;
+        top: 0;
+        right: 0;
+        display: none;
+        z-index: 20;
+    }
+
+    .allcornerstone {
+        position: relative;
+
+    }
+
+    .slist {
+        position: absolute;
+        left: 180px;
+        bottom: 0;
+        height: 100px;
+    }
+
+    .submit_data {
+        width: 200px;
+        height: 30px;
+        position: absolute;
+        left: 50%;
+        margin-left: -100px;
+        background: #0a2634;
+        border-radius: 5px;
+        display: none;
+
+        span {
+            font-size: 14px;
+            line-height: 30px;
+            color: #d2effc;
+        }
+    }
+}

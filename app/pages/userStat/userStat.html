@@ -1,0 +1,17 @@
+<div id="userStat" class="userStat">
+  <div class="title">查看统计项</div>
+  <div class="tabs">
+    <el-button
+      v-for="(item,index) in tabs"
+      :type="item.type"
+      @click="clickTabs(index)"
+      v-if="item.show"
+      >{{ item.text }}</el-button
+    >
+  </div>
+  <div class="items">
+    <keep-alive>
+      <component :is="currentComponent"></component>
+    </keep-alive>
+  </div>
+</div>

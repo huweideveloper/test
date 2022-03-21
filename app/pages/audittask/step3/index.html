@@ -1,0 +1,88 @@
+<div id="auditTaskStepThree" class="step-three-container">
+  <div class="header-wrapper">
+    <span class="title">C端审核任务领取方式设置</span>
+    <el-button v-if="!(auditTaskStatus !== 1 && auditTaskForm.taskMode === 2)" type="primary" @click="save">保存</el-button>
+  </div>
+  <el-form ref="auditTaskForm" :model="auditTaskForm" :rules="rules" label-width="150px" label-suffix="：">
+    <el-row>
+      <el-col :span="8">
+        <el-form-item label="任务方式" prop="taskMode">
+          <el-select v-model="auditTaskForm.taskMode" placeholder="请选择任务方式" :disabled="!canEdit" clearable @change="handleTaskModeChange">
+            <el-option v-for="item in taskModeList" :key="item.value" :label="item.label" :value="item.value"></el-option>
+          </el-select>
+        </el-form-item>
+      </el-col>
+      <el-col :span="8">
+        <el-form-item label="任务分配方式" prop="taskAssignMode">
+          <el-select v-model="auditTaskForm.taskAssignMode" placeholder="请选择任务分配方式" :disabled="!canEdit">
+            <el-option v-for="item in taskAssignModeList" :key="item.value" :label="item.label" :value="item.value"></el-option>
+          </el-select>
+        </el-form-item>
+      </el-col>
+      <el-col :span="8">
+        <el-form-item prop="stenosisDetectionCopy">
+          <el-checkbox v-model="auditTaskForm.stenosisDetectionCopy">狭窄箭头拷贝</el-checkbox>
+        </el-form-item>
+      </el-col>
+    </el-row>
+    <el-row v-if="auditTaskForm.taskMode === 2">
+      <el-col :span="8">
+        <el-form-item>共{{userCountForAudit}}人可参与审核</el-form-item>
+      </el-col>
+      <el-col :span="8">
+        <el-form-item label="审核单价" prop="cost">
+          <input-number class="cost-wrapper" v-model.trim="auditTaskForm.cost" autocomplete="off" placeholder="请输入审核单价" :maxlength="8" :precision="2" :disabled="!canEdit"></input-number>
+        </el-form-item>
+      </el-col>
+      <el-col :span="8">
+        <el-form-item>
+          <el-checkbox v-model="costVisible" :disabled="!canEdit">价格是否可见</el-checkbox>
+        </el-form-item>
+      </el-col>
+    </el-row>
+
+    <el-table class="vender-assign-list-wrapper" :data="auditTaskForm.venderAssignList" v-if="auditTaskForm.taskMode === 1">
+      <el-table-column label="所属单位" prop="venderId">
+        <template slot-scope="scope">
+          <el-form-item :prop="`venderAssignList.${scope.$index}.venderId`" :rules="[{ required: true, message: '请选择所属单位', trigger: ['change'] }]">
+            <el-select v-model="scope.row.venderId" placeholder="请选择所属单位" @change="(venderId) => { handleVendorChange(venderId, scope.$index) }" filterable reserve-keyword default-first-option :disabled="auditTaskStatus !== 1 && scope.row.hasExisted">
+              <el-option v-for="item in vendorList" :key="item.id" :label="item.name" :value="item.id"></el-option>
+            </el-select>
+          </el-form-item>
+        </template>
+      </el-table-column>
+      <el-table-column label="可选名单" prop="userList">
+        <template slot-scope="scope">
+          <el-form-item :prop="`venderAssignList.${scope.$index}.userList`" :rules="[{ required: true, message: '请选择可选名单', trigger: ['change'] }]">
+            <el-select v-model="scope.row.userList" placeholder="请选择可选名单" multiple filterable reserve-keyword default-first-option collapse-tags :clearable="handleVendorUserClear(scope.row.vendorUserList)">
+              <el-option v-for="item in scope.row.vendorUserList" :key="item.id" :label="item.name" :value="item.id" :disabled="handleVendorUserDisabled(item.selected, scope.row.hasExisted)">
+                <span class="option-user-name">{{ item.name }}</span>
+                <span class="option-user-mobile">{{ item.mobile }}</span>
+              </el-option>
+            </el-select>
+          </el-form-item>
+        </template>
+      </el-table-column>
+      <el-table-column label="审核单价" prop="cost">
+        <template slot-scope="scope">
+          <el-form-item :prop="`venderAssignList.${scope.$index}.cost`" :rules="[{ required: true, message: '请输入审核单价', trigger: ['blur', 'change'] }]">
+            <input-number v-model.trim="scope.row.cost" autocomplete="off" placeholder="请输入审核单价" :maxlength="8" :precision="2" clearable></input-number>
+          </el-form-item>
+        </template>
+      </el-table-column>
+      <el-table-column label="价格是否可见" prop="costVisible">
+        <template slot-scope="scope">
+          <el-checkbox v-model="scope.row.costVisible"></el-checkbox>
+        </template>
+      </el-table-column>
+      <el-table-column label="操作">
+        <template slot-scope="scope">
+          <pop-confirm title="确定删除吗？" placement="top" @onconfirm="handleDelete(scope.$index)">
+            <i slot="reference" class="iconfont icon-shanchu" v-if="!scope.row.hasExisted"></i>
+          </pop-confirm>
+          <i v-if="scope.$index === auditTaskForm.venderAssignList.length - 1" class="iconfont icon-tianjia" @click="handleAdd()"></i>
+        </template>
+      </el-table-column>
+    </el-table>
+  </el-form>
+</div>

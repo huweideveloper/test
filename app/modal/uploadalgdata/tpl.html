@@ -1,0 +1,52 @@
+<div class="uploadalgdata modal">
+    <div class="toparea">
+        <span class="title">导入算法标注结果</span>
+        <i class="iconfont icon-guanbi"></i>
+    </div>
+    <div class="catelog">
+        <div class="inputLine" redlabel="xlk">
+            <span class="names"><label class="redstar">*</label>请选择标注结果类型：</span>
+            <div class="type" check="empty"></div>
+        </div>
+        <div class="inputLine hide" redlabel="xlk">
+            <span class="names"><label class="redstar">*</label>数据类型：</span>
+            <div class="dataType" check="empty"></div>
+        </div>
+        <div class="isRunAlgorithm hide">
+            <i class="check-box"></i>
+            <span>是否选择算法版本</span>
+        </div>
+        <div class="inputLine algTypeWrapper hide" redlabel="xlk">
+          <span class="names"><label class="redstar">*</label>算法模型：</span>
+          <div class="algType" check="empty"></div>
+        </div>
+        <div class="inputLine versionNumberWrapper hide" redlabel="xlk">
+          <span class="names"><label class="redstar">*</label>模型版本：</span>
+          <div class="versionNumber" check="empty"></div>
+        </div>
+        <div class="inputLine" redlabel="inputBox">
+            <span class="names"><label class="redstar">*</label>指定上传文件：</span>
+            <input class="filename inputBox" type="text" check="empty" readonly/>
+            <a class="biaozhubtn filechoose">浏览</a>
+            <input class="file" type="file" id="file1" name="file"/>
+        </div>
+        <div class="inputLine tool hide" redlabel="xlk">
+            <span class="names"><label class="redstar">*</label>标注所需的工具：</span>
+            <div class="toolType" check="empty"></div>
+        </div>
+        <div class="mask" style="display: flex;">
+          <div class="convert-to-mask hide">
+            <i class="check-box"></i>
+            <span>是否转换成mask</span>
+          </div>
+          <div class="convert-cube-to-mask hide">
+            <i class="check-box"></i>
+            <span>方体转mask(<span class="cube-to-mask-tip">仅支持肺部CT的合理检出结果</span>)</span>
+          </div>
+        </div>
+    </div>
+    <div class="btnarea">
+        <a class="upload biaozhubtn">导入</a>
+        <a class="cancel biaozhubtn">取消</a>
+    </div>
+</div>

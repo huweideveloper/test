@@ -1,0 +1,67 @@
+<div id="newTaskDetail" class="newtaskdetail">
+  <sys-notice></sys-notice>
+  <div class="left">
+    <span class="title">新任务</span>
+    <div class="breadcrumb">
+      <span class="back">任务市场></span>
+      <span>任务详情</span>
+    </div>
+    <div class="infoscorll">
+      <div>
+        <div class="basicinfo">
+          <p class="tasktitle">任务基本信息</p>
+          <div class="infoarea">
+            <p>
+              <span>任务名称：<label data="name"></label></span>
+              <span>任务序号：<label data="taskId"></label></span>
+              <span class="cost hide"
+                >标注单价：<label data="cost"></label
+              ></span>
+            </p>
+            <p>
+              <span>任务类型：<label data="algPreAnnotation"></label></span>
+              <span>所属项目：<label data="pname"></label></span>
+            </p>
+            <p>
+              <span>开始时间：<label data="startTime"></label></span>
+              <span>结束时间：<label data="endTime"></label></span>
+            </p>
+            <p>
+              <span>样本类型：<label data="modality"></label></span>
+              <span>样本总量：<label data="seriesTotalNum"></label></span>
+            </p>
+            <p>
+              <span>任务备注：<label data="remark"></label></span>
+            </p>
+          </div>
+        </div>
+        <div class="project">
+          <p class="protitle">项目详情</p>
+          <div class="proinfo">
+            <div>
+              <p>
+                <span>项目名称：<label data="pname"></label></span>
+              </p>
+              <p>
+                <span>项目描述：</span
+                ><textarea
+                  id="remarkarea"
+                  class="pmark"
+                  disabled="disabled"
+                ></textarea>
+              </p>
+              <div>
+                <span>附件信息：</span>
+                <div class="fujianarea"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="height: 20px;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <a class="join">确认加入</a>
+  </div>
+</div>

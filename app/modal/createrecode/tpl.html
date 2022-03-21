@@ -1,0 +1,73 @@
+<div class="createrecode modal">
+    <div class="modal-header">
+        <p class="modal-title"></p>
+        <i class="iconfont icon-guanbi"></i>
+    </div>
+    <div class="modal-body">
+        <div class="scroll">
+        <div class="applyshow hide">
+            <p><span>需求ID:</span><label api="id"></label></p>
+            <p><span>用于项目:</span><label api="projectName"></label></p>
+            <p><span>数据部位:</span><label api="bodyPartCN"></label></p>
+            <p><span>建议搜索关键字:</span><label api="keywordsRequirement"></label></p>
+            <p><span>所需数量:</span><label api="numRequirement"></label></p>
+        </div>
+        <div class="inputLine applyno" redlabel="inputBox">
+            <span class="names"><label class="redstar">*</label>用于项目：</span>
+            <input type='text' class="inputBox" check="empty" api="projectName"/>
+        </div>
+        <div class="inputLine" redlabel="xlk">
+            <span class="names"><label class="redstar">*</label>数据来源医院：</span>
+            <div class="hospitalCode" check="empty"></div>
+        </div>
+        <div class="inputLine" redlabel="xlk">
+            <span class="names"><label class="redstar">*</label>检查设备：</span>
+            <div class="modality" check="empty"></div>
+        </div>
+        <div class="inputLine" redlabel="xlk">
+            <span class="names"><label class="redstar">*</label>文件类型：</span>
+            <div class="fileType" check="empty"></div>
+        </div>
+        <div class="inputLine applyno" redlabel="xlk">
+            <span class="names"><label class="redstar">*</label>部位：</span>
+            <div class="bodyPart" check="empty"></div>
+        </div>
+        <div class="inputLine" redlabel="inputBox">
+            <span class="names">数据拷贝总量：</span>
+            <input type='text' class="inputBox" check="int" api="capacity"/>
+        </div>
+        <div class="inputLine" redlabel="inputBox">
+            <span class="names">实际搜索关键字：</span>
+            <input type='text' class="inputBox" check="" api="keywords"/>
+        </div>
+        <div class="inputLine" redlabel="inputBox">
+            <span class="names">硬盘编号：</span>
+            <input type='text' class="inputBox" check="" api="udiskCode"/>
+        </div>
+        <div class="inputLine" redlabel="inputBox">
+            <span class="names"><label class="redstar">*</label>移动设备存放路径：</span>
+            <input type='text' class="inputBox" check="empty" api="udiskPath"/>
+        </div>
+        <div class="inputLine" redlabel="inputBox">
+            <span class="names"><label class="redstar">*</label>原始数据根路径：</span>
+            <input type='text' class="inputBox" check="empty" api="originRootPath"/>
+        </div>
+        <div class="rangechoose" redlabel="inputBox">
+            <span class="names">数据获取范围：</span>
+            <div class="startmonth"></div>
+        </div>
+        <div class="inputLine" redlabel="showData">
+            <span class="names"><label class="redstar">*</label>拷贝时间：</span>
+            <div class="timefilter" check="empty" title=""></div>
+        </div>
+        <div class="hide serverpath">
+            <span class="names">服务器路径：</span>
+            <span class="route"></span>
+        </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="btn-confirm biaozhubtn">保存</a>
+        <a class="btn-cancel biaozhubtn">取消</a>
+    </div>
+</div>
