@@ -84,7 +84,7 @@ module.exports = {
         loader: 'vue-loader'
       },
       {
-        test: /\.js$/,
+        test: /\.js|jsx$/,
         exclude: /node_modules/,
         //loader: 'babel-loader'
         use: [
@@ -95,14 +95,6 @@ module.exports = {
             }
           }
         ]
-      },
-      {
-        test:/\.(jsx)$/,
-        exclude:["/node_modules/", "/app/libs"],
-        loader:'babel-loader',
-        query:{
-            presets:['es2015','react']
-        }
       },
       {
         test: /\.(less|css)$/,

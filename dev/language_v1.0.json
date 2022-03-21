@@ -1,0 +1,144 @@
+{
+	"cn": {
+		"login": {
+			"name": "登录",
+			"userName": "用户名",
+			"password": "密码",
+			"remember": "记住密码",
+			"forget": "忘记密码",
+			"xmtitle": " 杏脉·锐影智能辅助诊断系统 ",
+			"ai": " AI辅助诊断 ",
+			"ct": " 基于CT影像的肺部结节筛查 ",
+			"xg": " 更多基于x光影像的病灶筛查 ",
+			"go": "登录",
+			"noname": "用户名不能为空",
+			"nopwd": "密码不能为空",
+			"error": "帐户名或密码错误，请重新输入",
+			"error1": "账号已被禁用，请联系管理员",
+			"error2": "账号不存在",
+			"logo": "Proxima",
+			"logo1": "杏脉科技",
+			"changepwd": "请联系管理员修改密码",
+
+			"logo-img": {
+				"zj": "<img src='/images/page/logo-img-zj.png' style='width: 260px;'>",
+				"jys": "<img src='/images/page/logo-img-jys.png' style='width: 216px;margin: 40px 0 0 40px;'>"
+			},
+			"title1-img": {
+				"zj": "<div style='font-size: 70px; color: #17d7fc; padding-top: 50px;'>杏脉鉴影</div>",
+				"jys": "<img src='/images/page/title1-img-jys.png'>"
+			},
+			"title2-img": {
+				"zj": "<img src='/images/page/title2-img-zj.png'>",
+				"jys": "<img src='/images/page/title2-img-jys.png'>"
+			},
+			"footer": {
+				"zj": "",
+				"jys": "上海市计算技术研究所 版权所有"
+			}
+		},
+		"header": {
+			"newct": "<span class='first' link='homePage'><i class='iconfont icon-xialasanjiao-left'></i> 主页</span><i class='split'>|</i><span class='two' link=''>CT阅片</span>",
+			"xrayCR": "<span class='first' link='homePage'><i class='iconfont icon-xialasanjiao-left'></i> 主页</span><i class='split'>|</i><span class='two' link=''>CR阅片</span>",
+			"xrayDX": "<span class='first' link='homePage'><i class='iconfont icon-xialasanjiao-left'></i> 主页</span><i class='split'>|</i><span class='two' link=''>DX阅片</span>",
+			"newfollow": "<span class='first' link='newct'><i class='iconfont icon-xialasanjiao-left'></i> CT阅片</span><i class='split'>|</i><span class='two' link=''>随访对比</span>",
+			"personalaccount": "<span class='first' link='personalaccount' style='cursor:auto'>主页</span><i class='split'>|</i><span class='second' link='personalaccount'>我的账户</span> ",
+			"department": "<span class='first' link='homePage'><i class='iconfont icon-xialasanjiao-left'></i> 主页</span><i class='split'>|</i><span class='second' link='personalaccount'>科室管理</span> ",
+			"accountmanage": "<span class='first' link='homePage'><i class='iconfont icon-xialasanjiao-left'></i> 主页</span><i class='split'>|</i><span class='second' link='personalaccount'>账户管理</span> ",
+			"pro": {
+				"zj": "<span link=''>PROXAI</span>",
+				"jys": "<span link=''></span>"
+			},
+			"qhzbzys": "切换至标注医生",
+			"qhzgly": "切换至管理员",
+			"wdzy": "我的主页",
+			"tcdl": "退出登录",
+			"yqxyh": "邀请新用户",
+			"sureread": "确认阅片",
+			"sured": "已确认"
+		},
+		"alert": {
+			"sure": "确认",
+			"cancel": "取消"
+		},
+		"menu": {
+			"rwgl": "任务管理",
+			"zhgl": "账户管理",
+			"sjgl": "数据管理",
+			"rzcx": "日志查询"
+		},
+		"accountmanage": {
+			"pldr": "批量导入",
+			"qbcy": "全部成员",
+			"glyxz": "管理员小组",
+			"xzyh": "添加新成员"
+		},
+		"changePwd": {
+			"xgmm": "修改密码",
+			"wjmm": "忘记密码",
+			"mmgz": "密码为6-16位",
+			"bc": "保存",
+			"old": "请输入您的原始密码",
+			"new": "请输入您的新密码",
+			"confirm": "请再次输入您的新密码",
+			"newerr": "新密码不可与原始密码相同",
+			"reinput": "两次输入密码不同，请重新输入",
+			"err": "格式错误",
+			"conpwd": "请输入确认密码",
+			"newmust": "请输入新密码",
+			"oldmust": "请输入原始密码",
+			"conadmin": "请联系管理员修改密码"
+		},
+		"alert": {
+			"sure": "确认",
+			"cancel": "取消"
+		},
+		"personalaccount": {
+			"systemName": {
+				"zj": "杏脉",
+				"jys": "计算所"
+			}
+		}
+	},
+	"en": {
+		"login": {
+			"name": "Login",
+			"userName": "username",
+			"password": "password",
+			"remember": "Remember me",
+			"forget": "Forget the password",
+			"xmtitle": " AI aided diagnosis system",
+			"ai": " Computer aided diagnosis ",
+			"ct": " Lung nodule detection via High resolution CT ",
+			"xg": " X-ray based lesion screening ",
+			"go": "GO",
+			"noname": "The username can not be empty",
+			"nopwd": "The password can not be empty",
+			"error": "Incorrect username or password, please reenter",
+			"error1": "The account has been disable. Please contact the administrator",
+			"logo": "",
+			"changepwd": "Please contact the administrator to modify the password"
+		},
+		"header": {
+			"newct": "<span class='first' link='homePage'><i class='iconfont icon-xialasanjiao-left'></i> Main</span><i class='split'>|</i><span class='second' link=''>CT</span>",
+			"xrayCR": "<span class='first' link='homePage'><i class='iconfont icon-xialasanjiao-left'></i> Main</span><i class='split'>|</i><span class='second' link=''>X-Ray</span>",
+			"xrayDX": "<span class='first' link='homePage'><i class='iconfont icon-xialasanjiao-left'></i> Main</span><i class='split'>|</i><span class='second' link=''>X-Ray</span>",
+			"newfollow": "<span class='first' link='newct'><i class='iconfont icon-xialasanjiao-left'></i> CT</span><i class='split'>|</i><span class='second' link=''>Follow Up</span>",
+			"personalaccount": "<span class='first' link='homePage'><i class='iconfont icon-xialasanjiao-left'></i> Main</span><i class='split'>|</i><span class='second' link=''>My Account</span> ",
+			"department": "<span class='first' link='homePage'><i class='iconfont icon-xialasanjiao-left'></i> Main</span><i class='split'>|</i><span class='second' link=''>Department Management</span> ",
+			"accountmanage": "<span class='first' link='homePage'><i class='iconfont icon-xialasanjiao-left'></i> Main</span><i class='split'>|</i><span class='second' link=''>Account Management</span> ",
+			"pro": "<span link=''></span>",
+			"wdzh": "My Account",
+			"xtsz": "System Setting",
+			"tcdl": "Log Off",
+			"sureread": "确认阅片",
+			"sured": "已确认"
+		},
+		"menu": {
+			"rwgl": "任务管理",
+			"zhgl": "账户管理",
+			"sjgl": "数据管理",
+			"rzcx": "日志查询"
+		}
+	}
+}
